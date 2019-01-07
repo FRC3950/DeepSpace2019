@@ -17,7 +17,9 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+  //this is the first line of code of the build season!!! :O
   public Joystick driveStick = new Joystick(0);
+  //this is the second line of code of the build season!!! XD
   public XboxController xboxController = new XboxController(1);
 
   public Button driveStick1Button = new JoystickButton(driveStick, 1);
