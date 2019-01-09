@@ -10,7 +10,6 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import frc.robot.RobotMap;
@@ -40,13 +39,10 @@ public class DrivetrainSubsystem extends Subsystem {
     frontRight.setNeutralMode(NeutralMode.Brake);
     backRight.setNeutralMode(NeutralMode.Brake);
 
-    SpeedControllerGroup left = new SpeedControllerGroup(frontLeft, backLeft);
-    SpeedControllerGroup right = new SpeedControllerGroup(frontRight, backRight);
-
-    frontLeft.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.Analog, 0, 0);
-    frontLeft.setSensorPhase(false);
-    frontRight.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.Analog, 0, 0);
-    frontRight.setSensorPhase(false);
+    // frontLeft.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.Analog, 0, 0);
+    // frontLeft.setSensorPhase(false);
+    // frontRight.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.Analog, 0, 0);
+    // frontRight.setSensorPhase(false);
 
     drivetrain = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
 

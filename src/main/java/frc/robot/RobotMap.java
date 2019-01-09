@@ -19,14 +19,10 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
  */
 public class RobotMap {
 
-  public static WPI_TalonSRX frontLeft = new WPI_TalonSRX(1);
-  public static WPI_TalonSRX backLeft = new WPI_TalonSRX(2);
-  public static WPI_TalonSRX frontRight = new WPI_TalonSRX(3);
-  public static WPI_TalonSRX backRight = new WPI_TalonSRX(4);
-
-
-  public static SpeedControllerGroup left = new SpeedControllerGroup(frontLeft,backLeft);
-  public static SpeedControllerGroup right = new SpeedControllerGroup(frontRight,backRight);
+  public static WPI_TalonSRX frontLeft = new WPI_TalonSRX(0);
+  public static WPI_TalonSRX backLeft = new WPI_TalonSRX(1);
+  public static WPI_TalonSRX frontRight = new WPI_TalonSRX(2);
+  public static WPI_TalonSRX backRight = new WPI_TalonSRX(3);
 
   // For example to map the left and right motors, you could define the
   // following variables to use with your drivetrain subsystem.
