@@ -13,6 +13,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import frc.robot.RobotMap;
+import frc.robot.commands.DriveCommand;
 
 /**
  * Add your docs here.
@@ -46,7 +47,12 @@ public class DrivetrainSubsystem extends Subsystem {
 
     drivetrain = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
 
+    setDefaultCommand(new DriveCommand());
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+  }
+
+  public void Drive(double ySpeed, double xSpeed, double zRotation){
+    drivetrain.driveCartesian(ySpeed, xSpeed, zRotation);
   }
 }
