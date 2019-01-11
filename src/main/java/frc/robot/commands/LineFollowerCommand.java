@@ -7,10 +7,15 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class LineFollowerCommand extends Command {
+
+    Joystick stick = Robot.m_oi.driveStick;
+
   public LineFollowerCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -25,12 +30,36 @@ public class LineFollowerCommand extends Command {
   @Override
   protected void execute() {
     System.out.println("Center Light =" + RobotMap.centerLight.get());
+    boolean centerLight = RobotMap.centerLight.get();
+    boolean leftLight = RobotMap.leftLight.get();
+    boolean rightLight = RobotMap.rightLight.get();
+
+    if ((!centerLight && !leftLight && !rightLight) || (centerLight && leftLight && rightLight)) {
+      Robot.drivetrainSubsystem.Drive(stick.getY(), (stick.getTwist()));
+      //end
+    }
+    else if (!leftLight && !rightLight) {
+      Robot.drivetrainSubsystem.Drive(stick.getY(),(stick.getTwist()));
+      //move forward 
+    }
+    else if (leftLight && !rightLight){
+      Robot.drivetrainSubsystem.Drive(stick.getY(), (Math.abs(stick.getTwist() * 1)));
+      //rotate clockwise
+    }
+    else if (rightLight && !leftLight){
+      Robot.drivetrainSubsystem.Drive(stick.getY(), (Math.abs(stick.getTwist() * -1)));
+      //rotate counter clockwise
+    }
+    //The above if statement tells the robot what to do depending on which sensors are active
+
+    Robot.drivetrainSubsystem.Drive(stick.getY(), (.75*stick.getTwist()));
+    //Might not need the .75 
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return false;
   }
 
   // Called once after isFinished returns true
