@@ -31,6 +31,14 @@ public class LimelightSubsystem extends Subsystem {
     NetworkTableEntry tx = table.getEntry("tx");
     NetworkTableEntry ty = table.getEntry("ty");
     NetworkTableEntry ta = table.getEntry("ta");
+    NetworkTableEntry tv = table.getEntry("tv");
+    NetworkTableEntry ts = table.getEntry("ts");
+    NetworkTableEntry tl = table.getEntry("tl");
+    NetworkTableEntry tshort = table.getEntry("tshort");
+    NetworkTableEntry tlong = table.getEntry("tlong");
+    NetworkTableEntry thoriz = table.getEntry("thoriz");
+    NetworkTableEntry tvert = table.getEntry("tvert");
+
 
     //read values periodically
     double x = tx.getDouble(0.0);
