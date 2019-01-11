@@ -9,6 +9,8 @@ package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -23,6 +25,8 @@ public class RobotMap {
   public static WPI_TalonSRX frontRight = new WPI_TalonSRX(2);
   public static WPI_TalonSRX backRight = new WPI_TalonSRX(3);
 
+  public static DigitalInput centerLight = new DigitalInput(1);
+  
   // For example to map the left and right motors, you could define the
   // following variables to use with your drivetrain subsystem.
   // public static int leftMotor = 1;

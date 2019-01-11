@@ -7,38 +7,30 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
+import frc.robot.RobotMap;
 
-public class DriveCommand extends Command {
-
-  Joystick stick = Robot.m_oi.driveStick;
-
-  public DriveCommand() {
+public class LineFollowerCommand extends Command {
+  public LineFollowerCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.drivetrainSubsystem);
-
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-//    Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist());
-    
+    System.out.println("Center Light =" + RobotMap.centerLight.get());
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
