@@ -44,10 +44,26 @@ public class LimelightSubsystem extends Subsystem {
     double x = tx.getDouble(0.0);
     double y = ty.getDouble(0.0);
     double area = ta.getDouble(0.0);
+    double target = tv.getDouble(0.0);
+    double s = ts.getDouble(0.0);
+    double latency = tl.getDouble(0.0);
+    double shortF = tshort.getDouble(0.0);
+    double longF = tlong.getDouble(0.0);
+    double horizonalR = thoriz.getDouble(0.0);
+    double verticalR = tvert.getDouble(0.0);
+
+    
     //post to smart dashboard periodically
     SmartDashboard.putNumber("LimelightX", x);
     SmartDashboard.putNumber("LimelightY", y);
     SmartDashboard.putNumber("LimelightArea", area);
+    SmartDashboard.putNumber("LimelightTarget", target);
+    SmartDashboard.putNumber("LimelightSkew/Rotation", s);
+    SmartDashboard.putNumber("LimelightLatency", latency);
+    SmartDashboard.putNumber("LimelightLengthShort", shortF);
+    SmartDashboard.putNumber("LimelightLengthLong", longF);
+    SmartDashboard.putNumber("LimelightLengthHorizonal", horizonalR);
+    SmartDashboard.putNumber("LimelightLengthVertical", verticalR);
 
     //System.out.println("x is"+ x+ "y is"+ y+ "area is"+ area);
 
