@@ -81,7 +81,8 @@ public class OI {
   // button.whenReleased(new ExampleCommand());
   public OI() {
     driveStick1Button.whenPressed(new LimelightCommand());
-    driveStick2Button.whenPressed(new LineFollowerCommand());
+   // driveStick2Button.whenPressed(new LineFollowerCommand());
+    driveStick3Button.whenPressed(new LimelightCommand());
   }
 
 }

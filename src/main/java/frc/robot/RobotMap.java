@@ -28,6 +28,8 @@ public class RobotMap {
   public static DigitalInput centerLight = new DigitalInput(1);
   public static DigitalInput leftLight = new DigitalInput(2);
   public static DigitalInput rightLight = new DigitalInput(3);
+
+  
   
   // For example to map the left and right motors, you could define the
   // following variables to use with your drivetrain subsystem.

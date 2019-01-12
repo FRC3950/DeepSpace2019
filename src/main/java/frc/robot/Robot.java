@@ -18,7 +18,7 @@ import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
-
+import frc.robot.commands.LimelightCommand; 
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -50,6 +50,13 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("LimelightX", 0);
     SmartDashboard.putNumber("LimelightY", 0);
     SmartDashboard.putNumber("LimelightArea", 0);
+    SmartDashboard.putNumber("LimelightTarget", 0);
+    SmartDashboard.putNumber("LimelightSkew/Rotation", 0);
+    SmartDashboard.putNumber("LimelightLatency", 0);
+    SmartDashboard.putNumber("LimelightLengthShort", 0);
+    SmartDashboard.putNumber("LimelightLengthLong", 0);
+    SmartDashboard.putNumber("LimelightLengthHorizonal", 0);
+    SmartDashboard.putNumber("LimelightLengthVertical", 0);
   }
 
   /**

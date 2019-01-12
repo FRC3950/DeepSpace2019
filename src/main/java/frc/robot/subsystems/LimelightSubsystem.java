@@ -29,15 +29,25 @@ public class LimelightSubsystem extends Subsystem {
   public void limelightRead() {
     NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
     NetworkTableEntry tx = table.getEntry("tx");
+    //horizontal offset from crosshair to target
     NetworkTableEntry ty = table.getEntry("ty");
+    //vertical offset from crosshair to target
     NetworkTableEntry ta = table.getEntry("ta");
+    //target area
     NetworkTableEntry tv = table.getEntry("tv");
+    //whether the limelight has any valid target (0 or 1)
     NetworkTableEntry ts = table.getEntry("ts");
+    //skew or rotation
     NetworkTableEntry tl = table.getEntry("tl");
+    //pipelines latency contribution
     NetworkTableEntry tshort = table.getEntry("tshort");
+    //sidelength of shortest side of fitted bounding box
     NetworkTableEntry tlong = table.getEntry("tlong");
+    //sidelength of longest side of fitted bounding box
     NetworkTableEntry thoriz = table.getEntry("thoriz");
+    //horizontal sidelengh of the rough bounding box
     NetworkTableEntry tvert = table.getEntry("tvert");
+    //vertical sidelength of the rough bounding box
 
 
     //read values periodically
