@@ -33,6 +33,7 @@ public class LimelightSubsystem extends Subsystem {
       return 0.0;
     }
     return 0.03125*shortLength*shortLength - 3.866 *shortLength + 148.8;
+    //Need to redo equation on Logger Pro once we know where it is mounted on the robot 
   }
 
   public void limelightRead() {
@@ -86,5 +87,10 @@ public class LimelightSubsystem extends Subsystem {
 
     //System.out.println("x is"+ x+ "y is"+ y+ "area is"+ area);
 
+  }
+  public double gettx(){
+    NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+    NetworkTableEntry tx = table.getEntry("tx");
+    return tx.getDouble(0.0);
   }
 }
