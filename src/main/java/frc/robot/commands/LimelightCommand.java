@@ -11,6 +11,7 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 
 public class LimelightCommand extends Command {
   NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
@@ -73,6 +74,7 @@ public class LimelightCommand extends Command {
     System.out.println("tlong ="+ tlong.getDouble(0.0));
     System.out.println("thoriz ="+ thoriz.getDouble(0.0));
     System.out.println("tvert ="+ tvert.getDouble(0.0));
+    System.out.println("Distance =" + Robot.limelightSubsystem.getDistance());
 
   }
 

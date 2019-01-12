@@ -35,24 +35,24 @@ public class LineFollowerCommand extends Command {
     boolean rightLight = RobotMap.rightLight.get();
 
     if ((!centerLight && !leftLight && !rightLight) || (centerLight && leftLight && rightLight)) {
-      Robot.drivetrainSubsystem.Drive(stick.getY(), (stick.getTwist()));
+      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), (stick.getTwist()));
       //end
     }
     else if (!leftLight && !rightLight) {
-      Robot.drivetrainSubsystem.Drive(stick.getY(),(stick.getTwist()));
+      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(),(stick.getTwist()));
       //move forward 
     }
     else if (leftLight && !rightLight){
-      Robot.drivetrainSubsystem.Drive(stick.getY(), (Math.abs(stick.getTwist() * 1)));
+      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), (Math.abs(stick.getTwist() * 1)));
       //rotate clockwise
     }
     else if (rightLight && !leftLight){
-      Robot.drivetrainSubsystem.Drive(stick.getY(), (Math.abs(stick.getTwist() * -1)));
+      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), (Math.abs(stick.getTwist() * -1)));
       //rotate counter clockwise
     }
     //The above if statement tells the robot what to do depending on which sensors are active
 
-    Robot.drivetrainSubsystem.Drive(stick.getY(), (.75*stick.getTwist()));
+    Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), (.75*stick.getTwist()));
     //Might not need the .75 
   }
 

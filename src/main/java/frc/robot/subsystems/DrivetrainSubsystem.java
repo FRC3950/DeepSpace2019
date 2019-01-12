@@ -10,10 +10,11 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
+//import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-//import edu.wpi.first.wpilibj.drive.MecanumDrive;
+//import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import frc.robot.RobotMap;
 import frc.robot.commands.DriveCommand;
 
@@ -26,8 +27,8 @@ public class DrivetrainSubsystem extends Subsystem {
   WPI_TalonSRX frontRight;
   WPI_TalonSRX backRight;
 
-//  MecanumDrive drivetrain;
-    DifferentialDrive drivetrain;
+  MecanumDrive drivetrain;
+//    DifferentialDrive drivetrain;
 
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
@@ -49,22 +50,22 @@ public class DrivetrainSubsystem extends Subsystem {
     // frontRight.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.Analog, 0, 0);
     // frontRight.setSensorPhase(false);
 
-    SpeedControllerGroup left = new SpeedControllerGroup(frontLeft, backLeft);
-    SpeedControllerGroup right = new SpeedControllerGroup(frontRight, backRight);
+   //  SpeedControllerGroup left = new SpeedControllerGroup(frontLeft, backLeft);
+   // SpeedControllerGroup right = new SpeedControllerGroup(frontRight, backRight);
 
-  //  drivetrain = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
-      drivetrain = new DifferentialDrive(left, right);
+    drivetrain = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
+  //    drivetrain = new DifferentialDrive(left, right);
 
     setDefaultCommand(new DriveCommand());
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
 
-//  public void Drive(double ySpeed, double xSpeed, double zRotation){
-//    drivetrain.driveCartesian(ySpeed, xSpeed, zRotation);
-//  }
+ public void Drive(double ySpeed, double xSpeed, double zRotation){
+       drivetrain.driveCartesian(ySpeed, xSpeed, zRotation);
+ }
 
-public void Drive(double y, double twist){
-  drivetrain.arcadeDrive(-y, twist);
-  }
+//public void Drive(double y, double twist){
+//  drivetrain.arcadeDrive(-y, twist);
+//  }
 }

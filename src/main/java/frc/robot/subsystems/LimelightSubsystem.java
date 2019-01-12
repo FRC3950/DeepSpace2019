@@ -25,6 +25,15 @@ public class LimelightSubsystem extends Subsystem {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
+  public double getDistance(){
+    NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+    NetworkTableEntry tshort = table.getEntry("tshort");
+    double shortLength = tshort.getDouble(0.0);
+    if (Double.compare(shortLength, 0.0) == 0) {
+      return 0.0;
+    }
+    return 0.03125*shortLength*shortLength - 3.866 *shortLength + 148.8;
+  }
 
   public void limelightRead() {
     NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
@@ -48,6 +57,7 @@ public class LimelightSubsystem extends Subsystem {
     //horizontal sidelengh of the rough bounding box
     NetworkTableEntry tvert = table.getEntry("tvert");
     //vertical sidelength of the rough bounding box
+    
 
 
     //read values periodically
@@ -61,7 +71,6 @@ public class LimelightSubsystem extends Subsystem {
     double longF = tlong.getDouble(0.0);
     double horizonalR = thoriz.getDouble(0.0);
     double verticalR = tvert.getDouble(0.0);
-
     
     //post to smart dashboard periodically
     SmartDashboard.putNumber("LimelightX", x);
