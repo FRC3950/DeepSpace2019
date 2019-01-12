@@ -1,0 +1,71 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
+package frc.robot.subsystems;
+
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
+
+/**
+ * Add your docs here.
+ */
+public class LimelightSubsystem extends Subsystem {
+  // Put methods for controlling this subsystem
+  // here. Call these from Commands.
+
+  @Override
+  public void initDefaultCommand() {
+    // Set the default command for a subsystem here.
+    // setDefaultCommand(new MySpecialCommand());
+  }
+
+  public void limelightRead() {
+    NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+    NetworkTableEntry tx = table.getEntry("tx");
+    NetworkTableEntry ty = table.getEntry("ty");
+    NetworkTableEntry ta = table.getEntry("ta");
+    NetworkTableEntry tv = table.getEntry("tv");
+    NetworkTableEntry ts = table.getEntry("ts");
+    NetworkTableEntry tl = table.getEntry("tl");
+    NetworkTableEntry tshort = table.getEntry("tshort");
+    NetworkTableEntry tlong = table.getEntry("tlong");
+    NetworkTableEntry thoriz = table.getEntry("thoriz");
+    NetworkTableEntry tvert = table.getEntry("tvert");
+
+
+    //read values periodically
+    double x = tx.getDouble(0.0);
+    double y = ty.getDouble(0.0);
+    double area = ta.getDouble(0.0);
+    double target = tv.getDouble(0.0);
+    double s = ts.getDouble(0.0);
+    double latency = tl.getDouble(0.0);
+    double shortF = tshort.getDouble(0.0);
+    double longF = tlong.getDouble(0.0);
+    double horizonalR = thoriz.getDouble(0.0);
+    double verticalR = tvert.getDouble(0.0);
+
+    
+    //post to smart dashboard periodically
+    SmartDashboard.putNumber("LimelightX", x);
+    SmartDashboard.putNumber("LimelightY", y);
+    SmartDashboard.putNumber("LimelightArea", area);
+    SmartDashboard.putNumber("LimelightTarget", target);
+    SmartDashboard.putNumber("LimelightSkew/Rotation", s);
+    SmartDashboard.putNumber("LimelightLatency", latency);
+    SmartDashboard.putNumber("LimelightLengthShort", shortF);
+    SmartDashboard.putNumber("LimelightLengthLong", longF);
+    SmartDashboard.putNumber("LimelightLengthHorizonal", horizonalR);
+    SmartDashboard.putNumber("LimelightLengthVertical", verticalR);
+
+    //System.out.println("x is"+ x+ "y is"+ y+ "area is"+ area);
+
+  }
+}
