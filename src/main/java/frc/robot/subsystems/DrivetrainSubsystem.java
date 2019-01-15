@@ -23,11 +23,15 @@ import frc.robot.commands.DriveCommand;
  * Add your docs here.
  */
 public class DrivetrainSubsystem extends Subsystem {
-  WPI_TalonSRX frontLeft;
-  WPI_TalonSRX backLeft;
-  WPI_TalonSRX frontRight;
-  WPI_TalonSRX backRight;
-  CANSparkMax testBrushless;
+  //WPI_TalonSRX frontLeft;
+  //WPI_TalonSRX backLeft;
+  //WPI_TalonSRX frontRight;
+  //WPI_TalonSRX backRight;
+
+  CANSparkMax frontLeft;
+  CANSparkMax backLeft;
+  CANSparkMax frontRight;
+  CANSparkMax backRight;
 
   MecanumDrive drivetrain;
 //    DifferentialDrive drivetrain;
@@ -41,12 +45,13 @@ public class DrivetrainSubsystem extends Subsystem {
     backLeft = RobotMap.backLeft;
     frontRight = RobotMap.frontRight;
     backRight = RobotMap.backRight;
-    testBrushless = RobotMap.testBrushless;
 
-    frontLeft.setNeutralMode(NeutralMode.Brake);
-    backLeft.setNeutralMode(NeutralMode.Brake);
-    frontRight.setNeutralMode(NeutralMode.Brake);
-    backRight.setNeutralMode(NeutralMode.Brake);
+    //frontLeft.setNuetralMode(NeutralMode.Brake);
+    //backLeft.setNeutralMode(NeutralMode.Brake);
+    //frontRight.setNeutralMode(NeutralMode.Brake);
+    //backRight.setNeutralMode(NeutralMode.Brake);
+
+    
 
     // frontLeft.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.Analog, 0, 0);
     // frontLeft.setSensorPhase(false);
@@ -59,10 +64,11 @@ public class DrivetrainSubsystem extends Subsystem {
     drivetrain = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
   //    drivetrain = new DifferentialDrive(left, right);
 
-    frontLeft.setSafetyEnabled(false);
-    backLeft.setSafetyEnabled(false);
-    frontRight.setSafetyEnabled(false);
-    backRight.setSafetyEnabled(false);
+    //frontLeft.setSafetyEnabled(false);
+    //backLeft.setSafetyEnabled(false);
+    //frontRight.setSafetyEnabled(false);
+    //backRight.setSafetyEnabled(false);
+    //Used for talon but need to change for spark max motors
     
 
     setDefaultCommand(new DriveCommand());
