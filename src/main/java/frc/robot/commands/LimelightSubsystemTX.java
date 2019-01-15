@@ -14,7 +14,7 @@ import frc.robot.Robot;
 /**
  * Add your docs here.
  */
-public class pidSource implements PIDSource {
+public class LimelightSubsystemTX implements PIDSource {
 
     @Override
     public void setPIDSourceType(PIDSourceType pidSource) {
@@ -29,6 +29,7 @@ public class pidSource implements PIDSource {
     @Override
     public double pidGet() {
         return Robot.limelightSubsystem.gettx();
+        
 	}
 
 }

@@ -10,23 +10,27 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.subsystems.LimelightSubsystem;
+//import frc.robot.subsystems.LimelightSubsystem;
 
 public class AutoLineUpCommand extends Command {
   private PIDController controller;
   private boolean init = true;
+  private static double minTx = -1.0;
+  private static double maxTx = 1.0;
+  private LimelightSubsystemTX limelightSubsystemTX = null;
 
   public AutoLineUpCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.limelightSubsystem);
-    requires(Robot.drivetrainSubsystem);
+  //  requires(Robot.drivetrainSubsystem);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    controller = new PIDController(0, 0, 0, new pidSource(), new rotatePIDOut());
+    limelightSubsystemTX = new LimelightSubsystemTX();
+    controller = new PIDController(0, 0, 0, limelightSubsystemTX, new rotatePIDOut());
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -41,6 +45,10 @@ public class AutoLineUpCommand extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
+    double tx = limelightSubsystemTX.pidGet();
+    if (tx >= minTx || tx <= maxTx){
+      return true;
+    }
     return false;
   }
 

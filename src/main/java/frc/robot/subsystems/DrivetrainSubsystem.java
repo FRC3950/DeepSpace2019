@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.revrobotics.CANSparkMax;
 
 //import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -26,6 +27,7 @@ public class DrivetrainSubsystem extends Subsystem {
   WPI_TalonSRX backLeft;
   WPI_TalonSRX frontRight;
   WPI_TalonSRX backRight;
+  CANSparkMax testBrushless;
 
   MecanumDrive drivetrain;
 //    DifferentialDrive drivetrain;
@@ -39,6 +41,7 @@ public class DrivetrainSubsystem extends Subsystem {
     backLeft = RobotMap.backLeft;
     frontRight = RobotMap.frontRight;
     backRight = RobotMap.backRight;
+    testBrushless = RobotMap.testBrushless;
 
     frontLeft.setNeutralMode(NeutralMode.Brake);
     backLeft.setNeutralMode(NeutralMode.Brake);
@@ -55,6 +58,12 @@ public class DrivetrainSubsystem extends Subsystem {
 
     drivetrain = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
   //    drivetrain = new DifferentialDrive(left, right);
+
+    frontLeft.setSafetyEnabled(false);
+    backLeft.setSafetyEnabled(false);
+    frontRight.setSafetyEnabled(false);
+    backRight.setSafetyEnabled(false);
+    
 
     setDefaultCommand(new DriveCommand());
     // Set the default command for a subsystem here.

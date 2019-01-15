@@ -8,6 +8,8 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 
@@ -24,6 +26,8 @@ public class RobotMap {
   public static WPI_TalonSRX backLeft = new WPI_TalonSRX(1);
   public static WPI_TalonSRX frontRight = new WPI_TalonSRX(2);
   public static WPI_TalonSRX backRight = new WPI_TalonSRX(3);
+
+  public static CANSparkMax testBrushless = new CANSparkMax(0, MotorType.kBrushless);
 
   public static DigitalInput centerLight = new DigitalInput(1);
   public static DigitalInput leftLight = new DigitalInput(2);
