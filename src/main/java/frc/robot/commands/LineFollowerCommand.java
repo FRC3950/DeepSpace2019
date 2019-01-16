@@ -7,14 +7,19 @@
 
 package frc.robot.commands;
 
+import com.kauailabs.navx.frc.AHRS;
+
+import edu.wpi.first.wpilibj.GyroBase;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class LineFollowerCommand extends Command {
 
     Joystick stick = Robot.m_oi.driveStick;
+    AHRS ahrs = null;
 
   public LineFollowerCommand() {
     // Use requires() here to declare subsystem dependencies
@@ -33,26 +38,26 @@ public class LineFollowerCommand extends Command {
     boolean centerLight = RobotMap.centerLight.get();
     boolean leftLight = RobotMap.leftLight.get();
     boolean rightLight = RobotMap.rightLight.get();
-
+// The zeros in the If statement need to be changed 
     if ((!centerLight && !leftLight && !rightLight) || (centerLight && leftLight && rightLight)) {
-      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), (stick.getTwist()));
+      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), (stick.getTwist()), 0 );
       //end
     }
     else if (!leftLight && !rightLight) {
-      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(),(stick.getTwist()));
+      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(),(stick.getTwist()), 0);
       //move forward 
     }
     else if (leftLight && !rightLight){
-      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), (Math.abs(stick.getTwist() * 1)));
+      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), (Math.abs(stick.getTwist() * 1)), 0);
       //rotate clockwise
     }
     else if (rightLight && !leftLight){
-      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), (Math.abs(stick.getTwist() * -1)));
+      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), (Math.abs(stick.getTwist() * -1)), 0);
       //rotate counter clockwise
     }
     //The above if statement tells the robot what to do depending on which sensors are active
 
-    Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), (.75*stick.getTwist()));
+    Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), (.75*stick.getTwist()), 0);
     //Might not need the .75 
   }
 

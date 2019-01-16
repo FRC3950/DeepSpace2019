@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot;
 
 import edu.wpi.first.wpilibj.PIDOutput;
 import frc.robot.Robot;
@@ -17,6 +17,6 @@ public class rotatePIDOut implements PIDOutput {
 
     @Override
     public void pidWrite(double output) {
-        Robot.drivetrainSubsystem.Drive(0, 0, output);
+        Robot.drivetrainSubsystem.Drive(0, 0, output, output);
     }
 }

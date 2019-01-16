@@ -9,8 +9,12 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.kauailabs.navx.frc.AHRS;
 import com.revrobotics.CANSparkMax;
 
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.RobotDrive;
 //import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 //import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -26,7 +30,7 @@ public class DrivetrainSubsystem extends Subsystem {
   //WPI_TalonSRX frontLeft;
   //WPI_TalonSRX backLeft;
   //WPI_TalonSRX frontRight;
-  //WPI_TalonSRX backRight;
+  // WPI_TalonSRX backRight;
 
   CANSparkMax frontLeft;
   CANSparkMax backLeft;
@@ -76,8 +80,8 @@ public class DrivetrainSubsystem extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
 
- public void Drive(double ySpeed, double xSpeed, double zRotation){
-       drivetrain.driveCartesian(ySpeed, xSpeed, zRotation);
+ public void Drive(double ySpeed, double xSpeed, double zRotation, double gyroAngle){
+       drivetrain.driveCartesian(ySpeed, xSpeed, zRotation, gyroAngle);
  }
 
 //public void Drive(double y, double twist){
