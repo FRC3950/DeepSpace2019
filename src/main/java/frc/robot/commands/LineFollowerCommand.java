@@ -9,10 +9,8 @@ package frc.robot.commands;
 
 import com.kauailabs.navx.frc.AHRS;
 
-import edu.wpi.first.wpilibj.GyroBase;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 

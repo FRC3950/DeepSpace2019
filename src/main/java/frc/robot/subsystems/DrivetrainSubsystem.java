@@ -7,9 +7,8 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.kauailabs.navx.frc.AHRS;
+
+//import com.kauailabs.navx.frc.AHRS;
 import com.revrobotics.CANSparkMax;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -18,7 +17,6 @@ import edu.wpi.first.wpilibj.RobotDrive;
 //import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 //import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import frc.robot.RobotMap;
 import frc.robot.commands.DriveCommand;
@@ -50,11 +48,6 @@ public class DrivetrainSubsystem extends Subsystem {
     frontRight = RobotMap.frontRight;
     backRight = RobotMap.backRight;
 
-    //frontLeft.setNuetralMode(NeutralMode.Brake);
-    //backLeft.setNeutralMode(NeutralMode.Brake);
-    //frontRight.setNeutralMode(NeutralMode.Brake);
-    //backRight.setNeutralMode(NeutralMode.Brake);
-
     
 
     // frontLeft.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.Analog, 0, 0);
@@ -67,12 +60,6 @@ public class DrivetrainSubsystem extends Subsystem {
 
     drivetrain = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
   //    drivetrain = new DifferentialDrive(left, right);
-
-    //frontLeft.setSafetyEnabled(false);
-    //backLeft.setSafetyEnabled(false);
-    //frontRight.setSafetyEnabled(false);
-    //backRight.setSafetyEnabled(false);
-    //Used for talon but need to change for spark max motors
     
 
     setDefaultCommand(new DriveCommand());

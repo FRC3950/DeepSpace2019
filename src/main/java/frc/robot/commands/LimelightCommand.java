@@ -15,16 +15,17 @@ import frc.robot.Robot;
 
 public class LimelightCommand extends Command {
   NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
-    NetworkTableEntry tx = null;
-    NetworkTableEntry ty = null;
-    NetworkTableEntry ta = null;
-    NetworkTableEntry tv = null;
-    NetworkTableEntry ts = null;
-    NetworkTableEntry tl = null;
-    NetworkTableEntry tshort = null;
-    NetworkTableEntry tlong = null;
-    NetworkTableEntry thoriz = null;
-    NetworkTableEntry tvert = null;
+  NetworkTableEntry tx = null;
+  NetworkTableEntry ty = null;
+  NetworkTableEntry ta = null;
+  NetworkTableEntry tv = null;
+  NetworkTableEntry ts = null;
+  NetworkTableEntry tl = null;
+  NetworkTableEntry tshort = null;
+  NetworkTableEntry tlong = null;
+  NetworkTableEntry thoriz = null;
+  NetworkTableEntry tvert = null;
+  
 
     
 
@@ -53,6 +54,7 @@ public class LimelightCommand extends Command {
     thoriz = table.getEntry("thoriz");
     tvert = table.getEntry("tvert");
 
+
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -74,7 +76,6 @@ public class LimelightCommand extends Command {
     System.out.println("tlong ="+ tlong.getDouble(0.0));
     System.out.println("thoriz ="+ thoriz.getDouble(0.0));
     System.out.println("tvert ="+ tvert.getDouble(0.0));
-    System.out.println("Distance =" + Robot.limelightSubsystem.getDistance());
 
   }
 

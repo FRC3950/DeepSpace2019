@@ -7,11 +7,8 @@
 
 package frc.robot;
 
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.DigitalSource;
+//import edu.wpi.first.wpilibj.DigitalInput;
+//import edu.wpi.first.wpilibj.DigitalSource;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -21,7 +18,11 @@ import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
-import frc.robot.commands.LimelightCommand; 
+import frc.robot.subsystems.USBCameraSubsystem;
+import frc.robot.commands.LimelightCommand;
+import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.TimedRobot;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -35,7 +36,9 @@ public class Robot extends TimedRobot {
   public static OI m_oi;
 
   public static DrivetrainSubsystem drivetrainSubsystem = new DrivetrainSubsystem();
+
   
+  public static USBCameraSubsystem usbcamerasubsystem = new USBCameraSubsystem();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -61,6 +64,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("LimelightLengthLong", 0);
     SmartDashboard.putNumber("LimelightLengthHorizonal", 0);
     SmartDashboard.putNumber("LimelightLengthVertical", 0);
+    SmartDashboard.putNumber("Distance", 0);
+    
   }
 
   /**
