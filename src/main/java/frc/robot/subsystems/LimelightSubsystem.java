@@ -29,10 +29,12 @@ public class LimelightSubsystem extends Subsystem {
     NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
     NetworkTableEntry tshort = table.getEntry("tshort");
     double shortLength = tshort.getDouble(0.0);
+    double distance = 0.03125*shortLength*shortLength - 3.866 *shortLength + 148.8;
+     //Need to redo equation on Logger Pro once we know where it is mounted on the robot
     if (Double.compare(shortLength, 0.0) == 0) {
       return 0.0;
     }
-    return 0.03125*shortLength*shortLength - 3.866 *shortLength + 148.8;
+    return distance;
     //Need to redo equation on Logger Pro once we know where it is mounted on the robot 
   }
 
@@ -93,4 +95,5 @@ public class LimelightSubsystem extends Subsystem {
     NetworkTableEntry tx = table.getEntry("tx");
     return tx.getDouble(0.0);
   }
+
 }

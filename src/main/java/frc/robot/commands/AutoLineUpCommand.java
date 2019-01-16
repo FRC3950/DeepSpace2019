@@ -10,14 +10,17 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-//import frc.robot.subsystems.LimelightSubsystem;
+import frc.robot.subsystems.LimelightSubsystem;
 
 public class AutoLineUpCommand extends Command {
   private PIDController controller;
   private boolean init = true;
   private static double minTx = -1.0;
   private static double maxTx = 1.0;
+  private static double maxDistance = 15;
+  //Must change the three values above when setting up actual robot
   private LimelightSubsystemTX limelightSubsystemTX = null;
+  private LimelightSubsystem limelightSubsystem = null;
 
   public AutoLineUpCommand() {
     // Use requires() here to declare subsystem dependencies
@@ -46,7 +49,8 @@ public class AutoLineUpCommand extends Command {
   @Override
   protected boolean isFinished() {
     double tx = limelightSubsystemTX.pidGet();
-    if (tx >= minTx || tx <= maxTx){
+    double distance = limelightSubsystem.getDistance();
+    if ((tx >= minTx || tx <= maxTx) && distance >= maxDistance){
       return true;
     }
     return false;
