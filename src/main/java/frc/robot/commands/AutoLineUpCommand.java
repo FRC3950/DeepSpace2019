@@ -10,12 +10,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-<<<<<<< HEAD
 //import frc.robot.subsystems.LimelightSubsystem;
 import frc.robot.rotatePIDOut;
-=======
 import frc.robot.subsystems.LimelightSubsystem;
->>>>>>> 297672f95a9649196cef11d635326c5b2af147ce
 
 public class AutoLineUpCommand extends Command {
   private PIDController controller;
