@@ -20,6 +20,7 @@ import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
 import frc.robot.subsystems.USBCameraSubsystem;
 import frc.robot.commands.LimelightCommand;
+import frc.robot.commands.USBCameraCommand;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 
@@ -38,9 +39,9 @@ public class Robot extends TimedRobot {
   public static DrivetrainSubsystem drivetrainSubsystem = new DrivetrainSubsystem();
 
   
-  public static USBCameraSubsystem usbcamerasubsystem = new USBCameraSubsystem();
+  public static USBCameraSubsystem usbCameraSubsystem = new USBCameraSubsystem();
 
-  Command m_autonomousCommand;
+  Command m_autonomousCommand = null;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   /**
@@ -87,6 +88,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
+   //((USBCameraCommand)m_autonomousCommand).finished = true;
   }
 
   @Override
@@ -107,7 +109,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
+//    m_autonomousCommand = m_chooser.getSelected();
+    m_autonomousCommand = new USBCameraCommand();
 
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -127,6 +130,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
+    ((USBCameraCommand)m_autonomousCommand).finished = true;
     Scheduler.getInstance().run();
   }
 
