@@ -36,7 +36,11 @@ public class RobotMap {
   public static DigitalInput leftLight = new DigitalInput(3);
   public static DigitalInput rightLight = new DigitalInput(1);
   
-  public static DigitalInput testIO = new DigitalInput(5);
+  public static DigitalInput rightCamera = new DigitalInput(5);
+  public static DigitalInput centerCamera = new DigitalInput(7);
+  public static DigitalInput leftCamera = new DigitalInput(9);
+
+
 
   
   
