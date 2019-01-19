@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.LimelightCommand;
+import frc.robot.commands.LineFollowerCommand;
+import frc.robot.commands.LineFollowingAbortCommand;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -78,10 +80,12 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
+  public static LineFollowerCommand lfc = new LineFollowerCommand();
   public OI() {
     driveStick1Button.whenPressed(new LimelightCommand());
-   // driveStick2Button.whenPressed(new LineFollowerCommand());
+    driveStick2Button.whenPressed(lfc);
     driveStick3Button.whenPressed(new LimelightCommand());
+    driveStick4Button.whenPressed(new LineFollowingAbortCommand());
   }
 
 }

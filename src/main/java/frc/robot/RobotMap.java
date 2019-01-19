@@ -32,13 +32,15 @@ public class RobotMap {
   public static CANSparkMax frontRight = new CANSparkMax(2, MotorType.kBrushless);
   public static CANSparkMax backRight = new CANSparkMax(3, MotorType.kBrushless);
 
-  public static DigitalInput centerLight = new DigitalInput(2);
-  public static DigitalInput leftLight = new DigitalInput(3);
-  public static DigitalInput rightLight = new DigitalInput(1);
+  public static DigitalInput centerLight = new DigitalInput(1);
+  public static DigitalInput leftLight = new DigitalInput(2);
+  public static DigitalInput rightLight = new DigitalInput(0);
   
-  public static DigitalInput rightCamera = new DigitalInput(5);
-  public static DigitalInput centerCamera = new DigitalInput(7);
-  public static DigitalInput leftCamera = new DigitalInput(9);
+  public static DigitalInput rightCamera = new DigitalInput(3);
+  public static DigitalInput centerCamera = new DigitalInput(4);
+  public static DigitalInput leftCamera = new DigitalInput(5);
+
+  
 
 
 
