@@ -18,7 +18,9 @@ import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
+import frc.robot.subsystems.LineFollowerSubsystem;
 import frc.robot.subsystems.USBCameraSubsystem;
+import frc.robot.subsystems.UltrasonicSubsystem;
 import frc.robot.commands.LimelightCommand;
 import frc.robot.commands.USBCameraCommand;
 import edu.wpi.first.wpilibj.CameraServer;
@@ -40,6 +42,8 @@ public class Robot extends TimedRobot {
 
   
   public static USBCameraSubsystem usbCameraSubsystem = new USBCameraSubsystem();
+  public static LineFollowerSubsystem lineFollowerSubsystem = new LineFollowerSubsystem();
+  public static UltrasonicSubsystem ultrasonicSubsystem = new UltrasonicSubsystem();
 
   Command m_autonomousCommand = null;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -66,6 +70,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("LimelightLengthHorizonal", 0);
     SmartDashboard.putNumber("LimelightLengthVertical", 0);
     SmartDashboard.putNumber("Distance", 0);
+
+    Robot.drivetrainSubsystem.setStartingAngle();
     
   }
 

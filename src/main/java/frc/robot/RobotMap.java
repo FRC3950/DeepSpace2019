@@ -7,11 +7,14 @@
 
 package frc.robot;
 
+import com.kauailabs.navx.frc.AHRS;
 //import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DigitalOutput;
+import edu.wpi.first.wpilibj.SPI;
 
 
 /**
@@ -40,7 +43,10 @@ public class RobotMap {
   public static DigitalInput centerCamera = new DigitalInput(4);
   public static DigitalInput leftCamera = new DigitalInput(5);
 
-  
+  public static DigitalOutput leftUltraSonicTrigger = new DigitalOutput(6);
+  public static DigitalInput leftUltraSonicEcho = new DigitalInput(7);
+
+  public static AHRS ahrs = new AHRS(SPI.Port.kMXP);
 
 
 

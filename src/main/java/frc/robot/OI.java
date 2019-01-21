@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.LimelightCommand;
 import frc.robot.commands.LineFollowerCommand;
 import frc.robot.commands.LineFollowingAbortCommand;
+import frc.robot.commands.ResetFieldCentricCommand;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -82,10 +83,11 @@ public class OI {
   // button.whenReleased(new ExampleCommand());
   public static LineFollowerCommand lfc = new LineFollowerCommand();
   public OI() {
-    driveStick1Button.whenPressed(new LimelightCommand());
+  //driveStick1Button.whenPressed(new LimelightCommand());
     driveStick2Button.whenPressed(lfc);
-    driveStick3Button.whenPressed(new LimelightCommand());
+   // driveStick3Button.whenPressed(new LimelightCommand());
     driveStick4Button.whenPressed(new LineFollowingAbortCommand());
+    driveStick5Button.whenPressed(new ResetFieldCentricCommand());
   }
 
 }

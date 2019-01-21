@@ -30,6 +30,7 @@ public class LineFollowerCommand extends Command {
   @Override
   protected void initialize() {
   }
+
   private static int priorState = 0b000;
   private static boolean prior_centerCamera = false;
   private static boolean prior_leftCamera = false;
@@ -40,14 +41,14 @@ public class LineFollowerCommand extends Command {
   {
     switch(state)
     {
-      case 0b000:
+      case 0b000:  
         return "Joystick control";
       case 0b010:
         return "Go Straight";
       case 0b110:
         return "Rotate Counterclockwise and go straight";
       case 0b011:
-        return "Rotate clockwise an dgo straight";
+        return "Rotate clockwise and go straight";
       case 0b111:
         return "Joystick control";
       case 0b100:
@@ -59,20 +60,29 @@ public class LineFollowerCommand extends Command {
     }
   }
 
+  
+  private boolean trigger = false;
+
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    if(trigger == false) {
+      Robot.ultrasonicSubsystem.startTrigger();
+      trigger = true;
+    }
     
-    boolean centerCamera = !RobotMap.centerCamera.get();
-    boolean leftCamera = !RobotMap.leftCamera.get();
-    boolean rightCamera = !RobotMap.rightCamera.get();
-    int currentState = ((leftCamera ? 1 : 0) << 2) | (centerCamera ? 1 : 0) << 1  | (rightCamera ? 1 : 0) << 0;
-   System.out.println("leftCamera=" + leftCamera + "  centerCamera=" + centerCamera + "  rightCamera=" +rightCamera);
+    int currentState = Robot.lineFollowerSubsystem.getLineFollowerState();
     System.out.println("priorState=" + priorState + "  currentState=" + currentState);
-    if(priorState != currentState){
+    double leftDistance = Robot.ultrasonicSubsystem.getLeftDistance();
+    if(leftDistance != -1.0) {
+      System.out.println("leftDistance=" + leftDistance);
+      disabled = true;
+      trigger = false;
+    }
+     /*  if(priorState != currentState){
       System.out.println(getState(priorState) + " --> " + getState(currentState));
     }
-/*    if(priorState == currentState){
+    if(priorState == currentState){
       //  System.out.println("No state change");
     }
     else if(currentState == 0b000) {
@@ -93,38 +103,38 @@ public class LineFollowerCommand extends Command {
       System.out.println("joystick control");
     } */
 
-    if((prior_centerCamera == centerCamera) && (prior_leftCamera == leftCamera) && (prior_rightCamera == rightCamera)){
+    // if((prior_centerCamera == centerCamera) && (prior_leftCamera == leftCamera) && (prior_rightCamera == rightCamera)){
     
-      //  System.out.println("No state change");
-    } else if(!(centerCamera || leftCamera || rightCamera)){
-      System.out.println("joystick control");  
-      //joystick control
-    } else if(leftCamera && !rightCamera){
-      System.out.println("move forward and rotate counterclockwise");
-        //move forward and rotate counterclockwise
-      if(centerCamera == false){
-        System.out.println("move right");
-          //move right
-      }
-    } else if(!leftCamera && rightCamera){
-      System.out.println("move forward and rotate clockwise");
-          //move forward and rotate clockwise
-      if(centerCamera == false){
-        System.out.println("move left");
-            //move left
-      }
-    } else if(leftCamera && !centerCamera && rightCamera){
-      System.out.println("move forward");
-            //move forward
-    } else {
-      System.out.println("joystick control");
-              //joystick control
-    }
+    //   //  System.out.println("No state change");
+    // } else if(!(centerCamera || leftCamera || rightCamera)){
+    //   System.out.println("joystick control");  
+    //   //joystick control
+    // } else if(leftCamera && !rightCamera){
+    //   System.out.println("move forward and rotate counterclockwise");
+    //     //move forward and rotate counterclockwise
+    //   if(centerCamera == false){
+    //     System.out.println("move right");
+    //       //move right
+    //   }
+    // } else if(!leftCamera && rightCamera){
+    //   System.out.println("move forward and rotate clockwise");
+    //       //move forward and rotate clockwise
+    //   if(centerCamera == false){
+    //     System.out.println("move left");
+    //         //move left
+    //   }
+    // } else if(leftCamera && !centerCamera && rightCamera){
+    //   System.out.println("move forward");
+    //         //move forward
+    // } else {
+    //   System.out.println("joystick control");
+    //           //joystick control
+    // }
 
-    priorState = currentState;
-    prior_centerCamera = centerCamera;
-    prior_leftCamera = leftCamera;
-    prior_rightCamera = rightCamera;
+    // priorState = currentState;
+    // prior_centerCamera = centerCamera;
+    // prior_leftCamera = leftCamera;
+    // prior_rightCamera = rightCamera;
 
     /*    if ((!centerCamera && !leftCamera && !rightCamera) || (centerCamera && leftCamera && rightCamera)) {
       Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), (stick.getTwist()), 0 );

@@ -8,6 +8,8 @@
 package frc.robot.subsystems;
 
 
+
+import com.kauailabs.navx.frc.AHRS;
 //import com.kauailabs.navx.frc.AHRS;
 import com.revrobotics.CANSparkMax;
 
@@ -36,6 +38,13 @@ public class DrivetrainSubsystem extends Subsystem {
   CANSparkMax backRight;
 
   MecanumDrive drivetrain;
+
+  
+
+  AHRS ahrs;
+
+  double startingAngle = 0.0;
+ 
 //    DifferentialDrive drivetrain;
 
   // Put methods for controlling this subsystem
@@ -47,6 +56,7 @@ public class DrivetrainSubsystem extends Subsystem {
     backLeft = RobotMap.backLeft;
     frontRight = RobotMap.frontRight;
     backRight = RobotMap.backRight;
+    ahrs = RobotMap.ahrs;
 
     
 
@@ -59,6 +69,7 @@ public class DrivetrainSubsystem extends Subsystem {
    // SpeedControllerGroup right = new SpeedControllerGroup(frontRight, backRight);
 
     drivetrain = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
+    drivetrain.setSafetyEnabled(true);
   //    drivetrain = new DifferentialDrive(left, right);
     
 
@@ -70,7 +81,13 @@ public class DrivetrainSubsystem extends Subsystem {
  public void Drive(double ySpeed, double xSpeed, double zRotation, double gyroAngle){
        drivetrain.driveCartesian(ySpeed, xSpeed, zRotation, gyroAngle);
  }
-
+ public double getAngle() {
+   return ahrs.getAngle() - startingAngle; 
+ }
+ public void setStartingAngle() {
+//   startingAngle = ahrs.getAngle();
+ }
+ 
 //public void Drive(double y, double twist){
 //  drivetrain.arcadeDrive(-y, twist);
 //  }
