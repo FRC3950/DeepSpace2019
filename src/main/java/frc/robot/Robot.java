@@ -15,8 +15,11 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.IntakeMotorCommand;
 import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.IntakeMotorSubsystem;
+import frc.robot.subsystems.IntakePnuematicsSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
 import frc.robot.subsystems.LineFollowerSubsystem;
 import frc.robot.subsystems.USBCameraSubsystem;
@@ -38,12 +41,14 @@ public class Robot extends TimedRobot {
   public static LimelightSubsystem limelightSubsystem = new LimelightSubsystem();
   public static OI m_oi;
 
-  public static DrivetrainSubsystem drivetrainSubsystem = new DrivetrainSubsystem();
+  public static DrivetrainSubsystem drivetrainSubsystem = null; //new DrivetrainSubsystem();
 
   
   public static USBCameraSubsystem usbCameraSubsystem = new USBCameraSubsystem();
   public static LineFollowerSubsystem lineFollowerSubsystem = new LineFollowerSubsystem();
   public static UltrasonicSubsystem ultrasonicSubsystem = new UltrasonicSubsystem();
+  public static IntakeMotorSubsystem intakeMotorSubsystem = new IntakeMotorSubsystem();
+  public static IntakePnuematicsSubsystem intakePnuematicsSubsystem = new IntakePnuematicsSubsystem();
 
   Command m_autonomousCommand = null;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -71,7 +76,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("LimelightLengthVertical", 0);
     SmartDashboard.putNumber("Distance", 0);
 
-    Robot.drivetrainSubsystem.setStartingAngle();
+//    Robot.drivetrainSubsystem.setStartingAngle();
     
   }
 

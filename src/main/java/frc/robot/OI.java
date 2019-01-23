@@ -87,7 +87,7 @@ public class OI {
     driveStick2Button.whenPressed(lfc);
    // driveStick3Button.whenPressed(new LimelightCommand());
     driveStick4Button.whenPressed(new LineFollowingAbortCommand());
-    driveStick5Button.whenPressed(new ResetFieldCentricCommand());
+//    driveStick5Button.whenPressed(new ResetFieldCentricCommand());
   }
 
 }

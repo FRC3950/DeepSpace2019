@@ -28,7 +28,13 @@ public class UltrasonicSubsystem extends Subsystem {
 
   private long startTime = 0;
 
+  public void resetTrigger() {
+    System.out.println("resetTrigger");
+    RobotMap.leftUltraSonicTrigger.set(false);
+  }
+
   public void startTrigger() {
+    System.out.println("startTrigger");
     RobotMap.leftUltraSonicTrigger.set(true);
     try {
       Thread.sleep((long)0.01);
@@ -42,19 +48,22 @@ public class UltrasonicSubsystem extends Subsystem {
 
   public double getLeftDistance(){
     if(RobotMap.leftUltraSonicEcho.get() == false) {
-      System.out.println("leftUltraSonicEcho==false");
+      System.out.println("leftUltraSonicEcho==false waiting for echo processing");
       return -1.0;
     }
 //    while(RobotMap.leftUltraSonicEcho.get() == false) {
 //    }
     if(startTime == 0) {
       startTime = System.nanoTime();
+      System.out.println("leftUltraSonicEcho==true started echo processing");
       return -1.0;
     }
-    if(RobotMap.leftUltraSonicEcho.get() == true)
+    if(RobotMap.leftUltraSonicEcho.get() == true) {
+      System.out.println("leftUltraSonicEcho==true echo processing");
       return -1.0;
-//    while(RobotMap.leftUltraSonicEcho.get() == true) {
-//    }
+    }
+
+      System.out.println("leftUltraSonicEcho==true finished echo processing");
     return ((System.nanoTime() - startTime)/1e3)/2/29.1/2.54;
   }
 

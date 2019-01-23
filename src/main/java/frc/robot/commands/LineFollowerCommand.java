@@ -69,6 +69,7 @@ public class LineFollowerCommand extends Command {
     if(trigger == false) {
       Robot.ultrasonicSubsystem.startTrigger();
       trigger = true;
+      return;
     }
     
     int currentState = Robot.lineFollowerSubsystem.getLineFollowerState();
@@ -78,6 +79,7 @@ public class LineFollowerCommand extends Command {
       System.out.println("leftDistance=" + leftDistance);
       disabled = true;
       trigger = false;
+      Robot.ultrasonicSubsystem.resetTrigger();
     }
      /*  if(priorState != currentState){
       System.out.println(getState(priorState) + " --> " + getState(currentState));

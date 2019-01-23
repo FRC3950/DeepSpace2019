@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 //import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.revrobotics.CANSparkMax;
@@ -14,6 +15,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DigitalOutput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.SPI;
 
 
@@ -48,9 +50,14 @@ public class RobotMap {
 
   public static AHRS ahrs = new AHRS(SPI.Port.kMXP);
 
+  public static WPI_TalonSRX intakeMotor = new WPI_TalonSRX(0);
 
+  public static DoubleSolenoid liftIntakeSolenoid1 = new DoubleSolenoid(0,0);
+  public static DoubleSolenoid liftIntakeSolenoid2 = new DoubleSolenoid(0,0);
+  public static DoubleSolenoid hatchOuttakeSolenoid1 = new DoubleSolenoid(0,0);
+  public static DoubleSolenoid hatchOuttakeSolenoid2 = new DoubleSolenoid(0,0);
+  public static DoubleSolenoid ninjaStarSolenoid = new DoubleSolenoid(0,0);
 
-  
   
   // For example to map the left and right motors, you could define the
   // following variables to use with your drivetrain subsystem.
