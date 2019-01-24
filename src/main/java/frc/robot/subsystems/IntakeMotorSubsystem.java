@@ -18,7 +18,7 @@ import frc.robot.RobotMap;
 public class IntakeMotorSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private WPI_TalonSRX intakeMotor = RobotMap.intakeMotor;
+  // private WPI_TalonSRX intakeMotor = RobotMap.intakeMotor;
 
   @Override
   public void initDefaultCommand() {

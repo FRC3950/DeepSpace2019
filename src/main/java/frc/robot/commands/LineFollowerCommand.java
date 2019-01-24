@@ -66,21 +66,24 @@ public class LineFollowerCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(trigger == false) {
-      Robot.ultrasonicSubsystem.startTrigger();
-      trigger = true;
-      return;
-    }
+    System.out.println("Analog Distance=" + Robot.ultrasonicSubsystem.getAnalogDistance());
+
+
+    // if(trigger == false) {
+    //   Robot.ultrasonicSubsystem.startTrigger();
+    //   trigger = true;
+    //   return;
+    // }
     
-    int currentState = Robot.lineFollowerSubsystem.getLineFollowerState();
-    System.out.println("priorState=" + priorState + "  currentState=" + currentState);
-    double leftDistance = Robot.ultrasonicSubsystem.getLeftDistance();
-    if(leftDistance != -1.0) {
-      System.out.println("leftDistance=" + leftDistance);
-      disabled = true;
-      trigger = false;
-      Robot.ultrasonicSubsystem.resetTrigger();
-    }
+    // int currentState = Robot.lineFollowerSubsystem.getLineFollowerState();
+    // System.out.println("priorState=" + priorState + "  currentState=" + currentState);
+    // double leftDistance = Robot.ultrasonicSubsystem.getLeftDistance();
+    // if(leftDistance != -1.0) {
+    //   System.out.println("leftDistance=" + leftDistance);
+    //   disabled = true;
+    //   trigger = false;
+    //   Robot.ultrasonicSubsystem.resetTrigger();
+    //}
      /*  if(priorState != currentState){
       System.out.println(getState(priorState) + " --> " + getState(currentState));
     }

@@ -13,6 +13,7 @@ import com.kauailabs.navx.frc.AHRS;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -45,6 +46,8 @@ public class RobotMap {
   public static DigitalInput centerCamera = new DigitalInput(4);
   public static DigitalInput leftCamera = new DigitalInput(5);
 
+  public static AnalogInput distanceSensor = new AnalogInput(0);
+
   public static DigitalOutput leftUltraSonicTrigger = new DigitalOutput(6);
   public static DigitalInput leftUltraSonicEcho = new DigitalInput(7);
 
@@ -52,11 +55,11 @@ public class RobotMap {
 
   public static WPI_TalonSRX intakeMotor = new WPI_TalonSRX(0);
 
-  public static DoubleSolenoid liftIntakeSolenoid1 = new DoubleSolenoid(0,0);
-  public static DoubleSolenoid liftIntakeSolenoid2 = new DoubleSolenoid(0,0);
-  public static DoubleSolenoid hatchOuttakeSolenoid1 = new DoubleSolenoid(0,0);
-  public static DoubleSolenoid hatchOuttakeSolenoid2 = new DoubleSolenoid(0,0);
-  public static DoubleSolenoid ninjaStarSolenoid = new DoubleSolenoid(0,0);
+  // public static DoubleSolenoid liftIntakeSolenoid1 = new DoubleSolenoid(0,0);
+  // public static DoubleSolenoid liftIntakeSolenoid2 = new DoubleSolenoid(0,0);
+  // public static DoubleSolenoid hatchOuttakeSolenoid1 = new DoubleSolenoid(0,0);
+  // public static DoubleSolenoid hatchOuttakeSolenoid2 = new DoubleSolenoid(0,0);
+  // public static DoubleSolenoid ninjaStarSolenoid = new DoubleSolenoid(0,0);
 
   
   // For example to map the left and right motors, you could define the

@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
@@ -18,7 +19,6 @@ import java.lang.Math;
 public class UltrasonicSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
@@ -76,5 +76,10 @@ public class UltrasonicSubsystem extends Subsystem {
     double dR = getRightDistance();
     double W = 10.0f;
     return Math.atan((dL-dR)/ W);
+  }
+  public double getAnalogDistance(){
+    RobotMap.distanceSensor.resetAccumulator();
+    System.out.println("V=" + RobotMap.distanceSensor.getAverageVoltage());
+    return RobotMap.distanceSensor.getAverageVoltage() / .0098;
   }
 }
