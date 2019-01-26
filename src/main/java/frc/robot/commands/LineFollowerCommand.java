@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.subsystems.UltrasonicSubsystem;
 
 public class LineFollowerCommand extends Command {
 
@@ -66,7 +67,12 @@ public class LineFollowerCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    System.out.println("Analog Distance=" + Robot.ultrasonicSubsystem.getAnalogDistance());
+  //  Robot.ultrasonicSubsystem.getAnalogDistance();
+      double analogDistance = Robot.ultrasonicSubsystem.getAnalogDistance();
+      if(analogDistance > 0.0){
+        double analogAngle = Robot.ultrasonicSubsystem.getRobotAngle();
+        System.out.println("Analog Distance=" + analogDistance + "  Analog Angle=" + analogAngle);
+      }
 
 
     // if(trigger == false) {

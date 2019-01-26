@@ -10,8 +10,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class IntakeMotorCommand extends Command {
-  public IntakeMotorCommand() {
+public class BackPnuematicLiftCommand extends Command {
+  public BackPnuematicLiftCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -24,7 +24,7 @@ public class IntakeMotorCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-  //  Robot.intakeMotorSubsystem.intakeMotorSet(Robot.m_oi.xboxController.getRawAxis(0));
+    Robot.robotLiftSubsystem.toggleBackPnuematicLift();
   }
 
   // Make this return true when this Command no longer needs to run execute()

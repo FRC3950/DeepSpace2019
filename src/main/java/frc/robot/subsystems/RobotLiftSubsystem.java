@@ -9,25 +9,39 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.IntakeMotorCommand;
 
 /**
  * Add your docs here.
  */
-public class IntakeMotorSubsystem extends Subsystem {
+public class RobotLiftSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  // private WPI_TalonSRX intakeMotor = RobotMap.intakeMotor;
+  // private WPI_TalonSRX liftMotor = RobotMap.liftMotor;
+  // private Solenoid backLeftLiftSolenoid = RobotMap.backLeftLiftSolenoid;
+  // private Solenoid backRightLiftSolenoid = RobotMap.backRightLiftSolenoid;
+  // private Solenoid frontLeftLiftSolenoid = RobotMap.frontLeftLiftSolenoid;
+  // private Solenoid frontRightLiftSolenoid = RobotMap.frontLeftLiftSolenoid;
 
   @Override
   public void initDefaultCommand() {
-    //setDefaultCommand(new IntakeMotorCommand());
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+
   }
-  public void intakeMotorSet(double s){
-  //  intakeMotor.set(s);
+  public void toggleBackPnuematicLift(){
+    //  backLeftLiftSolenoid.set(!backLeftLiftSolenoid.get());
+    //  backRightLiftSolenoid.set(!backRightLiftSolenoid.get());
+      }
+  
+  public void toggleFrontPnuematicLift(){
+    //  frontLeftLiftSolenoid.set(!backLeftLiftSolenoid.get());
+    //  frontRightLiftSolenoid.set(!backRightLiftSolenoid.get());
+
+  }
+  public void liftMotorSet(double l){
+    // liftMotor.set(l);
   }
 }

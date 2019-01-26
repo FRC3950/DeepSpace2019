@@ -11,10 +11,16 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.BackPnuematicLiftCommand;
+import frc.robot.commands.FrontPnuematicLiftCommand;
+import frc.robot.commands.HatchOutakeCommand;
+import frc.robot.commands.LiftIntakeCommand;
 import frc.robot.commands.LimelightCommand;
 import frc.robot.commands.LineFollowerCommand;
 import frc.robot.commands.LineFollowingAbortCommand;
+import frc.robot.commands.NinjaStarCommand;
 import frc.robot.commands.ResetFieldCentricCommand;
+import frc.robot.commands.RobotLiftMotorCommand;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -88,6 +94,13 @@ public class OI {
    // driveStick3Button.whenPressed(new LimelightCommand());
     driveStick4Button.whenPressed(new LineFollowingAbortCommand());
 //    driveStick5Button.whenPressed(new ResetFieldCentricCommand());
+    driveStick7Button.whenPressed(new HatchOutakeCommand());
+    driveStick8Button.whenPressed(new LiftIntakeCommand());
+    driveStick9Button.whenPressed(new NinjaStarCommand());
+
+    driveStick10Button.whenPressed(new BackPnuematicLiftCommand());
+    driveStick11Button.whenPressed(new FrontPnuematicLiftCommand());
+    driveStick12Button.whenPressed(new RobotLiftMotorCommand());
   }
 
 }

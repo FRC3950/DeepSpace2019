@@ -22,6 +22,7 @@ import frc.robot.subsystems.IntakeMotorSubsystem;
 import frc.robot.subsystems.IntakePnuematicsSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
 import frc.robot.subsystems.LineFollowerSubsystem;
+import frc.robot.subsystems.RobotLiftSubsystem;
 import frc.robot.subsystems.USBCameraSubsystem;
 import frc.robot.subsystems.UltrasonicSubsystem;
 import frc.robot.commands.LimelightCommand;
@@ -49,6 +50,7 @@ public class Robot extends TimedRobot {
   public static UltrasonicSubsystem ultrasonicSubsystem = new UltrasonicSubsystem();
   public static IntakeMotorSubsystem intakeMotorSubsystem = new IntakeMotorSubsystem();
   public static IntakePnuematicsSubsystem intakePnuematicsSubsystem = new IntakePnuematicsSubsystem();
+  public static RobotLiftSubsystem robotLiftSubsystem = new RobotLiftSubsystem();
 
   Command m_autonomousCommand = null;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
