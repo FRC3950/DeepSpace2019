@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 import java.lang.Math;
+import java.util.Arrays;
 
 /**
  * Add your docs here.
@@ -82,9 +83,10 @@ public class UltrasonicSubsystem extends Subsystem {
     // return Math.atan((dL-dR)/ W);
     return robotAngle;
   }
-  private static double detectorWidth = 10.675;
+  private static double detectorWidth = 11.75;
   private double robotAngle = 0.0;
-
+  private double[] robotAngles = new double[100];
+  private int robotAnglesCounter = 0;
   public double getAnalogDistance(){
     double distance = 0.0;
   //  RobotMap.distanceSensor.resetAccumulator();
@@ -103,7 +105,12 @@ public class UltrasonicSubsystem extends Subsystem {
             Double distanceRight = Double.valueOf(leftRightData[1]);
             robotAngle = Math.toDegrees(Math.atan((distanceLeft - distanceRight)/ detectorWidth));
             distance = Math.min(distanceLeft, distanceRight) + Math.abs(distanceLeft - distanceRight) / 2;
-            System.out.println("dL=" + distanceLeft + "  dR=" + distanceRight + "  W=" + detectorWidth);
+            //System.out.println("dL=" + distanceLeft + "  dR=" + distanceRight + "  W=" + detectorWidth);
+            if(robotAnglesCounter == 100){
+              System.out.println("max=" + Arrays.stream(robotAngles).max() + "  min=" + Arrays.stream(robotAngles).min() + "  avg=" + Arrays.stream(robotAngles).average());
+              robotAnglesCounter = 0;
+            }
+            robotAngles[robotAnglesCounter++] = robotAngle;
           }
         }
       }
