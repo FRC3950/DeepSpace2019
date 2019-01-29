@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 
 public class BallElevatorMotorDownCommand extends Command {
   public BallElevatorMotorDownCommand() {
@@ -23,6 +24,8 @@ public class BallElevatorMotorDownCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+      Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
+      //Ask about what to put in parenthesis
   }
 
   // Make this return true when this Command no longer needs to run execute()

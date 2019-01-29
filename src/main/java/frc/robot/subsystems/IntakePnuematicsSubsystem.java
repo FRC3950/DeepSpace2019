@@ -16,10 +16,9 @@ import frc.robot.RobotMap;
  */
 public class IntakePnuematicsSubsystem extends Subsystem {
 
-  @Override
-  protected void initDefaultCommand() {
+  
 
-  }
+  
   // // Put methods for controlling this subsystem
   // // here. Call these from Commands.
   // private DoubleSolenoid liftSolenoid1 = RobotMap.liftIntakeSolenoid1;
@@ -28,8 +27,8 @@ public class IntakePnuematicsSubsystem extends Subsystem {
   // private DoubleSolenoid hatchOuttake2 = RobotMap.hatchOuttakeSolenoid2;
   // private DoubleSolenoid ninjaStar = RobotMap.ninjaStarSolenoid;
 
-  // @Override
-  // public void initDefaultCommand() {
+  @Override
+  public void initDefaultCommand() {
   //   // Set the default command for a subsystem here.
   //   // setDefaultCommand(new MySpecialCommand());
   // }
@@ -60,6 +59,6 @@ public class IntakePnuematicsSubsystem extends Subsystem {
   //         ninjaStar.set(DoubleSolenoid.Value.kReverse);
 
   //   }
-  // }
+   }
 
 }

@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.IntakeMotorCommand;
+import frc.robot.subsystems.BallElevatorSubsystem;
 import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.IntakeMotorSubsystem;
@@ -51,6 +52,7 @@ public class Robot extends TimedRobot {
   public static IntakeMotorSubsystem intakeMotorSubsystem = new IntakeMotorSubsystem();
   public static IntakePnuematicsSubsystem intakePnuematicsSubsystem = new IntakePnuematicsSubsystem();
   public static RobotLiftSubsystem robotLiftSubsystem = new RobotLiftSubsystem();
+  public static BallElevatorSubsystem ballElevatorSubsystem = new BallElevatorSubsystem();
 
   Command m_autonomousCommand = null;
   SendableChooser<Command> m_chooser = new SendableChooser<>();

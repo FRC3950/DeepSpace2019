@@ -83,7 +83,7 @@ public class UltrasonicSubsystem extends Subsystem {
     // return Math.atan((dL-dR)/ W);
     return robotAngle;
   }
-  private static double detectorWidth = 11.75;
+  private static double detectorWidth = 10.75;
   private double robotAngle = 0.0;
   private double[] robotAngles = new double[100];
   private int robotAnglesCounter = 0;

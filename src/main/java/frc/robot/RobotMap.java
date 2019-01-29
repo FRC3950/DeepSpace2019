@@ -65,9 +65,15 @@ public class RobotMap {
   // //Motors and Pnuematics for Lift Mechanism
   //  public static WPI_TalonSRX liftMotor = new WPI_TalonSRX(1);
   //  public static Solenoid backLeftLiftSolenoid = new Solenoid(0);
-  //  public static Solenoid backRightLiftSolenoid = new Solenoid(0);
-  //  public static Solenoid frontLeftLiftSolenoid = new Solenoid(0);
-  //  public static Solenoid frontRightLiftSolenoid = new Solenoid(0);
+  //  public static Solenoid backRightLiftSolenoid = new Solenoid(1);
+  //  public static Solenoid frontLeftLiftSolenoid = new Solenoid(2);
+  //  public static Solenoid frontRightLiftSolenoid = new Solenoid(3);
+
+  public static WPI_TalonSRX ballElevatorMotor = new WPI_TalonSRX(2);
+  public static Solenoid ballElevatorSolenoid = new Solenoid(5);
+  public static DigitalInput bottomLimitSwitch = new DigitalInput(8);
+  public static DigitalInput topLimitSwitch = new DigitalInput(9);
+
   
   // For example to map the left and right motors, you could define the
   // following variables to use with your drivetrain subsystem.
