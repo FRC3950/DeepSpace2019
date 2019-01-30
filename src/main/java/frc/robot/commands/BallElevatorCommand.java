@@ -7,23 +7,23 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.PIDOutput;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
-//public class CargoBallElevatorMotorUpCommand extends BallElevatorMotorUpCommand {
-//  private double height = 3.16666666;
-//  public CargoBallElevatorMotorUpCommand() {
-//  }
-//}
+public class BallElevatorCommand extends Command {
 
-public abstract class BallElevatorMotorUpCommand extends Command  implements PIDOutput {
+  boolean bottom = false;
+  boolean top = false;
+  XboxController controller = Robot.m_oi.xboxController;
+  
+  double getY = 0;
 
-
-  public BallElevatorMotorUpCommand() {
+  public BallElevatorCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.ballElevatorSubsystem);
   }
 
   // Called just before this Command runs the first time
@@ -34,10 +34,20 @@ public abstract class BallElevatorMotorUpCommand extends Command  implements PID
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
+  //   getY = -controller.getY(Hand.kLeft);
+  //   top = RobotMap.topLimitSwitch.get();
+
+  //   if(Robot.ballElevatorSubsystem.bottomGetter() && getY < 0) {
+  //     Robot.ballElevatorSubsystem.resetEncoder();
+  //     Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
+  //   } else if (Robot.ballElevatorSubsystem.topGetter() && getY > 0){
+  //     Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
+  //   } else {
+  //     Robot.ballElevatorSubsystem.BallElevatorMotorSet(getY);
+  //   }
+
     
-   // System.out.println("Limit Switch Status=" + bottomLimitSwitch.get());
-  }
+   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
@@ -54,10 +64,5 @@ public abstract class BallElevatorMotorUpCommand extends Command  implements PID
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-  }
-
-  @Override
-  public void pidWrite(double output) {
-    // set the output value to the elevator motor
   }
 }

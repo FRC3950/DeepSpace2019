@@ -12,8 +12,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.BackPnuematicLiftCommand;
-import frc.robot.commands.BallElevatorMotorDownCommand;
-import frc.robot.commands.BallElevatorMotorUpCommand;
+import frc.robot.commands.BallElevatorMotorCommand;
 import frc.robot.commands.FrontPnuematicLiftCommand;
 import frc.robot.commands.HatchOutakeCommand;
 import frc.robot.commands.LiftIntakeCommand;
@@ -104,8 +103,8 @@ public class OI {
     driveStick11Button.whenPressed(new FrontPnuematicLiftCommand());
     driveStick12Button.whenPressed(new RobotLiftMotorCommand());
     
-    xboxControllerAButton.whenPressed(new BallElevatorMotorDownCommand());
-    xboxControllerBButton.whenPressed(new BallElevatorMotorUpCommand());
+    xboxControllerAButton.whenPressed(new BallElevatorMotorCommand());
+  
   }
 
 }

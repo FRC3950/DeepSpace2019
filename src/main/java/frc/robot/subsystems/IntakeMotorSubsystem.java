@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.IntakeMotorCommand;
 
+
 /**
  * Add your docs here.
  */
@@ -23,11 +24,11 @@ public class IntakeMotorSubsystem extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    //setDefaultCommand(new IntakeMotorCommand());
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new IntakeMotorCommand());
   }
-  public void intakeMotorSet(double s){
-  //  intakeMotor.set(s);
+  public void intakeMotorSet(double trigger){
+  //  intakeMotor.set(trigger);
   }
 }

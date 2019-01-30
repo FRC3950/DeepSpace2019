@@ -24,7 +24,7 @@ public class LiftIntakeCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-  //  Robot.intakePnuematicsSubsystem.toggleLift();
+    Robot.intakePnuematicsSubsystem.toggleLift();
   }
 
   // Make this return true when this Command no longer needs to run execute()

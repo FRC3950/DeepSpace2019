@@ -21,10 +21,25 @@ public class BallElevatorSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   
-  public WPI_TalonSRX ballElevatorMotor = RobotMap.ballElevatorMotor;
-  public Solenoid ballElevatorSolenoid = RobotMap.ballElevatorSolenoid;
-  public DigitalInput bottomLimitSwitch = RobotMap.bottomLimitSwitch;
-  public DigitalInput topLimitSwitch = RobotMap.topLimitSwitch;
+  private WPI_TalonSRX ballElevatorMotor = RobotMap.ballElevatorMotor;
+  // private Solenoid ballElevatorSolenoid = RobotMap.ballElevatorSolenoid;
+  private DigitalInput bottomLimitSwitch = RobotMap.bottomLimitSwitch;
+  private DigitalInput topLimitSwitch = RobotMap.topLimitSwitch;
+
+  double cargoHeight = 38;
+  double firstRocketHeight = 27.5;
+  double secondRocketHeight = 55.5;
+//Center values, not sure what they should be for sure (could be top or bottom)
+
+public double getCargoHeight(){
+  return cargoHeight;
+}
+public double getFirstRocketHeight(){
+  return firstRocketHeight;
+}
+public double getSecondRocketHeight(){
+  return secondRocketHeight;
+}
 
   @Override
   public void initDefaultCommand() {
@@ -32,7 +47,7 @@ public class BallElevatorSubsystem extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
   public void toggleBallElevatorSolenoid(){
-    ballElevatorSolenoid.set(!ballElevatorSolenoid.get());
+    // ballElevatorSolenoid.set(!ballElevatorSolenoid.get());
 
   }
   public void BallElevatorMotorSet(double leftstick){
@@ -43,5 +58,12 @@ public class BallElevatorSubsystem extends Subsystem {
   }
   public boolean topGetter(){
     return topLimitSwitch.get();
+  }
+  public int getEncoder(){
+    return ballElevatorMotor.getSelectedSensorPosition(0);
+  }
+  
+  public void resetEncoder() {
+    ballElevatorMotor.setSelectedSensorPosition(0, 0, 0);
   }
 }

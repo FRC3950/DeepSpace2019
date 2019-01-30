@@ -19,7 +19,7 @@ import frc.robot.RobotMap;
 public class RobotLiftSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  // private WPI_TalonSRX liftMotor = RobotMap.liftMotor;
+  private WPI_TalonSRX liftMotor = RobotMap.liftMotor;
   // private Solenoid backLeftLiftSolenoid = RobotMap.backLeftLiftSolenoid;
   // private Solenoid backRightLiftSolenoid = RobotMap.backRightLiftSolenoid;
   // private Solenoid frontLeftLiftSolenoid = RobotMap.frontLeftLiftSolenoid;
@@ -42,6 +42,6 @@ public class RobotLiftSubsystem extends Subsystem {
 
   }
   public void liftMotorSet(double l){
-    // liftMotor.set(l);
+    liftMotor.set(l);
   }
 }

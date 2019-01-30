@@ -7,12 +7,18 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
 
-public class BallIntakeCommand extends Command {
-  public BallIntakeCommand() {
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
+
+public class IntakeMotorCommand extends Command {
+  XboxController controller = Robot.m_oi.xboxController;
+  public IntakeMotorCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.intakeMotorSubsystem);
   }
 
   // Called just before this Command runs the first time
@@ -23,6 +29,10 @@ public class BallIntakeCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    double trigger = controller.getTriggerAxis(Hand.kRight) - (controller.getTriggerAxis(Hand.kLeft));
+
+    Robot.intakeMotorSubsystem.intakeMotorSet(trigger);
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -30,6 +40,8 @@ public class BallIntakeCommand extends Command {
   protected boolean isFinished() {
     return false;
   }
+
+
 
   // Called once after isFinished returns true
   @Override

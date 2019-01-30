@@ -66,19 +66,20 @@ public class Robot extends TimedRobot {
     
     m_oi = new OI();
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
+    
     // chooser.addOption("My Auto", new MyAutoCommand());
-    SmartDashboard.putData("Auto mode", m_chooser);
-    SmartDashboard.putNumber("LimelightX", 0);
-    SmartDashboard.putNumber("LimelightY", 0);
-    SmartDashboard.putNumber("LimelightArea", 0);
-    SmartDashboard.putNumber("LimelightTarget", 0);
-    SmartDashboard.putNumber("LimelightSkew/Rotation", 0);
-    SmartDashboard.putNumber("LimelightLatency", 0);
-    SmartDashboard.putNumber("LimelightLengthShort", 0);
-    SmartDashboard.putNumber("LimelightLengthLong", 0);
-    SmartDashboard.putNumber("LimelightLengthHorizonal", 0);
-    SmartDashboard.putNumber("LimelightLengthVertical", 0);
-    SmartDashboard.putNumber("Distance", 0);
+    // SmartDashboard.putData("Auto mode", m_chooser);
+    // SmartDashboard.putNumber("LimelightX", 0);
+    // SmartDashboard.putNumber("LimelightY", 0);
+    // SmartDashboard.putNumber("LimelightArea", 0);
+    // SmartDashboard.putNumber("LimelightTarget", 0);
+    // SmartDashboard.putNumber("LimelightSkew/Rotation", 0);
+    // SmartDashboard.putNumber("LimelightLatency", 0);
+    // SmartDashboard.putNumber("LimelightLengthShort", 0);
+    // SmartDashboard.putNumber("LimelightLengthLong", 0);
+    // SmartDashboard.putNumber("LimelightLengthHorizonal", 0);
+    // SmartDashboard.putNumber("LimelightLengthVertical", 0);
+    // SmartDashboard.putNumber("Distance", 0);
 
 //    Robot.drivetrainSubsystem.setStartingAngle();
     
@@ -171,6 +172,17 @@ public class Robot extends TimedRobot {
     //System.out.println("L=" + RobotMap.leftLight.get() + " C=" + RobotMap.centerLight.get() + " R=" + RobotMap.rightLight.get());
     //System.out.println("L=" + RobotMap.leftCamera.get() + " C=" + RobotMap.centerCamera.get() + " R=" + RobotMap.rightCamera.get());
 
+    if (ballElevatorSubsystem.topGetter() == true){
+      System.out.println("Top=true");
+      }else{
+      System.out.println("Top=false");
+      }
+
+    if (ballElevatorSubsystem.bottomGetter() == true){
+      System.out.println("Bottom=true");
+      }else{
+      System.out.println("Bottom=false");
+      }
   }
 
   /**
