@@ -1,4 +1,4 @@
-package frc.robot.commands;
+package frc.robot;
 
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
@@ -20,8 +20,7 @@ public class PIDSourceElevator implements PIDSource {
 	@Override
 	public double pidGet() {
         // TODO Auto-generated method stub
-        return 0.0;
-//		return Robot.elevatorSubsystem.getElevatorHeight();
+		return Robot.ballElevatorSubsystem.getElevatorHeight();
 	}
 
 }

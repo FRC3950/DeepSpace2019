@@ -8,14 +8,8 @@
 package frc.robot.commands;
 
 
-
-import com.kauailabs.navx.frc.AHRS;
-
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
-import frc.robot.subsystems.UltrasonicSubsystem;
 
 public class LineFollowerCommand extends Command {
 

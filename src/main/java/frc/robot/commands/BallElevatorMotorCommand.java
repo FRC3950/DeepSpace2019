@@ -7,10 +7,11 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class BallElevatorMotorCommand extends Command {
+public abstract class BallElevatorMotorCommand extends Command  implements PIDOutput {
   public BallElevatorMotorCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);

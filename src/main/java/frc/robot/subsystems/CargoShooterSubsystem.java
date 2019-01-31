@@ -7,30 +7,31 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.RobotMap;
-import frc.robot.commands.IntakeMotorCommand;
-
 
 /**
  * Add your docs here.
  */
-public class IntakeMotorSubsystem extends Subsystem {
+public class CargoShooterSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  final int intakeMotorChannel = 0;
-  
-  private WPI_TalonSRX intakeMotor = new WPI_TalonSRX(intakeMotorChannel);
+  final int cargoShooterSolenoidChannel = 5;
+
+  private Solenoid cargoShooterSolenoid = new Solenoid(cargoShooterSolenoidChannel);
+
+  private CargoDoorSubsystem cargoDoorSubsystem = new CargoDoorSubsystem();
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new IntakeMotorCommand());
   }
-  public void intakeMotorSet(double trigger){
-  //  intakeMotor.set(trigger);
+  public boolean shoot(){
+    if(cargoDoorSubsystem.openCargoDoor()){
+     //shoot
+     cargoDoorSubsystem.closeCargoDoor();
+    }
+    return true;
   }
 }

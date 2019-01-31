@@ -12,15 +12,12 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.BackPnuematicLiftCommand;
-import frc.robot.commands.BallElevatorMotorCommand;
 import frc.robot.commands.FrontPnuematicLiftCommand;
 import frc.robot.commands.HatchOutakeCommand;
 import frc.robot.commands.LiftIntakeCommand;
-import frc.robot.commands.LimelightCommand;
 import frc.robot.commands.LineFollowerCommand;
 import frc.robot.commands.LineFollowingAbortCommand;
 import frc.robot.commands.NinjaStarCommand;
-import frc.robot.commands.ResetFieldCentricCommand;
 import frc.robot.commands.RobotLiftMotorCommand;
 
 /**
@@ -103,7 +100,7 @@ public class OI {
     driveStick11Button.whenPressed(new FrontPnuematicLiftCommand());
     driveStick12Button.whenPressed(new RobotLiftMotorCommand());
     
-    xboxControllerAButton.whenPressed(new BallElevatorMotorCommand());
+    
   
   }
 

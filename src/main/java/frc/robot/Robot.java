@@ -13,9 +13,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.IntakeMotorCommand;
 import frc.robot.subsystems.BallElevatorSubsystem;
 import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -26,10 +24,7 @@ import frc.robot.subsystems.LineFollowerSubsystem;
 import frc.robot.subsystems.RobotLiftSubsystem;
 import frc.robot.subsystems.USBCameraSubsystem;
 import frc.robot.subsystems.UltrasonicSubsystem;
-import frc.robot.commands.LimelightCommand;
 import frc.robot.commands.USBCameraCommand;
-import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.TimedRobot;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -172,17 +167,7 @@ public class Robot extends TimedRobot {
     //System.out.println("L=" + RobotMap.leftLight.get() + " C=" + RobotMap.centerLight.get() + " R=" + RobotMap.rightLight.get());
     //System.out.println("L=" + RobotMap.leftCamera.get() + " C=" + RobotMap.centerCamera.get() + " R=" + RobotMap.rightCamera.get());
 
-    if (ballElevatorSubsystem.topGetter() == true){
-      System.out.println("Top=true");
-      }else{
-      System.out.println("Top=false");
-      }
 
-    if (ballElevatorSubsystem.bottomGetter() == true){
-      System.out.println("Bottom=true");
-      }else{
-      System.out.println("Bottom=false");
-      }
   }
 
   /**

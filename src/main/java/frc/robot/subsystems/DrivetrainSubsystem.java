@@ -12,6 +12,7 @@ package frc.robot.subsystems;
 import com.kauailabs.navx.frc.AHRS;
 //import com.kauailabs.navx.frc.AHRS;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
@@ -27,19 +28,18 @@ import frc.robot.commands.DriveCommand;
  * Add your docs here.
  */
 public class DrivetrainSubsystem extends Subsystem {
-  //WPI_TalonSRX frontLeft;
-  //WPI_TalonSRX backLeft;
-  //WPI_TalonSRX frontRight;
-  // WPI_TalonSRX backRight;
-
-  CANSparkMax frontLeft;
-  CANSparkMax backLeft;
-  CANSparkMax frontRight;
-  CANSparkMax backRight;
+  
+  final int frontLeftChannel = 0;
+  final int backLeftChannel = 1;
+  final int frontRightChannel = 2;
+  final int backRightChannel = 3;
+  
+  private CANSparkMax frontLeft = new CANSparkMax(0, MotorType.kBrushless);
+  private CANSparkMax backLeft = new CANSparkMax(0, MotorType.kBrushless);
+  private CANSparkMax frontRight = new CANSparkMax(0, MotorType.kBrushless);
+  private CANSparkMax backRight = new CANSparkMax(0, MotorType.kBrushless);
 
   MecanumDrive drivetrain;
-
-  
 
   AHRS ahrs;
 
@@ -52,10 +52,7 @@ public class DrivetrainSubsystem extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    frontLeft = RobotMap.frontLeft;
-    backLeft = RobotMap.backLeft;
-    frontRight = RobotMap.frontRight;
-    backRight = RobotMap.backRight;
+ 
     ahrs = RobotMap.ahrs;
 
     

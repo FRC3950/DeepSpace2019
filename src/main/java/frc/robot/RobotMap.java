@@ -29,15 +29,10 @@ import edu.wpi.first.wpilibj.Solenoid;
  */
 public class RobotMap {
 
-  //public static WPI_TalonSRX frontLeft = new WPI_TalonSRX(0);
-  //public static WPI_TalonSRX backLeft = new WPI_TalonSRX(1);
-  //public static WPI_TalonSRX frontRight = new WPI_TalonSRX(2);
-  //public static WPI_TalonSRX backRight = new WPI_TalonSRX(3);
-
-  public static CANSparkMax frontLeft = new CANSparkMax(0, MotorType.kBrushless);
-  public static CANSparkMax backLeft = new CANSparkMax(1, MotorType.kBrushless);
-  public static CANSparkMax frontRight = new CANSparkMax(2, MotorType.kBrushless);
-  public static CANSparkMax backRight = new CANSparkMax(3, MotorType.kBrushless);
+  // public static CANSparkMax frontLeft = new CANSparkMax(0, MotorType.kBrushless);
+  // public static CANSparkMax backLeft = new CANSparkMax(1, MotorType.kBrushless);
+  // public static CANSparkMax frontRight = new CANSparkMax(2, MotorType.kBrushless);
+  // public static CANSparkMax backRight = new CANSparkMax(3, MotorType.kBrushless);
   
   public static DigitalInput rightCamera = new DigitalInput(6);
   public static DigitalInput centerCamera = new DigitalInput(4);
@@ -51,7 +46,7 @@ public class RobotMap {
   public static AHRS ahrs = new AHRS(SPI.Port.kMXP);
 
   // Motors and Pnuematics for intake
-  public static WPI_TalonSRX intakeMotor = new WPI_TalonSRX(0);
+  // public static WPI_TalonSRX intakeMotor = new WPI_TalonSRX(0);
   // public static DoubleSolenoid liftIntakeSolenoid1 = new DoubleSolenoid(0,0);
   // public static DoubleSolenoid liftIntakeSolenoid2 = new DoubleSolenoid(0,0);
   // public static DoubleSolenoid hatchOuttakeSolenoid1 = new DoubleSolenoid(0,0);
@@ -59,16 +54,16 @@ public class RobotMap {
   // public static DoubleSolenoid ninjaStarSolenoid = new DoubleSolenoid(0,0);
 
   //Motors and Pnuematics for Lift Mechanism
-   public static WPI_TalonSRX liftMotor = new WPI_TalonSRX(1);
+  //  public static WPI_TalonSRX liftMotor = new WPI_TalonSRX(1);
   //  public static Solenoid backLeftLiftSolenoid = new Solenoid(0);
   //  public static Solenoid backRightLiftSolenoid = new Solenoid(1);
   //  public static Solenoid frontLeftLiftSolenoid = new Solenoid(2);
   //  public static Solenoid frontRightLiftSolenoid = new Solenoid(3);
 
-  public static WPI_TalonSRX ballElevatorMotor = new WPI_TalonSRX(2);
+  // public static WPI_TalonSRX ballElevatorMotor = new WPI_TalonSRX(2);
   // public static Solenoid ballElevatorSolenoid = new Solenoid(5);
-  public static DigitalInput bottomLimitSwitch = new DigitalInput(3);
-  public static DigitalInput topLimitSwitch = new DigitalInput(2);
+  // public static DigitalInput bottomLimitSwitch = new DigitalInput(2);
+  // public static DigitalInput topLimitSwitch = new DigitalInput(3);
 
   
   // For example to map the left and right motors, you could define the

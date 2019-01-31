@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
+
 
 public class BallElevatorCommand extends Command {
 
@@ -34,17 +34,17 @@ public class BallElevatorCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-  //   getY = -controller.getY(Hand.kLeft);
-  //   top = RobotMap.topLimitSwitch.get();
+    getY = -controller.getY(Hand.kLeft);
+    top = Robot.ballElevatorSubsystem.topGetter();
 
-  //   if(Robot.ballElevatorSubsystem.bottomGetter() && getY < 0) {
-  //     Robot.ballElevatorSubsystem.resetEncoder();
-  //     Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
-  //   } else if (Robot.ballElevatorSubsystem.topGetter() && getY > 0){
-  //     Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
-  //   } else {
-  //     Robot.ballElevatorSubsystem.BallElevatorMotorSet(getY);
-  //   }
+    if(Robot.ballElevatorSubsystem.bottomGetter() && getY < 0) {
+      Robot.ballElevatorSubsystem.resetEncoder();
+      Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
+    } else if (Robot.ballElevatorSubsystem.topGetter() && getY > 0){
+      Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
+    } else {
+      Robot.ballElevatorSubsystem.BallElevatorMotorSet(getY);
+    }
 
     
    }

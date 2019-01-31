@@ -7,36 +7,43 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
-import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.PIDSourceElevator;
+import frc.robot.Robot;
 
-public class DispenseBallElevatorCommand extends  Command  {
+public class BallElevatorPIDCommand extends Command implements PIDOutput{
 
-  double getY = 0;
-  XboxController controller = Robot.m_oi.xboxController;
-  boolean bottom = false;
-  boolean top = false;
-  
-  
-  public DispenseBallElevatorCommand() {
+  double P = SmartDashboard.getNumber("P (elevator)",0.0);
+  double I = SmartDashboard.getNumber("I (elevator)",0.0); 
+  double D = SmartDashboard.getNumber("D (elevator)",0.0);
+  double F = SmartDashboard.getNumber("F (elevator)",0.0);
+
+  PIDController pid;
+  double setpoint = 0;
+  PIDSourceElevator source;
+
+
+  public BallElevatorPIDCommand(double input) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.ballElevatorSubsystem);
+    pid = new PIDController(P, I, D, F, source, this);
+    source = new PIDSourceElevator();
+    setpoint = input;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.ballElevatorSubsystem.toggleBallElevatorSolenoid();
-    getY = -controller.getY(Hand.kLeft);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -56,4 +63,8 @@ public class DispenseBallElevatorCommand extends  Command  {
   protected void interrupted() {
   }
 
+  @Override
+  public void pidWrite(double output) {
+    // set motor voltage for elevatotr subsystem
+  }
 }
