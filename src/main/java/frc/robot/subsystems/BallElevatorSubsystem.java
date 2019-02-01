@@ -26,7 +26,7 @@ public class BallElevatorSubsystem extends Subsystem {
   final int topLimitSwitchChannel = 3;
 
   private Solenoid ballElevatorSolenoid = new Solenoid(ballElevatorSolenoidChannel);
-  private WPI_TalonSRX ballElevatorMotor = new WPI_TalonSRX(ballElevatorMotorChannel);
+  public WPI_TalonSRX ballElevatorMotor = new WPI_TalonSRX(ballElevatorMotorChannel);
   private DigitalInput bottomLimitSwitch = new DigitalInput(bottomLimitSwitchChannel);
   private DigitalInput topLimitSwitch = new DigitalInput(topLimitSwitchChannel);
   
@@ -41,6 +41,18 @@ public class BallElevatorSubsystem extends Subsystem {
 
 public double getCargoHeight(){
   return cargoHeight;
+}
+/**
+ * @return the ballElevatorMotor
+ */
+public WPI_TalonSRX getBallElevatorMotor() {
+	return ballElevatorMotor;
+}
+/**
+ * @param ballElevatorMotor the ballElevatorMotor to set
+ */
+public void setBallElevatorMotor(WPI_TalonSRX ballElevatorMotor) {
+	this.ballElevatorMotor = ballElevatorMotor;
 }
 public double getFirstRocketHeight(){
   return firstRocketHeight;
@@ -64,13 +76,14 @@ public double getSecondRocketHeight(){
     return topLimitSwitch.get();
   }
   public int getEncoder(){
-    return ballElevatorMotor.getSelectedSensorPosition(0);
+    return getBallElevatorMotor().getSelectedSensorPosition(0);
   }
   
   public void resetEncoder() {
-    ballElevatorMotor.setSelectedSensorPosition(0, 0, 0);
+    getBallElevatorMotor().setSelectedSensorPosition(0, 0, 0);
   }
   public double getElevatorHeight() {
     return (getEncoder()/4096.0)*distancePerRotation;
+    //not the actual value
   }
 }

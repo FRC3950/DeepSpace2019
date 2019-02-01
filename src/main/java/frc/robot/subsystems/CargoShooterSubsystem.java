@@ -29,6 +29,7 @@ public class CargoShooterSubsystem extends Subsystem {
   }
   public boolean shoot(){
     if(cargoDoorSubsystem.openCargoDoor()){
+      cargoShooterSolenoid.set(!cargoShooterSolenoid.get());
      //shoot
      cargoDoorSubsystem.closeCargoDoor();
     }

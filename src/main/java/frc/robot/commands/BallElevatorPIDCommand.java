@@ -7,12 +7,17 @@
 
 package frc.robot.commands;
 
+
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
+import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Logger;
 import frc.robot.PIDSourceElevator;
 import frc.robot.Robot;
+import frc.robot.Logger.LogLevel;
+import frc.robot.subsystems.BallElevatorSubsystem;
 
 public class BallElevatorPIDCommand extends Command implements PIDOutput{
 
@@ -24,6 +29,7 @@ public class BallElevatorPIDCommand extends Command implements PIDOutput{
   PIDController pid;
   double setpoint = 0;
   PIDSourceElevator source;
+  int range = 10;
 
 
   public BallElevatorPIDCommand(double input) {
@@ -38,7 +44,15 @@ public class BallElevatorPIDCommand extends Command implements PIDOutput{
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
+    Robot.ballElevatorSubsystem.resetEncoder();
+    source.setPIDSourceType(PIDSourceType.kDisplacement);
+    pid.setInputRange(0, setpoint);
+    pid.setOutputRange(0, .2);
+    pid.setPercentTolerance(5.0);
+    pid.setContinuous(false);
+    pid.setPID(P, I, D, F);
+    pid.setSetpoint(setpoint);
+    pid.enable();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -49,12 +63,19 @@ public class BallElevatorPIDCommand extends Command implements PIDOutput{
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    int velocity = Robot.ballElevatorSubsystem.ballElevatorMotor.getSelectedSensorVelocity(0);
+    System.out.println("velocity is " + velocity);
+    System.out.println("pid on target is" + pid.onTarget());
+    return(pid.onTarget() && (velocity >= range) && (velocity <= range)) || (Robot.ballElevatorSubsystem.bottomGetter()) ||(Robot.ballElevatorSubsystem.topGetter());
+
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
+    pid.disable();
+    System.out.println("done intr");
   }
 
   // Called when another command which requires one or more of the same
@@ -66,5 +87,11 @@ public class BallElevatorPIDCommand extends Command implements PIDOutput{
   @Override
   public void pidWrite(double output) {
     // set motor voltage for elevatotr subsystem
+    Robot.ballElevatorSubsystem.BallElevatorMotorSet(output);
+    if(Robot.ballElevatorSubsystem.topGetter())
+      Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
+    Logger.log(LogLevel.info, "Encoder Height" + Robot.ballElevatorSubsystem.getElevatorHeight());
+    Logger.log(Logger.LogLevel.info, "elevator enc counts" + Robot.ballElevatorSubsystem.ballElevatorMotor.getSelectedSensorPosition(0));  
+
   }
 }

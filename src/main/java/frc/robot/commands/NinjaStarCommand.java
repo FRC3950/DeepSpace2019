@@ -9,11 +9,13 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.subsystems.IntakePnuematicsSubsystem;
 
 public class NinjaStarCommand extends Command {
   public NinjaStarCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.intakePnuematicsSubsystem);
   }
 
   // Called just before this Command runs the first time

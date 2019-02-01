@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.DigitalInput;
 //import edu.wpi.first.wpilibj.DigitalSource;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -166,8 +167,6 @@ public class Robot extends TimedRobot {
 
     //System.out.println("L=" + RobotMap.leftLight.get() + " C=" + RobotMap.centerLight.get() + " R=" + RobotMap.rightLight.get());
     //System.out.println("L=" + RobotMap.leftCamera.get() + " C=" + RobotMap.centerCamera.get() + " R=" + RobotMap.rightCamera.get());
-
-
   }
 
   /**
