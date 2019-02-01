@@ -56,6 +56,7 @@ public double getSecondRocketHeight(){
   }
   public void BallElevatorMotorSet(double leftstick){
     ballElevatorMotor.set(leftstick);
+    //chick-fil-a
   }
   public boolean bottomGetter() {
     return bottomLimitSwitch.get();
