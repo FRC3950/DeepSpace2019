@@ -31,11 +31,6 @@ public class PIDSourceLineFollower implements PIDSource {
 	}
 	@Override
 	public double pidGet() {
-		return navx.getYaw();
+		return Robot.ultrasonicSubsystem.getRobotAngle();
     }
-    public void reset(){
-        navx.zeroYaw();
-        navx.reset();
-    }
-
 }

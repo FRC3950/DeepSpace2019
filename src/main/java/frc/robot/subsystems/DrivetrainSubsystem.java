@@ -75,9 +75,12 @@ public class DrivetrainSubsystem extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
 
- public void Drive(double ySpeed, double xSpeed, double zRotation, double gyroAngle){
-       drivetrain.driveCartesian(ySpeed, xSpeed, zRotation, gyroAngle);
- }
+  public void Drive(double ySpeed, double xSpeed, double zRotation, double gyroAngle){
+    drivetrain.driveCartesian(ySpeed, xSpeed, zRotation, gyroAngle);
+}
+public void Drive(double ySpeed, double xSpeed, double zRotation){
+  drivetrain.driveCartesian(ySpeed, xSpeed, zRotation);
+}
  public double getAngle() {
    return ahrs.getAngle() - startingAngle; 
  }
