@@ -20,6 +20,7 @@ public class BallElevatorCommand extends Command {
   XboxController controller = Robot.m_oi.xboxController;
   
   double getY = 0;
+  double gndHeight = 0;
 
   public BallElevatorCommand() {
     // Use requires() here to declare subsystem dependencies
@@ -36,6 +37,8 @@ public class BallElevatorCommand extends Command {
   protected void execute() {
     getY = -controller.getY(Hand.kLeft);
     top = Robot.ballElevatorSubsystem.topGetter();
+    gndHeight = Robot.ballElevatorSubsystem.getElevatorHeight();
+    // height of elevator from ground 
 
     if(Robot.ballElevatorSubsystem.bottomGetter() && getY < 0) {
       Robot.ballElevatorSubsystem.resetEncoder();
@@ -46,8 +49,16 @@ public class BallElevatorCommand extends Command {
       Robot.ballElevatorSubsystem.BallElevatorMotorSet(getY);
     }
 
-    
-   }
+    // // Has to do with controlling the elevator at certain heights
+    // if(getY == 0 && gndHeight <= 5.4) {
+    //   Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
+    // } else if (getY == 0) {
+    //   Robot.ballElevatorSubsystem.BallElevatorMotorSet(0.1);
+    //   }
+
+    }
+
+   
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
