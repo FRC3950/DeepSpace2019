@@ -7,15 +7,16 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.subsystems.IntakePnuematicsSubsystem;
+import frc.robot.subsystems.BallDoorSubsystem;
 
-public class NinjaStarCommand extends Command {
-  public NinjaStarCommand() {
+public class ShootBallCommand extends Command {
+  public ShootBallCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.intakePnuematicsSubsystem);
+    requires(Robot.ballDoorSubsystem);
   }
 
   // Called just before this Command runs the first time
@@ -26,13 +27,14 @@ public class NinjaStarCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-  //  Robot.intakePnuematicsSubsystem.toggleNinjaStar();
+  //  Robot.ballShooterSubsystemV2.openCargoDoor();
+    
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return false;
   }
 
   // Called once after isFinished returns true

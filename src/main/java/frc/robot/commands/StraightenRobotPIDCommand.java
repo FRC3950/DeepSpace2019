@@ -15,16 +15,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.PIDSourceLineFollower;
 import frc.robot.Robot;
 
-public class LineFollowerPIDCommand extends Command implements PIDOutput {
-  double P = SmartDashboard.getNumber("P (elevator)",0.0);
-  double I = SmartDashboard.getNumber("I (elevator)",0.0); 
-  double D = SmartDashboard.getNumber("D (elevator)",0.0);
-  double F = SmartDashboard.getNumber("F (elevator)",0.0);
+public class StraightenRobotPIDCommand extends Command implements PIDOutput {
+  double P = SmartDashboard.getNumber("P (lineFollower)",0.0);
+  double I = SmartDashboard.getNumber("I (lineFollower)",0.0); 
+  double D = SmartDashboard.getNumber("D (lineFollower)",0.0);
+  double F = SmartDashboard.getNumber("F (lineFollower)",0.0);
 
   PIDController pid;
   PIDSource source;
   double setpoint = 0;
-  public LineFollowerPIDCommand() {
+  public StraightenRobotPIDCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     
@@ -62,6 +62,6 @@ public class LineFollowerPIDCommand extends Command implements PIDOutput {
 
   @Override
   public void pidWrite(double output) {
-      Robot.drivetrainSubsystem.Drive(0, 0, output);
+  //    Robot.drivetrainSubsystem.Drive(0, 0, 0, output);
   }
 }

@@ -20,27 +20,37 @@ public class BallElevatorSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   
-  final int ballElevatorMotorChannel = 2;
-  final int ballElevatorSolenoidChannel = 5;
+  final int ballElevatorMotorChannel = 3;
+  // final int ballElevatorSolenoidChannel = 5;
   final int bottomLimitSwitchChannel = 2;
   final int topLimitSwitchChannel = 3;
 
-  private Solenoid ballElevatorSolenoid = new Solenoid(ballElevatorSolenoidChannel);
+  // private Solenoid ballElevatorSolenoid = new Solenoid(ballElevatorSolenoidChannel);
   public WPI_TalonSRX ballElevatorMotor = new WPI_TalonSRX(ballElevatorMotorChannel);
   private DigitalInput bottomLimitSwitch = new DigitalInput(bottomLimitSwitchChannel);
   private DigitalInput topLimitSwitch = new DigitalInput(topLimitSwitchChannel);
   
-  private CargoDoorSubsystem cargoDoorSubsystem = new CargoDoorSubsystem();
-  private CargoShooterSubsystem cargoShooterSubsystem = new CargoShooterSubsystem();
+  private BallDoorSubsystem ballDoorSubsystem = new BallDoorSubsystem();
+  private BallShooterSubsystem ballShooterSubsystem = new BallShooterSubsystem();
 
   double cargoHeight = 38;
   double firstRocketHeight = 27.5;
   double secondRocketHeight = 55.5;
+  double groundHeight = 6;
   double distancePerRotation;
 //Center values, not sure what they should be for sure (could be top or bottom)
 
 public double getCargoHeight(){
   return cargoHeight;
+}
+public double getFirstRocketHeight(){
+  return firstRocketHeight;
+}
+public double getSecondRocketHeight(){
+  return secondRocketHeight;
+}
+public double getGroundHeight(){
+  return groundHeight;
 }
 /**
  * @return the ballElevatorMotor
@@ -51,15 +61,10 @@ public WPI_TalonSRX getBallElevatorMotor() {
 /**
  * @param ballElevatorMotor the ballElevatorMotor to set
  */
-public void setBallElevatorMotor(WPI_TalonSRX ballElevatorMotor) {
-	this.ballElevatorMotor = ballElevatorMotor;
+public void setBallElevatorMotor(WPI_TalonSRX ballElevatorMotor) {	
+  this.ballElevatorMotor = ballElevatorMotor;
 }
-public double getFirstRocketHeight(){
-  return firstRocketHeight;
-}
-public double getSecondRocketHeight(){
-  return secondRocketHeight;
-}
+
 
   @Override
   public void initDefaultCommand() {
@@ -69,7 +74,7 @@ public double getSecondRocketHeight(){
   public void BallElevatorMotorSet(double leftstick){
     ballElevatorMotor.set(leftstick);
     //chick-fil-a
-  }
+   }
   public boolean bottomGetter() {
     return bottomLimitSwitch.get();
   }

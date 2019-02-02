@@ -12,6 +12,10 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.BackPnuematicLiftCommand;
+import frc.robot.commands.BallElevatorCommand;
+import frc.robot.commands.BallElevatorMotorCommand;
+import frc.robot.commands.DepositCargoAutoCommandGroup;
+import frc.robot.commands.DriveCommand;
 import frc.robot.commands.FrontPnuematicLiftCommand;
 import frc.robot.commands.HatchOutakeCommand;
 import frc.robot.commands.LiftIntakeCommand;
@@ -98,7 +102,12 @@ public class OI {
 
     driveStick10Button.whenPressed(new BackPnuematicLiftCommand());
     driveStick11Button.whenPressed(new FrontPnuematicLiftCommand());
-    driveStick12Button.whenPressed(new RobotLiftMotorCommand());
+  //  driveStick12Button.whenPressed(new RobotLiftMotorCommand());
+
+    xboxControllerAButton.whenPressed(new DepositCargoAutoCommandGroup(Robot.ballElevatorSubsystem.getCargoHeight()));
+    xboxControllerXButton.whenPressed(new DepositCargoAutoCommandGroup(Robot.ballElevatorSubsystem.getFirstRocketHeight()));
+    xboxControllerYButton.whenPressed(new DepositCargoAutoCommandGroup(Robot.ballElevatorSubsystem.getSecondRocketHeight()));
+
     
     
   

@@ -7,30 +7,41 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.RobotMap;
-import frc.robot.commands.IntakeMotorCommand;
-
 
 /**
  * Add your docs here.
  */
-public class IntakeMotorSubsystem extends Subsystem {
+public class BallShooterSubsystemV2 extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  final int intakeMotorChannel = 5;
-  
-  private WPI_TalonSRX intakeMotor = new WPI_TalonSRX(intakeMotorChannel);
+  // final int shooterSolenoidChannel = 6;
+
+  // private Solenoid shooterSolenoid = new Solenoid(shooterSolenoidChannel);
+
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new IntakeMotorCommand());
   }
-  public void intakeMotorSet(double trigger){
-    intakeMotor.set(trigger);
-  }
+  // public boolean openCargoDoor(){
+  //   if(!isOpen()){
+  //     shooterSolenoid.set(true);
+  //   //open solenoid
+  //   }
+  //   return isOpen();
+  // }
+  // public boolean closeCargoDoor(){
+  //   if(isOpen()){
+  //     shooterSolenoid.set(false);
+  //   }
+  //   //close solenoid
+  //   return isOpen();
+  // }
+  // private boolean isOpen(){
+  //   return shooterSolenoid.get();
+  //   //ask solenoids their state
+  // }
 }

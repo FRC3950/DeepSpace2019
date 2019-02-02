@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
@@ -14,41 +15,38 @@ import frc.robot.RobotMap;
 /**
  * Add your docs here.
  */
-public class CargoDoorSubsystem extends Subsystem {
+public class BallDoorSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  final int leftDoorSolenoidChannel = 6;
-  final int rightDoorSolenoidChannel = 7;
+  // final int leftDoorSolenoidChannel = 6;
+  // final int rightDoorSolenoidChannel = 7;
 
-  private Solenoid leftDoorSolenoid = new Solenoid(leftDoorSolenoidChannel);
-  private Solenoid rightDoorSolenoid = new Solenoid(rightDoorSolenoidChannel);
+  // private Solenoid leftDoorSolenoid = new Solenoid(leftDoorSolenoidChannel);
+  // private Solenoid rightDoorSolenoid = new Solenoid(rightDoorSolenoidChannel);
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
-  public boolean openCargoDoor(){
-    if(!isOpen()){
-      leftDoorSolenoid.set(!leftDoorSolenoid.get());
-      rightDoorSolenoid.set(!rightDoorSolenoid.get());
-    //open solenoid
-    }
-    return isOpen();
-  }
-  public boolean closeCargoDoor(){
-    if(isOpen()){
-      leftDoorSolenoid.set(!leftDoorSolenoid.get());
-      rightDoorSolenoid.set(!rightDoorSolenoid.get());
-    }
-    //close solenoid
-    return true;
-  }
-  private boolean isOpen(){
-    if(leftDoorSolenoid.get()&& rightDoorSolenoid.get()){
-      return true;
-    }
-    return false;
-    //ask solenoids their state
-  }
+  // public boolean openCargoDoor(){
+  //   if(!isOpen()){
+  //     leftDoorSolenoid.set(true);
+  //     rightDoorSolenoid.set(true);
+  //   //open solenoid
+  //   }
+  //   return isOpen();
+  // }
+  // public boolean closeCargoDoor(){
+  //   if(isOpen()){
+  //     leftDoorSolenoid.set(false);
+  //     rightDoorSolenoid.set(false);
+  //   }
+  //   //close solenoid
+  //   return isOpen();
+  // }
+  // private boolean isOpen(){
+  //   return leftDoorSolenoid.get() && rightDoorSolenoid.get();
+  //   //ask solenoids their state
+  // }
 }

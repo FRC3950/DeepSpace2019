@@ -34,10 +34,10 @@ public class DrivetrainSubsystem extends Subsystem {
   final int frontRightChannel = 2;
   final int backRightChannel = 3;
   
-  private CANSparkMax frontLeft = new CANSparkMax(0, MotorType.kBrushless);
-  private CANSparkMax backLeft = new CANSparkMax(0, MotorType.kBrushless);
-  private CANSparkMax frontRight = new CANSparkMax(0, MotorType.kBrushless);
-  private CANSparkMax backRight = new CANSparkMax(0, MotorType.kBrushless);
+  private CANSparkMax frontLeft = new CANSparkMax(frontLeftChannel, MotorType.kBrushless);
+  private CANSparkMax backLeft = new CANSparkMax(backLeftChannel, MotorType.kBrushless);
+  private CANSparkMax frontRight = new CANSparkMax(frontRightChannel, MotorType.kBrushless);
+  private CANSparkMax backRight = new CANSparkMax(backRightChannel, MotorType.kBrushless);
 
   MecanumDrive drivetrain;
 
@@ -55,8 +55,6 @@ public class DrivetrainSubsystem extends Subsystem {
  
     ahrs = RobotMap.ahrs;
 
-    
-
     // frontLeft.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.Analog, 0, 0);
     // frontLeft.setSensorPhase(false);
     // frontRight.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.Analog, 0, 0);
@@ -66,7 +64,7 @@ public class DrivetrainSubsystem extends Subsystem {
    // SpeedControllerGroup right = new SpeedControllerGroup(frontRight, backRight);
 
     drivetrain = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
-    drivetrain.setSafetyEnabled(true);
+    //drivetrain.setSafetyEnabled(true);
   //    drivetrain = new DifferentialDrive(left, right);
     
 
@@ -77,16 +75,13 @@ public class DrivetrainSubsystem extends Subsystem {
 
   public void Drive(double ySpeed, double xSpeed, double zRotation, double gyroAngle){
     drivetrain.driveCartesian(ySpeed, xSpeed, zRotation, gyroAngle);
-}
-public void Drive(double ySpeed, double xSpeed, double zRotation){
-  drivetrain.driveCartesian(ySpeed, xSpeed, zRotation);
-}
+  }
  public double getAngle() {
    return ahrs.getAngle() - startingAngle; 
  }
  public void setStartingAngle() {
-//   startingAngle = ahrs.getAngle();
- }
+   startingAngle = ahrs.getAngle();
+}
  
 //public void Drive(double y, double twist){
 //  drivetrain.arcadeDrive(-y, twist);

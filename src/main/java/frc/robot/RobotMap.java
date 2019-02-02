@@ -28,11 +28,6 @@ import edu.wpi.first.wpilibj.Solenoid;
  * floating around.
  */
 public class RobotMap {
-
-  // public static CANSparkMax frontLeft = new CANSparkMax(0, MotorType.kBrushless);
-  // public static CANSparkMax backLeft = new CANSparkMax(1, MotorType.kBrushless);
-  // public static CANSparkMax frontRight = new CANSparkMax(2, MotorType.kBrushless);
-  // public static CANSparkMax backRight = new CANSparkMax(3, MotorType.kBrushless);
   
   public static DigitalInput rightCamera = new DigitalInput(6);
   public static DigitalInput centerCamera = new DigitalInput(4);

@@ -47,7 +47,7 @@ public class BallElevatorPIDCommand extends Command implements PIDOutput{
     Robot.ballElevatorSubsystem.resetEncoder();
     source.setPIDSourceType(PIDSourceType.kDisplacement);
     pid.setInputRange(0, setpoint);
-    pid.setOutputRange(0, .2);
+    pid.setOutputRange(-.2, .2);
     pid.setPercentTolerance(5.0);
     pid.setContinuous(false);
     pid.setPID(P, I, D, F);
@@ -73,7 +73,7 @@ public class BallElevatorPIDCommand extends Command implements PIDOutput{
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
+  //  Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
     pid.disable();
     System.out.println("done intr");
   }

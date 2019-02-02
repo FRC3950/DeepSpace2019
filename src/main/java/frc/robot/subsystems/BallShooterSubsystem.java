@@ -13,26 +13,26 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * Add your docs here.
  */
-public class CargoShooterSubsystem extends Subsystem {
+public class BallShooterSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  final int cargoShooterSolenoidChannel = 5;
+  // final int cargoShooterSolenoidChannel = 5;
 
-  private Solenoid cargoShooterSolenoid = new Solenoid(cargoShooterSolenoidChannel);
+  // private Solenoid cargoShooterSolenoid = new Solenoid(cargoShooterSolenoidChannel);
 
-  private CargoDoorSubsystem cargoDoorSubsystem = new CargoDoorSubsystem();
+  private BallDoorSubsystem cargoDoorSubsystem = new BallDoorSubsystem();
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
-  public boolean shoot(){
-    if(cargoDoorSubsystem.openCargoDoor()){
-      cargoShooterSolenoid.set(!cargoShooterSolenoid.get());
-     //shoot
-     cargoDoorSubsystem.closeCargoDoor();
-    }
-    return true;
-  }
+  // public boolean shoot(){
+  //   if(cargoDoorSubsystem.openCargoDoor()){
+  //     cargoShooterSolenoid.set(!cargoShooterSolenoid.get());
+  //    //shoot
+  //    cargoDoorSubsystem.closeCargoDoor();
+  //   }
+  //   return true;
+  // }
 }

@@ -7,10 +7,16 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class RobotLiftMotorCommand extends Command {
+
+//  Joystick stick = Robot.m_oi.driveStick;
+
   public RobotLiftMotorCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -25,7 +31,7 @@ public class RobotLiftMotorCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.robotLiftSubsystem.liftMotorSet(0);
+  //  Robot.robotLiftSubsystem.liftMotorSet(stick.getY());
   }
 
   // Make this return true when this Command no longer needs to run execute()

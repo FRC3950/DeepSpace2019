@@ -49,12 +49,12 @@ public class BallElevatorCommand extends Command {
       Robot.ballElevatorSubsystem.BallElevatorMotorSet(getY);
     }
 
-    // // Has to do with controlling the elevator at certain heights
-    // if(getY == 0 && gndHeight <= 5.4) {
-    //   Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
-    // } else if (getY == 0) {
-    //   Robot.ballElevatorSubsystem.BallElevatorMotorSet(0.1);
-    //   }
+    // Has to do with controlling the elevator at certain heights
+    if(getY == 0 && gndHeight <= 5.4) {
+      Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
+    } else if (getY == 0) {
+      Robot.ballElevatorSubsystem.BallElevatorMotorSet(0.1);
+      }
 
     }
 
