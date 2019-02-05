@@ -52,7 +52,7 @@ public class LineFollowerCommand extends Command {
       case 0b001:
         return "rotate clockwise, move left, and move forward";
       default:
-        return "ignore";
+        return Robot.lineFollowerSubsystem.getSubsys"ignore";
     }
   }
 

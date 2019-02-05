@@ -89,28 +89,23 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
-  public static LineFollowerCommand lfc = new LineFollowerCommand();
-  public OI() {
-  //driveStick1Button.whenPressed(new LimelightCommand());
-    driveStick2Button.whenPressed(lfc);
-   // driveStick3Button.whenPressed(new LimelightCommand());
-    driveStick4Button.whenPressed(new LineFollowingAbortCommand());
-//    driveStick5Button.whenPressed(new ResetFieldCentricCommand());
-    driveStick7Button.whenPressed(new HatchOutakeCommand());
-    driveStick8Button.whenPressed(new LiftIntakeCommand());
-    driveStick9Button.whenPressed(new NinjaStarCommand());
 
-    driveStick10Button.whenPressed(new BackPnuematicLiftCommand());
-    driveStick11Button.whenPressed(new FrontPnuematicLiftCommand());
-  //  driveStick12Button.whenPressed(new RobotLiftMotorCommand());
+  public OI() {
+ 
+    driveStick2Button.whenPressed(new LineFollowerCommand());
+    driveStick3Button.whenPressed(new HatchOutakeCommand());
+    driveStick4Button.whenPressed(new NinjaStarCommand());
+    driveStick5Button.whenPressed(new LineFollowingAbortCommand());
+
+    xboxControllerLBButton.whenPressed(new BackPnuematicLiftCommand());
+    xboxControllerRBButton.whenPressed(new FrontPnuematicLiftCommand());
 
     xboxControllerAButton.whenPressed(new DepositCargoAutoCommandGroup(Robot.ballElevatorSubsystem.getCargoHeight()));
-    xboxControllerXButton.whenPressed(new DepositCargoAutoCommandGroup(Robot.ballElevatorSubsystem.getFirstRocketHeight()));
+    xboxControllerBButton.whenPressed(new DepositCargoAutoCommandGroup(Robot.ballElevatorSubsystem.getFirstRocketHeight()));
     xboxControllerYButton.whenPressed(new DepositCargoAutoCommandGroup(Robot.ballElevatorSubsystem.getSecondRocketHeight()));
-
+    xboxControllerXButton.whenPressed(new LiftIntakeCommand());
     
-    
-  
+   
   }
 
 }

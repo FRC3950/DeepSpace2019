@@ -15,7 +15,7 @@ import frc.robot.Robot;
 
 public class RobotLiftMotorCommand extends Command {
 
-//  Joystick stick = Robot.m_oi.driveStick;
+  Joystick stick = Robot.m_oi.driveStick;
 
   public RobotLiftMotorCommand() {
     // Use requires() here to declare subsystem dependencies
@@ -31,7 +31,7 @@ public class RobotLiftMotorCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-  //  Robot.robotLiftSubsystem.liftMotorSet(stick.getY());
+    Robot.robotLiftSubsystem.liftMotorSet(stick.getY());
   }
 
   // Make this return true when this Command no longer needs to run execute()

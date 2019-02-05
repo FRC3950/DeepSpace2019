@@ -32,7 +32,7 @@ public class DriveCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(), Robot.drivetrainSubsystem.getAngle());
+    Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(),Robot.drivetrainSubsystem.getAngle());
     
   }
 

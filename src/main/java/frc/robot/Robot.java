@@ -41,9 +41,7 @@ public class Robot extends TimedRobot {
   public static LimelightSubsystem limelightSubsystem = new LimelightSubsystem();
   public static OI m_oi;
 
-  public static DrivetrainSubsystem drivetrainSubsystem = null; //new DrivetrainSubsystem();
-
-  
+  public static DrivetrainSubsystem drivetrainSubsystem = new DrivetrainSubsystem();
   public static USBCameraSubsystem usbCameraSubsystem = new USBCameraSubsystem();
   public static LineFollowerSubsystem lineFollowerSubsystem = new LineFollowerSubsystem();
   public static UltrasonicSubsystem ultrasonicSubsystem = new UltrasonicSubsystem();

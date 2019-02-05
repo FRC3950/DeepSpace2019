@@ -31,17 +31,17 @@ public class DrivetrainSubsystem extends Subsystem {
   
   final int frontLeftChannel = 0;
   final int backLeftChannel = 1;
-  final int frontRightChannel = 2;
+  final int frontRightChannel =2;
   final int backRightChannel = 3;
   
-  private CANSparkMax frontLeft = new CANSparkMax(frontLeftChannel, MotorType.kBrushless);
-  private CANSparkMax backLeft = new CANSparkMax(backLeftChannel, MotorType.kBrushless);
-  private CANSparkMax frontRight = new CANSparkMax(frontRightChannel, MotorType.kBrushless);
-  private CANSparkMax backRight = new CANSparkMax(backRightChannel, MotorType.kBrushless);
+  public CANSparkMax frontLeft = new CANSparkMax(frontLeftChannel, MotorType.kBrushless);
+  public CANSparkMax backLeft = new CANSparkMax(backLeftChannel, MotorType.kBrushless);
+  public CANSparkMax frontRight = new CANSparkMax(frontRightChannel, MotorType.kBrushless);
+  public CANSparkMax backRight = new CANSparkMax(backRightChannel, MotorType.kBrushless);
 
   MecanumDrive drivetrain;
 
-  AHRS ahrs;
+  AHRS navx;
 
   double startingAngle = 0.0;
  
@@ -52,8 +52,8 @@ public class DrivetrainSubsystem extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
- 
-    ahrs = RobotMap.ahrs;
+
+     navx = RobotMap.ahrs;
 
     // frontLeft.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.Analog, 0, 0);
     // frontLeft.setSensorPhase(false);
@@ -67,6 +67,7 @@ public class DrivetrainSubsystem extends Subsystem {
     //drivetrain.setSafetyEnabled(true);
   //    drivetrain = new DifferentialDrive(left, right);
     
+    drivetrain.setSafetyEnabled(false);
 
     setDefaultCommand(new DriveCommand());
     // Set the default command for a subsystem here.
@@ -77,10 +78,10 @@ public class DrivetrainSubsystem extends Subsystem {
     drivetrain.driveCartesian(ySpeed, xSpeed, zRotation, gyroAngle);
   }
  public double getAngle() {
-   return ahrs.getAngle() - startingAngle; 
+   return navx.getAngle() - startingAngle; 
  }
  public void setStartingAngle() {
-   startingAngle = ahrs.getAngle();
+   startingAngle = navx.getAngle();
 }
  
 //public void Drive(double y, double twist){
