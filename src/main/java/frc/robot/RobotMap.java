@@ -42,7 +42,7 @@ public class RobotMap {
 
   // Motors and Pnuematics for intake
   // public static WPI_TalonSRX intakeMotor = new WPI_TalonSRX(0);
-  // public static DoubleSolenoid liftIntakeSolenoid1 = new DoubleSolenoid(0,0);
+  // public static DoubleSolenoid liftIntakeSolenoid1 = new DoubleSolenoid(0,1);
   // public static DoubleSolenoid liftIntakeSolenoid2 = new DoubleSolenoid(0,0);
   // public static DoubleSolenoid hatchOuttakeSolenoid1 = new DoubleSolenoid(0,0);
   // public static DoubleSolenoid hatchOuttakeSolenoid2 = new DoubleSolenoid(0,0);

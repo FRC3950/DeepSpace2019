@@ -19,19 +19,19 @@ public class IntakePnuematicsSubsystem extends Subsystem {
   // here. Call these from Commands.
 
   //Change values of these to be the correct ones
-  // final int intakeRotateLeftSolenoidChannel1 = 0;
-  // final int intakeRotateLeftSolenoidChannel2 = 0;
-  // final int intakeRotateRightSolenoidChannel1 = 1;
-  // final int intakeRotateRightSolenoidChannel2 = 0;
+  final int intakeRotateLeftSolenoidChannel1 = 0;
+  final int intakeRotateLeftSolenoidChannel2 = 2;
+  final int intakeRotateRightSolenoidChannel1 = 5;
+  final int intakeRotateRightSolenoidChannel2 = 7;
   // final int hatchOuttakeLeftSolenoidChannel1 = 2;
   // final int hatchOuttakeLeftSolenoidChannel2 = 0;
   // final int hatchOuttakeRightSolenoidChannel1 = 3;
   // final int hatchOuttakeRightSolenoidChannel2 = 0;
-  // final int ninjaStarSolenoidChannel1 = 4;
-  // final int ninjaStarSolenoidChannel2 = 0;
+  // final int ninjaStarSolenoidChannel1 = 0;
+  // final int ninjaStarSolenoidChannel2 = 1;
 
-  // private DoubleSolenoid intakeLeftRotateSolenoid = new DoubleSolenoid(intakeRotateLeftSolenoidChannel1, intakeRotateLeftSolenoidChannel2);
-  // private DoubleSolenoid intakeRightRotateSolenoid = new DoubleSolenoid(intakeRotateRightSolenoidChannel1, intakeRotateRightSolenoidChannel2);
+  public DoubleSolenoid intakeLeftRotateSolenoid = new DoubleSolenoid(intakeRotateLeftSolenoidChannel1, intakeRotateLeftSolenoidChannel2);
+  public DoubleSolenoid intakeRightRotateSolenoid = new DoubleSolenoid(intakeRotateRightSolenoidChannel1, intakeRotateRightSolenoidChannel2);
   // private DoubleSolenoid hatchOuttakeLeftSolenoid = new DoubleSolenoid(hatchOuttakeLeftSolenoidChannel1, hatchOuttakeLeftSolenoidChannel2);
   // private DoubleSolenoid hatchOuttakeRightSolenoid = new DoubleSolenoid(hatchOuttakeRightSolenoidChannel1, hatchOuttakeRightSolenoidChannel2);
   // private DoubleSolenoid ninjaStarSolenoid = new DoubleSolenoid(ninjaStarSolenoidChannel1, ninjaStarSolenoidChannel2);
@@ -48,33 +48,34 @@ public class IntakePnuematicsSubsystem extends Subsystem {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
     
-  // }
-  // public void toggleLift(){
-  //   if (intakeLeftRotateSolenoid.get() == DoubleSolenoid.Value.kReverse && 
-  //       intakeRightRotateSolenoid.get() == DoubleSolenoid.Value.kReverse) {
-  //     intakeLeftRotateSolenoid.set(DoubleSolenoid.Value.kForward);
-  //     intakeRightRotateSolenoid.set(DoubleSolenoid.Value.kForward);
-  //   } else {
-  //     intakeLeftRotateSolenoid.set(DoubleSolenoid.Value.kReverse);
-  //     intakeRightRotateSolenoid.set(DoubleSolenoid.Value.kReverse);
-  //   }
-  // }
-  //   public void toggleHatchOuttake(){
-  //     if (hatchOuttakeLeftSolenoid.get() == DoubleSolenoid.Value.kReverse && 
-  //       hatchOuttakeRightSolenoid.get() == DoubleSolenoid.Value.kReverse) {
-  //       hatchOuttakeLeftSolenoid.set(DoubleSolenoid.Value.kForward);
-  //       hatchOuttakeRightSolenoid.set(DoubleSolenoid.Value.kForward);
-  //     } else {
-  //       hatchOuttakeLeftSolenoid.set(DoubleSolenoid.Value.kReverse);
-  //       hatchOuttakeRightSolenoid.set(DoubleSolenoid.Value.kReverse);
-  //     }
-  //   }
+   }
+
+  public void toggleLift(){
+    if (intakeLeftRotateSolenoid.get() == DoubleSolenoid.Value.kForward && 
+        intakeRightRotateSolenoid.get() == DoubleSolenoid.Value.kForward) {
+      intakeLeftRotateSolenoid.set(DoubleSolenoid.Value.kReverse);
+      intakeRightRotateSolenoid.set(DoubleSolenoid.Value.kReverse);
+    } else {
+      intakeLeftRotateSolenoid.set(DoubleSolenoid.Value.kForward);
+      intakeRightRotateSolenoid.set(DoubleSolenoid.Value.kForward);
+    }
+  }
+    // public void toggleHatchOuttake(){
+    //   if (hatchOuttakeLeftSolenoid.get() == DoubleSolenoid.Value.kForward && 
+    //     hatchOuttakeRightSolenoid.get() == DoubleSolenoid.Value.kForward) {
+    //     hatchOuttakeLeftSolenoid.set(DoubleSolenoid.Value.kReverse);
+    //     hatchOuttakeRightSolenoid.set(DoubleSolenoid.Value.kReverse);
+    //   } else {
+    //     hatchOuttakeLeftSolenoid.set(DoubleSolenoid.Value.kForward);
+    //     hatchOuttakeRightSolenoid.set(DoubleSolenoid.Value.kForward);
+    //   }
+    // }
   //     public void toggleNinjaStar(){
-  //       if (ninjaStarSolenoid.get() == DoubleSolenoid.Value.kReverse) {
-  //         ninjaStarSolenoid.set(DoubleSolenoid.Value.kForward);
-  //       } else {
+  //       if (ninjaStarSolenoid.get() == DoubleSolenoid.Value.kForward) {
   //         ninjaStarSolenoid.set(DoubleSolenoid.Value.kReverse);
+  //       } else {
+  //         ninjaStarSolenoid.set(DoubleSolenoid.Value.kForward);
 
   //       }
-  }
+  // }
 }

@@ -20,7 +20,7 @@ public class BallElevatorSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   
-  final int ballElevatorMotorChannel = 3;
+  final int ballElevatorMotorChannel = 6;
   // final int ballElevatorSolenoidChannel = 5;
   final int bottomLimitSwitchChannel = 2;
   final int topLimitSwitchChannel = 3;

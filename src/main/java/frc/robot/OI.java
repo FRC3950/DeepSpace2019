@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.BackPnuematicLiftCommand;
 import frc.robot.commands.BallElevatorCommand;
 import frc.robot.commands.BallElevatorMotorCommand;
+import frc.robot.commands.BrushlessMotorCommand;
 import frc.robot.commands.DepositCargoAutoCommandGroup;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.FrontPnuematicLiftCommand;
@@ -89,10 +90,11 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
+  public static LineFollowerCommand lfc = new LineFollowerCommand();
 
   public OI() {
  
-    driveStick2Button.whenPressed(new LineFollowerCommand());
+    driveStick2Button.whenPressed(lfc);
     driveStick3Button.whenPressed(new HatchOutakeCommand());
     driveStick4Button.whenPressed(new NinjaStarCommand());
     driveStick5Button.whenPressed(new LineFollowingAbortCommand());
@@ -105,7 +107,7 @@ public class OI {
     xboxControllerYButton.whenPressed(new DepositCargoAutoCommandGroup(Robot.ballElevatorSubsystem.getSecondRocketHeight()));
     xboxControllerXButton.whenPressed(new LiftIntakeCommand());
     
-   
+    driveStick9Button.whenPressed(new BrushlessMotorCommand());
   }
 
 }
