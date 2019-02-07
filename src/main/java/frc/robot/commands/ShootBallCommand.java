@@ -10,13 +10,13 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.subsystems.BallDoorSubsystem;
+import frc.robot.subsystems.BallShooterSubsystemV2;
 
 public class ShootBallCommand extends Command {
   public ShootBallCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.ballDoorSubsystem);
+    requires(Robot.ballShooterSubsystemV2);
   }
 
   // Called just before this Command runs the first time
@@ -27,7 +27,7 @@ public class ShootBallCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-  //  Robot.ballShooterSubsystemV2.openCargoDoor();
+    Robot.ballShooterSubsystemV2.openCargoDoor();
     
   }
 

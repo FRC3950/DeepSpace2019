@@ -21,16 +21,15 @@ public class BallElevatorSubsystem extends Subsystem {
   // here. Call these from Commands.
   
   final int ballElevatorMotorChannel = 6;
-  // final int ballElevatorSolenoidChannel = 5;
+  final int ballElevatorSolenoidChannel = 5;
   final int bottomLimitSwitchChannel = 2;
   final int topLimitSwitchChannel = 3;
 
-  // private Solenoid ballElevatorSolenoid = new Solenoid(ballElevatorSolenoidChannel);
+  private Solenoid ballElevatorSolenoid = new Solenoid(ballElevatorSolenoidChannel);
   public WPI_TalonSRX ballElevatorMotor = new WPI_TalonSRX(ballElevatorMotorChannel);
   private DigitalInput bottomLimitSwitch = new DigitalInput(bottomLimitSwitchChannel);
   private DigitalInput topLimitSwitch = new DigitalInput(topLimitSwitchChannel);
   
-  private BallDoorSubsystem ballDoorSubsystem = new BallDoorSubsystem();
   private BallShooterSubsystem ballShooterSubsystem = new BallShooterSubsystem();
 
   double cargoHeight = 38;
@@ -42,27 +41,33 @@ public class BallElevatorSubsystem extends Subsystem {
 
 public double getCargoHeight(){
   return cargoHeight;
+  //get height of cargoship
 }
 public double getFirstRocketHeight(){
   return firstRocketHeight;
+  //gets height of first stage rocket
 }
 public double getSecondRocketHeight(){
   return secondRocketHeight;
+  //gets height of second stage rocket
 }
 public double getGroundHeight(){
   return groundHeight;
+  //gets height of bottom position of elevator
 }
 /**
  * @return the ballElevatorMotor
  */
 public WPI_TalonSRX getBallElevatorMotor() {
-	return ballElevatorMotor;
+  return ballElevatorMotor;
+  //gets the status of the elevator motor
 }
 /**
  * @param ballElevatorMotor the ballElevatorMotor to set
  */
 public void setBallElevatorMotor(WPI_TalonSRX ballElevatorMotor) {	
   this.ballElevatorMotor = ballElevatorMotor;
+  //sets ball elevator motor for PID
 }
 
 
@@ -73,16 +78,20 @@ public void setBallElevatorMotor(WPI_TalonSRX ballElevatorMotor) {
   }
   public void BallElevatorMotorSet(double leftstick){
     ballElevatorMotor.set(leftstick);
+    //sets elevator motor to value of leftstick on xboxcontroller
     //chick-fil-a
    }
   public boolean bottomGetter() {
     return bottomLimitSwitch.get();
+    //gets the status of the bottom limit switch
   }
   public boolean topGetter(){
     return topLimitSwitch.get();
+    //gets the status of the top limit switch
   }
   public int getEncoder(){
     return getBallElevatorMotor().getSelectedSensorPosition(0);
+    //gets the encoder value
   }
   
   public void resetEncoder() {

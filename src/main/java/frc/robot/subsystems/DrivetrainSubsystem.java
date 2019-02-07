@@ -78,10 +78,12 @@ public class DrivetrainSubsystem extends Subsystem {
     drivetrain.driveCartesian(ySpeed, xSpeed, zRotation, gyroAngle);
   }
  public double getAngle() {
-   return navx.getAngle() - startingAngle; 
+   return navx.getAngle() - startingAngle;
+   //math to get angle from navx
  }
  public void setStartingAngle() {
    startingAngle = navx.getAngle();
+   //sets angle of navx
 }
  
 //public void Drive(double y, double twist){

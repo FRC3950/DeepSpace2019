@@ -14,6 +14,7 @@ public class CloseDoorCommand extends Command {
   public CloseDoorCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.ballShooterSubsystemV2);
   }
 
   // Called just before this Command runs the first time
@@ -24,7 +25,7 @@ public class CloseDoorCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-  //  Robot.ballShooterSubsystemV2.closeCargoDoor();
+    Robot.ballShooterSubsystemV2.closeCargoDoor();
   }
 
   // Make this return true when this Command no longer needs to run execute()

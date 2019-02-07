@@ -17,12 +17,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.BallElevatorSubsystem;
 import frc.robot.subsystems.BallShooterSubsystemV2;
-import frc.robot.subsystems.BallDoorSubsystem;
+// import frc.robot.subsystems.BallDoorSubsystem;
 import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.IntakeMotorSubsystem;
 import frc.robot.subsystems.IntakePnuematicsSubsystem;
-import frc.robot.subsystems.LimelightSubsystem;
+// import frc.robot.subsystems.LimelightSubsystem;
 import frc.robot.subsystems.LineFollowerSubsystem;
 import frc.robot.subsystems.RobotLiftSubsystem;
 import frc.robot.subsystems.USBCameraSubsystem;
@@ -38,7 +38,7 @@ import frc.robot.commands.USBCameraCommand;
  */
 public class Robot extends TimedRobot {
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
-  public static LimelightSubsystem limelightSubsystem = new LimelightSubsystem();
+  // public static LimelightSubsystem limelightSubsystem = new LimelightSubsystem();
   public static OI m_oi;
 
   public static DrivetrainSubsystem drivetrainSubsystem = new DrivetrainSubsystem();
@@ -49,7 +49,7 @@ public class Robot extends TimedRobot {
   public static IntakePnuematicsSubsystem intakePnuematicsSubsystem = new IntakePnuematicsSubsystem();
   public static RobotLiftSubsystem robotLiftSubsystem = new RobotLiftSubsystem();
   public static BallElevatorSubsystem ballElevatorSubsystem = new BallElevatorSubsystem();
-  public static BallDoorSubsystem ballDoorSubsystem = new BallDoorSubsystem();
+  // public static BallDoorSubsystem ballDoorSubsystem = new BallDoorSubsystem();
   public static BallShooterSubsystemV2 ballShooterSubsystemV2 = new BallShooterSubsystemV2();
 
   Command m_autonomousCommand = null;

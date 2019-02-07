@@ -32,5 +32,6 @@ public class IntakeMotorSubsystem extends Subsystem {
   }
   public void intakeMotorSet(double trigger){
     intakeMotor.set(trigger);
+    //sets intake motor to the trigger on the xboxcontroller
   }
 }

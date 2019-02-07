@@ -20,8 +20,6 @@ public class BallShooterSubsystem extends Subsystem {
 
   // private Solenoid cargoShooterSolenoid = new Solenoid(cargoShooterSolenoidChannel);
 
-  private BallDoorSubsystem cargoDoorSubsystem = new BallDoorSubsystem();
-
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

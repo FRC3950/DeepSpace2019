@@ -26,11 +26,13 @@ public class LineFollowerSubsystem extends Subsystem {
   }
 
   public int getLineFollowerState() {
-    boolean centerCamera = !RobotMap.centerCamera.get();
-    boolean leftCamera = !RobotMap.leftCamera.get();
-    boolean rightCamera = !RobotMap.rightCamera.get();
-    int currentState = ((leftCamera ? 1 : 0) << 2) | (centerCamera ? 1 : 0) << 1  | (rightCamera ? 1 : 0) << 0;
-    System.out.println("leftCamera=" + leftCamera + "  centerCamera=" + centerCamera + "  rightCamera=" +rightCamera);
+    boolean centerSensor = !RobotMap.centerSensor.get();
+    boolean leftSensor = !RobotMap.leftSensor.get();
+    boolean rightSensor = !RobotMap.rightSensor.get();
+    //gets the negation of the left, right, and center sensors
+    int currentState = ((leftSensor ? 1 : 0) << 2) | (centerSensor ? 1 : 0) << 1  | (rightSensor ? 1 : 0) << 0;
+    System.out.println("leftSensor=" + leftSensor + "  centerSensor=" + centerSensor + "  rightSensor=" +rightSensor);
+    //prints the current state of the left, right, and center sensors
     
     return currentState;
   }
@@ -55,11 +57,17 @@ public class LineFollowerSubsystem extends Subsystem {
   }
   public float getRightDistance(){
     return 0.0f;
+    //gets right distance
   }
   public double getRobotAngle(){
     double dL = getLeftDistance();
+    //gets distance from left ultrasonic sensor
     double dR = getRightDistance();
+    //gets distance from right ultrasonic sensor
     double W = 10.0f;
+    //sets distance between the ultrasonic sensor
     return Math.atan((dL-dR)/ W);
+    //returns the distance from the center of the robot
+    
   }
 }

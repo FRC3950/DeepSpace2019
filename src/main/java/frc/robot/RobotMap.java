@@ -29,9 +29,9 @@ import edu.wpi.first.wpilibj.Solenoid;
  */
 public class RobotMap {
   
-  public static DigitalInput rightCamera = new DigitalInput(6);
-  public static DigitalInput centerCamera = new DigitalInput(4);
-  public static DigitalInput leftCamera = new DigitalInput(5);
+  public static DigitalInput rightSensor = new DigitalInput(6);
+  public static DigitalInput centerSensor = new DigitalInput(4);
+  public static DigitalInput leftSensor = new DigitalInput(5);
 
   public static AnalogInput distanceSensor = new AnalogInput(0);
 

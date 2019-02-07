@@ -25,6 +25,7 @@ public class BallElevatorCommand extends Command {
   public BallElevatorCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.ballElevatorSubsystem);
   }
 
   // Called just before this Command runs the first time
