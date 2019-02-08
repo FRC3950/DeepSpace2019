@@ -8,12 +8,14 @@
 package frc.robot.commands;
 
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.subsystems.DrivetrainSubsystem;
 
 public class LineFollowerCommand extends Command {
 
-//    Joystick stick = Robot.m_oi.driveStick;
+    Joystick stick = Robot.m_oi.driveStick;
 //    AHRS ahrs = null;
 
   public LineFollowerCommand() {
@@ -38,18 +40,25 @@ public class LineFollowerCommand extends Command {
     switch(state)
     {
       case 0b000:  
+        Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(), Robot.drivetrainSubsystem.getAngle());
         return "Joystick control";
       case 0b010:
+        Robot.drivetrainSubsystem.Drive(0, 0.75, 0, 0);
         return "Go Straight";
       case 0b110:
+        Robot.drivetrainSubsystem.Drive(0, 0.75, -0.25, 0);
         return "Rotate Counterclockwise and go straight";
       case 0b011:
+        Robot.drivetrainSubsystem.Drive(0, 0.75, 0.25, 0);
         return "Rotate clockwise and go straight";
       case 0b111:
+        Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(),Robot.drivetrainSubsystem.getAngle());
         return "Joystick control";
       case 0b100:
+        Robot.drivetrainSubsystem.Drive(0.75, 0.75, -0.25, 0);
         return "rotate counterclockwise, move right, and move forward";
       case 0b001:
+        Robot.drivetrainSubsystem.Drive(-0.75, 0.75, 0.25, 0);
         return "rotate clockwise, move left, and move forward";
       default:
         return "ignore";

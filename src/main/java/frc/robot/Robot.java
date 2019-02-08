@@ -7,9 +7,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
-//import edu.wpi.first.wpilibj.DigitalInput;
-//import edu.wpi.first.wpilibj.DigitalSource;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -17,12 +14,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.BallElevatorSubsystem;
 import frc.robot.subsystems.BallShooterSubsystemV2;
-// import frc.robot.subsystems.BallDoorSubsystem;
 import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.IntakeMotorSubsystem;
 import frc.robot.subsystems.IntakePnuematicsSubsystem;
-// import frc.robot.subsystems.LimelightSubsystem;
 import frc.robot.subsystems.LineFollowerSubsystem;
 import frc.robot.subsystems.RobotLiftSubsystem;
 import frc.robot.subsystems.USBCameraSubsystem;
@@ -41,16 +36,17 @@ public class Robot extends TimedRobot {
   // public static LimelightSubsystem limelightSubsystem = new LimelightSubsystem();
   public static OI m_oi;
 
+  public static BallElevatorSubsystem ballElevatorSubsystem = new BallElevatorSubsystem();
+  public static BallShooterSubsystemV2 ballShooterSubsystemV2 = new BallShooterSubsystemV2(); 
   public static DrivetrainSubsystem drivetrainSubsystem = new DrivetrainSubsystem();
-  public static USBCameraSubsystem usbCameraSubsystem = new USBCameraSubsystem();
-  public static LineFollowerSubsystem lineFollowerSubsystem = new LineFollowerSubsystem();
-  public static UltrasonicSubsystem ultrasonicSubsystem = new UltrasonicSubsystem();
   public static IntakeMotorSubsystem intakeMotorSubsystem = new IntakeMotorSubsystem();
   public static IntakePnuematicsSubsystem intakePnuematicsSubsystem = new IntakePnuematicsSubsystem();
+  public static LineFollowerSubsystem lineFollowerSubsystem = new LineFollowerSubsystem();
   public static RobotLiftSubsystem robotLiftSubsystem = new RobotLiftSubsystem();
-  public static BallElevatorSubsystem ballElevatorSubsystem = new BallElevatorSubsystem();
-  // public static BallDoorSubsystem ballDoorSubsystem = new BallDoorSubsystem();
-  public static BallShooterSubsystemV2 ballShooterSubsystemV2 = new BallShooterSubsystemV2();
+  public static UltrasonicSubsystem ultrasonicSubsystem = new UltrasonicSubsystem();
+  public static USBCameraSubsystem usbCameraSubsystem = new USBCameraSubsystem();
+ 
+ 
 
   Command m_autonomousCommand = null;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -64,22 +60,8 @@ public class Robot extends TimedRobot {
     
     m_oi = new OI();
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-    
-    // chooser.addOption("My Auto", new MyAutoCommand());
-    // SmartDashboard.putData("Auto mode", m_chooser);
-    // SmartDashboard.putNumber("LimelightX", 0);
-    // SmartDashboard.putNumber("LimelightY", 0);
-    // SmartDashboard.putNumber("LimelightArea", 0);
-    // SmartDashboard.putNumber("LimelightTarget", 0);
-    // SmartDashboard.putNumber("LimelightSkew/Rotation", 0);
-    // SmartDashboard.putNumber("LimelightLatency", 0);
-    // SmartDashboard.putNumber("LimelightLengthShort", 0);
-    // SmartDashboard.putNumber("LimelightLengthLong", 0);
-    // SmartDashboard.putNumber("LimelightLengthHorizonal", 0);
-    // SmartDashboard.putNumber("LimelightLengthVertical", 0);
-    // SmartDashboard.putNumber("Distance", 0);
 
-//    Robot.drivetrainSubsystem.setStartingAngle();
+    Robot.drivetrainSubsystem.setStartingAngle();
     
   }
 

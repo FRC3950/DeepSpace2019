@@ -7,10 +7,8 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.subsystems.BallShooterSubsystemV2;
 
 public class ShootBallCommand extends Command {
   public ShootBallCommand() {

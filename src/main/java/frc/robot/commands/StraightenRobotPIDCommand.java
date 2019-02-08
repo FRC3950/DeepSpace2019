@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.PIDSourceLineFollower;
-import frc.robot.Robot;
 
 public class StraightenRobotPIDCommand extends Command implements PIDOutput {
   double P = SmartDashboard.getNumber("P (lineFollower)",0.0);

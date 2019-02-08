@@ -17,7 +17,6 @@ import frc.robot.Logger;
 import frc.robot.PIDSourceElevator;
 import frc.robot.Robot;
 import frc.robot.Logger.LogLevel;
-import frc.robot.subsystems.BallElevatorSubsystem;
 
 public class BallElevatorPIDCommand extends Command implements PIDOutput{
 

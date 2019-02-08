@@ -30,7 +30,6 @@ public class BallElevatorSubsystem extends Subsystem {
   private DigitalInput bottomLimitSwitch = new DigitalInput(bottomLimitSwitchChannel);
   private DigitalInput topLimitSwitch = new DigitalInput(topLimitSwitchChannel);
   
-  private BallShooterSubsystem ballShooterSubsystem = new BallShooterSubsystem();
 
   double cargoHeight = 38;
   double firstRocketHeight = 27.5;
