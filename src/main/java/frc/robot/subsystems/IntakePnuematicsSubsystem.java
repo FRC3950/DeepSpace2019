@@ -29,11 +29,11 @@ public class IntakePnuematicsSubsystem extends Subsystem {
   final int ninjaStarSolenoidChannel1 = 0;
   final int ninjaStarSolenoidChannel2 = 1;
 
-  public DoubleSolenoid intakeLeftRotateSolenoid = new DoubleSolenoid(intakeRotateLeftSolenoidChannel1, intakeRotateLeftSolenoidChannel2);
-  public DoubleSolenoid intakeRightRotateSolenoid = new DoubleSolenoid(intakeRotateRightSolenoidChannel1, intakeRotateRightSolenoidChannel2);
-  private DoubleSolenoid hatchOuttakeLeftSolenoid = new DoubleSolenoid(hatchOuttakeLeftSolenoidChannel1, hatchOuttakeLeftSolenoidChannel2);
-  private DoubleSolenoid hatchOuttakeRightSolenoid = new DoubleSolenoid(hatchOuttakeRightSolenoidChannel1, hatchOuttakeRightSolenoidChannel2);
-  private DoubleSolenoid ninjaStarSolenoid = new DoubleSolenoid(ninjaStarSolenoidChannel1, ninjaStarSolenoidChannel2);
+  public DoubleSolenoid intakeLeftRotateSolenoid = null; //new DoubleSolenoid(intakeRotateLeftSolenoidChannel1, intakeRotateLeftSolenoidChannel2);
+  public DoubleSolenoid intakeRightRotateSolenoid = null; //new DoubleSolenoid(intakeRotateRightSolenoidChannel1, intakeRotateRightSolenoidChannel2);
+  private DoubleSolenoid hatchOuttakeLeftSolenoid = null; //new DoubleSolenoid(hatchOuttakeLeftSolenoidChannel1, hatchOuttakeLeftSolenoidChannel2);
+  private DoubleSolenoid hatchOuttakeRightSolenoid = null; //new DoubleSolenoid(hatchOuttakeRightSolenoidChannel1, hatchOuttakeRightSolenoidChannel2);
+  private DoubleSolenoid ninjaStarSolenoid = null; //new DoubleSolenoid(ninjaStarSolenoidChannel1, ninjaStarSolenoidChannel2);
 
 
   // private DoubleSolenoid liftSolenoid1 = RobotMap.liftIntakeSolenoid1;

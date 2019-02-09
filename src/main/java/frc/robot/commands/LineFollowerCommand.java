@@ -9,13 +9,14 @@ package frc.robot.commands;
 
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.subsystems.DrivetrainSubsystem;
 
-public class LineFollowerCommand extends Command {
+public class LineFollowerCommand extends Command implements PIDOutput {
 
-    Joystick stick = Robot.m_oi.driveStick;
+    Joystick stick = null; //Robot.m_oi.driveStick;
 //    AHRS ahrs = null;
 
   public LineFollowerCommand() {
@@ -40,7 +41,9 @@ public class LineFollowerCommand extends Command {
     switch(state)
     {
       case 0b000:  
-        Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(), Robot.drivetrainSubsystem.getAngle());
+      case 0b101:
+      case 0b111:
+        Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(),Robot.drivetrainSubsystem.getAngle());
         return "Joystick control";
       case 0b010:
         Robot.drivetrainSubsystem.Drive(0, 0.75, 0, 0);
@@ -51,9 +54,6 @@ public class LineFollowerCommand extends Command {
       case 0b011:
         Robot.drivetrainSubsystem.Drive(0, 0.75, 0.25, 0);
         return "Rotate clockwise and go straight";
-      case 0b111:
-        Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(),Robot.drivetrainSubsystem.getAngle());
-        return "Joystick control";
       case 0b100:
         Robot.drivetrainSubsystem.Drive(0.75, 0.75, -0.25, 0);
         return "rotate counterclockwise, move right, and move forward";
@@ -65,13 +65,13 @@ public class LineFollowerCommand extends Command {
     }
   }
 
-  
   private boolean trigger = false;
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
   //  Robot.ultrasonicSubsystem.getAnalogDistance();
+  
       double analogDistance = Robot.ultrasonicSubsystem.getAnalogDistance();
       if(analogDistance > 0.0){
         double analogAngle = Robot.ultrasonicSubsystem.getRobotAngle();
@@ -85,8 +85,8 @@ public class LineFollowerCommand extends Command {
     //   return;
     // }
     
-    // int currentState = Robot.lineFollowerSubsystem.getLineFollowerState();
-    // System.out.println("priorState=" + priorState + "  currentState=" + currentState);
+    int currentState = Robot.lineFollowerSubsystem.getLineFollowerState();
+    System.out.println("priorState=" + priorState + "  currentState=" + currentState);
     // double leftDistance = Robot.ultrasonicSubsystem.getLeftDistance();
     // if(leftDistance != -1.0) {
     //   System.out.println("leftDistance=" + leftDistance);
@@ -94,13 +94,14 @@ public class LineFollowerCommand extends Command {
     //   trigger = false;
     //   Robot.ultrasonicSubsystem.resetTrigger();
     //}
-     /*  if(priorState != currentState){
-      System.out.println(getState(priorState) + " --> " + getState(currentState));
-    }
+  //  if(priorState != currentState){
+  //    System.out.println(getState(priorState) + " --> " + getState(currentState));
+  //  }
     if(priorState == currentState){
       //  System.out.println("No state change");
     }
     else if(currentState == 0b000) {
+      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(), Robot.drivetrainSubsystem.getAngle());
       System.out.println("joystick control");  
     } else if((currentState & 0b100) == 0b100){
       System.out.println("move forward and rotate counterclockwise");
@@ -113,10 +114,12 @@ public class LineFollowerCommand extends Command {
         System.out.println("move left");
       }
     } else if((currentState & 0b101) == 0b101){
+      Robot.drivetrainSubsystem.Drive(0, 0.75, 0, 0);
       System.out.println("move forward");
     } else {
+      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(), Robot.drivetrainSubsystem.getAngle());
       System.out.println("joystick control");
-    } */
+    }
 
     // if((prior_centerCamera == centerCamera) && (prior_leftCamera == leftCamera) && (prior_rightCamera == rightCamera)){
     
@@ -204,5 +207,10 @@ public class LineFollowerCommand extends Command {
     prior_centerCamera = false;
     prior_leftCamera = false;
     prior_rightCamera = false;
+  }
+
+  @Override
+  public void pidWrite(double output) {
+
   }
 }

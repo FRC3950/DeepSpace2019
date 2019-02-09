@@ -98,7 +98,7 @@ public class OI {
     xboxControllerLBButton.whenPressed(new BackPnuematicLiftCommand());
     xboxControllerRBButton.whenPressed(new FrontPnuematicLiftCommand());
 
-    xboxControllerAButton.whenPressed(new DepositCargoAutoCommandGroup(Robot.ballElevatorSubsystem.getCargoHeight()));
+    //xboxControllerAButton.whenPressed(new DepositCargoAutoCommandGroup(Robot.ballElevatorSubsystem.getCargoHeight()));
     xboxControllerBButton.whenPressed(new DepositCargoAutoCommandGroup(Robot.ballElevatorSubsystem.getFirstRocketHeight()));
     xboxControllerYButton.whenPressed(new DepositCargoAutoCommandGroup(Robot.ballElevatorSubsystem.getSecondRocketHeight()));
     xboxControllerXButton.whenPressed(new LiftIntakeCommand());

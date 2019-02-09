@@ -35,8 +35,8 @@ public class BallElevatorPIDCommand extends Command implements PIDOutput{
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.ballElevatorSubsystem);
-    pid = new PIDController(P, I, D, F, source, this);
-    source = new PIDSourceElevator();
+    pid = null; //new PIDController(P, I, D, F, source, this);
+    source = null; //new PIDSourceElevator();
     setpoint = input;
   }
 

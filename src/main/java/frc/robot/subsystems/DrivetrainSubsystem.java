@@ -25,10 +25,10 @@ import frc.robot.commands.DriveCommand;
  */
 public class DrivetrainSubsystem extends Subsystem {
   
-  final int frontLeftChannel = 0;
-  final int backLeftChannel = 1;
-  final int frontRightChannel =2;
-  final int backRightChannel = 3;
+  final int frontLeftChannel = 3;
+  final int backLeftChannel = 2;
+  final int frontRightChannel =1;
+  final int backRightChannel = 0;
   
   public CANSparkMax frontLeft = new CANSparkMax(frontLeftChannel, MotorType.kBrushless);
   public CANSparkMax backLeft = new CANSparkMax(backLeftChannel, MotorType.kBrushless);
@@ -59,6 +59,8 @@ public class DrivetrainSubsystem extends Subsystem {
    //  SpeedControllerGroup left = new SpeedControllerGroup(frontLeft, backLeft);
    // SpeedControllerGroup right = new SpeedControllerGroup(frontRight, backRight);
 
+    backRight.setInverted(true);
+    frontRight.setInverted(true);
     drivetrain = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
     //drivetrain.setSafetyEnabled(true);
   //    drivetrain = new DifferentialDrive(left, right);
@@ -71,14 +73,35 @@ public class DrivetrainSubsystem extends Subsystem {
   }
 
   public void Drive(double ySpeed, double xSpeed, double zRotation, double gyroAngle){
-    drivetrain.driveCartesian(ySpeed, xSpeed, zRotation, gyroAngle);
+    double x, y, z;
+    x = xSpeed;
+    y = ySpeed;
+    z = zRotation;
+    if(y<0.05 && y>-0.05) y = 0;
+    if(x<0.05 && x>-0.05) x = 0;
+    if(z<0.05 && z>-0.05) z = 0;
+    // if (y < 0) y = -(y*y); else y = y*y;
+    // if (x < 0) x = -(x*x); else x = x*x;
+    drivetrain.driveCartesian(y, x, z, gyroAngle);
+  }
+  public void Drive(double ySpeed, double xSpeed, double zRotation){
+    double x, y, z;
+    x = xSpeed;
+    y = ySpeed;
+    z = zRotation;
+    if(y<0.05 && y>-0.05) y = 0;
+    if(x<0.05 && x>-0.05) x = 0;
+    if(z<0.05 && z>-0.05) z = 0;
+    // if (y < 0) y = -(y*y); else y = y*y;
+    // if (x < 0) x = -(x*x); else x = x*x;
+    drivetrain.driveCartesian(y, x, z);
   }
  public double getAngle() {
    return navx.getAngle() - startingAngle;
    //math to get angle from navx
  }
  public void setStartingAngle() {
-   startingAngle = navx.getAngle();
+   //startingAngle = navx.getAngle();
    //sets angle of navx
 }
  

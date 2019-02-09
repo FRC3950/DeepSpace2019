@@ -26,7 +26,7 @@ public class UltrasonicSubsystem extends Subsystem {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
     RobotMap.leftUltraSonicTrigger.set(false);
-    serialPort = new SerialPort(9600, Port.kUSB1);
+    //serialPort = new SerialPort(9600, Port.kUSB1);
   }
 
   private long startTime = 0;
