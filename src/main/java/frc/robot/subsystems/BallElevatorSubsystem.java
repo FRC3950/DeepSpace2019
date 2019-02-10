@@ -10,7 +10,6 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -21,11 +20,9 @@ public class BallElevatorSubsystem extends Subsystem {
   // here. Call these from Commands.
   
   final int ballElevatorMotorChannel = 6;
-  final int ballElevatorSolenoidChannel = 5;
   final int bottomLimitSwitchChannel = 2;
   final int topLimitSwitchChannel = 3;
 
-  private Solenoid ballElevatorSolenoid = new Solenoid(ballElevatorSolenoidChannel);
   public WPI_TalonSRX ballElevatorMotor = new WPI_TalonSRX(ballElevatorMotorChannel);
   private DigitalInput bottomLimitSwitch = new DigitalInput(bottomLimitSwitchChannel);
   private DigitalInput topLimitSwitch = new DigitalInput(topLimitSwitchChannel);

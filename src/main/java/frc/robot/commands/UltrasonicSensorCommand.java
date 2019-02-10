@@ -7,33 +7,30 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class DriveCommand extends Command {
-
-  Joystick stick = Robot.m_oi.driveStick;
-
-  public DriveCommand() {
+public class UltrasonicSensorCommand extends Command {
+  public UltrasonicSensorCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.drivetrainSubsystem);
-
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(),Robot.drivetrainSubsystem.getAngle());
-    Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist());
-    
+    double analogAngle = Robot.ultrasonicSubsystem.getRobotAngle();
+    if(analogAngle > 3.0){
+      Robot.drivetrainSubsystem.Drive(0, 0, 0.1, 0);
+    }
+    else if(analogAngle < -3.0) {
+      Robot.drivetrainSubsystem.Drive(0, 0, -0.1, 0);
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()

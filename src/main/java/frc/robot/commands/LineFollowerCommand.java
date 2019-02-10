@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.subsystems.DrivetrainSubsystem;
 
 public class LineFollowerCommand extends Command implements PIDOutput {
 
@@ -46,7 +45,6 @@ public class LineFollowerCommand extends Command implements PIDOutput {
         Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(),Robot.drivetrainSubsystem.getAngle());
         return "Joystick control";
       case 0b010:
-        Robot.drivetrainSubsystem.Drive(0, 0.75, 0, 0);
         return "Go Straight";
       case 0b110:
         Robot.drivetrainSubsystem.Drive(0, 0.75, -0.25, 0);
@@ -55,7 +53,6 @@ public class LineFollowerCommand extends Command implements PIDOutput {
         Robot.drivetrainSubsystem.Drive(0, 0.75, 0.25, 0);
         return "Rotate clockwise and go straight";
       case 0b100:
-        Robot.drivetrainSubsystem.Drive(0.75, 0.75, -0.25, 0);
         return "rotate counterclockwise, move right, and move forward";
       case 0b001:
         Robot.drivetrainSubsystem.Drive(-0.75, 0.75, 0.25, 0);
@@ -72,11 +69,11 @@ public class LineFollowerCommand extends Command implements PIDOutput {
   protected void execute() {
   //  Robot.ultrasonicSubsystem.getAnalogDistance();
   
-      double analogDistance = Robot.ultrasonicSubsystem.getAnalogDistance();
-      if(analogDistance > 0.0){
-        double analogAngle = Robot.ultrasonicSubsystem.getRobotAngle();
-        System.out.println("Analog Distance=" + analogDistance + "  Analog Angle=" + analogAngle);
-      }
+      // double analogDistance = Robot.ultrasonicSubsystem.getAnalogDistance();
+      // if(analogDistance > 0.0){
+      //   double analogAngle = Robot.ultrasonicSubsystem.getRobotAngle();
+      //   System.out.println("Analog Distance=" + analogDistance + "  Analog Angle=" + analogAngle);
+      // }
 
 
     // if(trigger == false) {
@@ -104,13 +101,17 @@ public class LineFollowerCommand extends Command implements PIDOutput {
       Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(), Robot.drivetrainSubsystem.getAngle());
       System.out.println("joystick control");  
     } else if((currentState & 0b100) == 0b100){
+      Robot.drivetrainSubsystem.Drive(0.75, 0.75, -0.25, 0);
       System.out.println("move forward and rotate counterclockwise");
       if(!((currentState & 0b010) == 0b010)) {
+        Robot.drivetrainSubsystem.Drive(0, 0.75, 0, 0);
         System.out.println("move right");
       }
     } else if((currentState & 0b001) == 0b001){
+      Robot.drivetrainSubsystem.Drive(-0.75, 0.75, 0.25, 0);
       System.out.println("move forward and rotate counterclockwise");
       if(!((currentState & 0b010) == 0b010)) {
+        Robot.drivetrainSubsystem.Drive(0, 0.75, 0, 0);
         System.out.println("move left");
       }
     } else if((currentState & 0b101) == 0b101){

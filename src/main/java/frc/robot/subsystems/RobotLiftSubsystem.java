@@ -39,7 +39,10 @@ public class RobotLiftSubsystem extends Subsystem {
     setDefaultCommand(new RobotLiftMotorCommand());
   }
   public void liftMotorSet(double ySpeed){
-    liftMotor.set(ySpeed);
+    double y;
+    y = ySpeed;
+    if(y<0.05 && y>-0.05) y = 0;
+    liftMotor.set(y);
   }
 
   public boolean dropBackPistons(){
