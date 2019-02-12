@@ -18,6 +18,7 @@ import frc.robot.commands.FrontPnuematicLiftCommand;
 import frc.robot.commands.HatchOutakeCommand;
 import frc.robot.commands.LiftIntakeCommand;
 import frc.robot.commands.LineFollowerCommand;
+import frc.robot.commands.LineFollowerCommandV2;
 import frc.robot.commands.LineFollowingAbortCommand;
 import frc.robot.commands.NinjaStarCommand;
 
@@ -86,7 +87,7 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
-  public static LineFollowerCommand lfc = new LineFollowerCommand();
+  public static LineFollowerCommandV2 lfc = new LineFollowerCommandV2();
 
   public OI() {
  

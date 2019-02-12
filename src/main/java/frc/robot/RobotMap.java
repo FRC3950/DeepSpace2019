@@ -24,9 +24,9 @@ import edu.wpi.first.wpilibj.SPI;
  */
 public class RobotMap {
   
-  public static DigitalInput rightSensor = new DigitalInput(6);
-  public static DigitalInput centerSensor = new DigitalInput(4);
-  public static DigitalInput leftSensor = new DigitalInput(5);
+  public static DigitalInput rightSensor = new DigitalInput(4);
+  public static DigitalInput centerSensor = new DigitalInput(5);
+  public static DigitalInput leftSensor = new DigitalInput(6);
 
   public static AnalogInput distanceSensor = new AnalogInput(0);
 

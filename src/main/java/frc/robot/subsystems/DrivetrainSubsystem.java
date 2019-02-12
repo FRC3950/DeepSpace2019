@@ -60,7 +60,8 @@ public class DrivetrainSubsystem extends Subsystem {
    // SpeedControllerGroup right = new SpeedControllerGroup(frontRight, backRight);
 
     backRight.setInverted(true);
-    frontRight.setInverted(true);
+    //frontRight.setInverted(true);
+
     drivetrain = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
     //drivetrain.setSafetyEnabled(true);
   //    drivetrain = new DifferentialDrive(left, right);
@@ -77,21 +78,21 @@ public class DrivetrainSubsystem extends Subsystem {
     x = xSpeed;
     y = ySpeed;
     z = zRotation;
-    if(y<0.05 && y>-0.05) y = 0;
-    if(x<0.05 && x>-0.05) x = 0;
-    if(z<0.05 && z>-0.05) z = 0;
+    if(y<0.1 && y>-0.1) y = 0;
+    if(x<0.1 && x>-0.1) x = 0;
+    if(z<0.1 && z>-0.1) z = 0;
     // if (y < 0) y = -(y*y); else y = y*y;
     // if (x < 0) x = -(x*x); else x = x*x;
     drivetrain.driveCartesian(y, x, z, gyroAngle);
   }
-  public void Drive(double ySpeed, double xSpeed, double zRotation){
+  public void Drive2(double ySpeed, double xSpeed, double zRotation){
     double x, y, z;
     x = xSpeed;
     y = ySpeed;
     z = zRotation;
-    if(y<0.05 && y>-0.05) y = 0;
-    if(x<0.05 && x>-0.05) x = 0;
-    if(z<0.05 && z>-0.05) z = 0;
+    if(y<0.35 && y>-0.35) y = 0;
+    if(x<0.35 && x>-0.35) x = 0;
+    if(z<0.35 && z>-0.35) z = 0;
     // if (y < 0) y = -(y*y); else y = y*y;
     // if (x < 0) x = -(x*x); else x = x*x;
     drivetrain.driveCartesian(y, x, z);

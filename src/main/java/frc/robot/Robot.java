@@ -150,13 +150,25 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
 
     //System.out.println("L=" + RobotMap.leftLight.get() + " C=" + RobotMap.centerLight.get() + " R=" + RobotMap.rightLight.get());
-    //System.out.println("L=" + RobotMap.leftCamera.get() + " C=" + RobotMap.centerCamera.get() + " R=" + RobotMap.rightCamera.get());
+    //System.out.println("L=" + RobotMap.leftSensor.get() + " C=" + RobotMap.centerSensor.get() + " R=" + RobotMap.rightSensor.get());
   }
 
   /**
    * This function is called periodically during test mode.
    */
+  boolean started = false;
   @Override
   public void testPeriodic() {
+    if(!started) {
+      started = true;
+      Robot.drivetrainSubsystem.frontLeft.set(-0.5);
+      Robot.drivetrainSubsystem.backLeft.set(0.5);
+      Robot.drivetrainSubsystem.frontRight.set(-0.5);
+      Robot.drivetrainSubsystem.backRight.set(0.5);
+    }
+    System.out.println("fL " + Robot.drivetrainSubsystem.frontLeft.getEncoder().getVelocity());
+    System.out.println("bL " + Robot.drivetrainSubsystem.backLeft.getEncoder().getVelocity());
+    System.out.println("fR " + Robot.drivetrainSubsystem.frontRight.getEncoder().getVelocity());
+    System.out.println("bR " + Robot.drivetrainSubsystem.backRight.getEncoder().getVelocity());
   }
 }

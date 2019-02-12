@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class LineFollowerCommandV2 extends Command implements PIDOutput{
 
@@ -69,33 +70,35 @@ public class LineFollowerCommandV2 extends Command implements PIDOutput{
     int currentState = Robot.lineFollowerSubsystem.getLineFollowerState();
     System.out.println("priorState=" + priorState + "  currentState=" + currentState);
 
-    if(priorState == currentState){
-      //  System.out.println("No state change");
-    }
-    else if(currentState == 0b000) {
-      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(), Robot.drivetrainSubsystem.getAngle());
-      System.out.println("joystick control");  
-    } else if((currentState & 0b100) == 0b100){
-      Robot.drivetrainSubsystem.Drive(0.75, 0.75, -0.25, 0);
-      System.out.println("move right and go straight");
-      if(!((currentState & 0b010) == 0b010)) {
-        Robot.drivetrainSubsystem.Drive(0, 0.75, 0, 0);
-        System.out.println("move right");
-      }
-    } else if((currentState & 0b001) == 0b001){
-      Robot.drivetrainSubsystem.Drive(-0.75, 0.75, 0.25, 0);
-      System.out.println("move left and go straight");
-      if(!((currentState & 0b010) == 0b010)) {
-        Robot.drivetrainSubsystem.Drive(0, 0.75, 0, 0);
-        System.out.println("move left");
-      }
-    } else if((currentState & 0b101) == 0b101){
-      Robot.drivetrainSubsystem.Drive(0, 0.75, 0, 0);
-      System.out.println("move forward");
-    } else {
-      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(), Robot.drivetrainSubsystem.getAngle());
-      System.out.println("joystick control");
-    }
+    // if(priorState == currentState){
+    //   System.out.println("No state change");
+    // }
+    // else if(currentState == 0b000) {
+    //   Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(), Robot.drivetrainSubsystem.getAngle());
+    //   System.out.println("joystick control");  
+    // } else if((currentState & 0b100) == 0b100){
+    //   Robot.drivetrainSubsystem.Drive(0.75, 0.75, 0, 0);
+    //   System.out.println("move right and go straight");
+    //   if(!((currentState & 0b010) == 0b010)) {
+    //     Robot.drivetrainSubsystem.Drive(0, 0.75, 0, 0);
+    //     System.out.println("move right");
+    //   }
+    // } else if((currentState & 0b001) == 0b001){
+    //   Robot.drivetrainSubsystem.Drive(-0.75, 0.75, 0, 0);
+    //   System.out.println("move left and go straight");
+    //   if(!((currentState & 0b010) == 0b010)) {
+    //     Robot.drivetrainSubsystem.Drive(0, 0.75, 0, 0);
+    //     System.out.println("move left");
+    //   }
+    // } else if((currentState & 0b010) == 010){
+    //   Robot.drivetrainSubsystem.Drive(0, 0.75, 0, 0);
+    //   System.out.println("move forward");
+    // } else {
+    //   Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(), Robot.drivetrainSubsystem.getAngle());
+    //   System.out.println("joystick control");
+    // }
+    System.out.println("L=" + RobotMap.leftSensor.get() + " C=" + RobotMap.centerSensor.get() + " R=" + RobotMap.rightSensor.get());
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
