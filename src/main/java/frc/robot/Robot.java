@@ -16,6 +16,7 @@ import frc.robot.subsystems.BallElevatorSubsystem;
 import frc.robot.subsystems.BallShooterSubsystemV2;
 import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.GyroSubsystem;
 import frc.robot.subsystems.IntakeMotorSubsystem;
 import frc.robot.subsystems.IntakePnuematicsSubsystem;
 import frc.robot.subsystems.LineFollowerSubsystem;
@@ -45,7 +46,7 @@ public class Robot extends TimedRobot {
   public static RobotLiftSubsystem robotLiftSubsystem = new RobotLiftSubsystem();
   public static UltrasonicSubsystem ultrasonicSubsystem = new UltrasonicSubsystem();
   public static USBCameraSubsystem usbCameraSubsystem = new USBCameraSubsystem();
- 
+  public static GyroSubsystem gyroSubsystem = new GyroSubsystem();
  
 
   Command m_autonomousCommand = null;
@@ -61,7 +62,7 @@ public class Robot extends TimedRobot {
     m_oi = new OI();
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
 
-    Robot.drivetrainSubsystem.setStartingAngle();
+    Robot.gyroSubsystem.setStartingAngle();
     
   }
 
@@ -148,7 +149,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-
+    
     //System.out.println("L=" + RobotMap.leftLight.get() + " C=" + RobotMap.centerLight.get() + " R=" + RobotMap.rightLight.get());
     //System.out.println("L=" + RobotMap.leftSensor.get() + " C=" + RobotMap.centerSensor.get() + " R=" + RobotMap.rightSensor.get());
   }
@@ -161,14 +162,17 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {
     if(!started) {
       started = true;
-      Robot.drivetrainSubsystem.frontLeft.set(-0.5);
-      Robot.drivetrainSubsystem.backLeft.set(0.5);
-      Robot.drivetrainSubsystem.frontRight.set(-0.5);
-      Robot.drivetrainSubsystem.backRight.set(0.5);
+      RobotMap.frontLeft.setInverted(true);
+       RobotMap.frontRight.setInverted(true);
+
+      RobotMap.frontLeft.set(0.5);
+      RobotMap.backLeft.set(0.5);
+      RobotMap.frontRight.set(0.5);
+      RobotMap.backRight.set(0.5);
     }
-    System.out.println("fL " + Robot.drivetrainSubsystem.frontLeft.getEncoder().getVelocity());
-    System.out.println("bL " + Robot.drivetrainSubsystem.backLeft.getEncoder().getVelocity());
-    System.out.println("fR " + Robot.drivetrainSubsystem.frontRight.getEncoder().getVelocity());
-    System.out.println("bR " + Robot.drivetrainSubsystem.backRight.getEncoder().getVelocity());
-  }
+  //   System.out.println("fL " + Robot.drivetrainSubsystem.frontLeft.get());
+  //   System.out.println("bL " + Robot.drivetrainSubsystem.backLeft.getEncoder().getVelocity());
+  //   System.out.println("fR " + Robot.drivetrainSubsystem.frontRight.getEncoder().getVelocity());
+  //   System.out.println("bR " + Robot.drivetrainSubsystem.backRight.getEncoder().getVelocity());
+   }
 }

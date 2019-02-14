@@ -19,6 +19,7 @@ public class DriveCommand extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.drivetrainSubsystem);
+    requires(Robot.gyroSubsystem);
 
   }
 
@@ -26,14 +27,16 @@ public class DriveCommand extends Command {
   @Override
   protected void initialize() {
 
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(),Robot.drivetrainSubsystem.getAngle());
-    Robot.drivetrainSubsystem.Drive2(stick.getY(), stick.getX(), stick.getTwist());
-    
+    Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(),Robot.gyroSubsystem.getAngle());
+    //Robot.drivetrainSubsystem.driveCartesian(stick.getY(), stick.getX(), stick.getTwist());
+    //Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getTwist());
+
   }
 
   // Make this return true when this Command no longer needs to run execute()

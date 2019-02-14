@@ -9,6 +9,8 @@ package frc.robot;
 
 import com.kauailabs.navx.frc.AHRS;
 //import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -24,6 +26,11 @@ import edu.wpi.first.wpilibj.SPI;
  */
 public class RobotMap {
   
+  public static CANSparkMax frontLeft = new CANSparkMax(3, MotorType.kBrushless);
+  public static CANSparkMax backLeft = new CANSparkMax(2, MotorType.kBrushless);
+  public static CANSparkMax frontRight = new CANSparkMax(1, MotorType.kBrushless);
+  public static CANSparkMax backRight = new CANSparkMax(0, MotorType.kBrushless);
+
   public static DigitalInput rightSensor = new DigitalInput(4);
   public static DigitalInput centerSensor = new DigitalInput(5);
   public static DigitalInput leftSensor = new DigitalInput(6);
@@ -33,7 +40,7 @@ public class RobotMap {
   public static DigitalOutput leftUltraSonicTrigger = new DigitalOutput(8);
   public static DigitalInput leftUltraSonicEcho = new DigitalInput(7);
 
-  public static AHRS ahrs = new AHRS(SPI.Port.kMXP);
+  // public static AHRS ahrs = new AHRS(SPI.Port.kMXP);
 
   // Motors and Pnuematics for intake
   // public static WPI_TalonSRX intakeMotor = new WPI_TalonSRX(0);

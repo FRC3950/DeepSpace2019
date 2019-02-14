@@ -21,6 +21,8 @@ public class LineFollowerCommandV2 extends Command implements PIDOutput{
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.lineFollowerSubsystem);
+    requires(Robot.gyroSubsystem);
+    requires(Robot.drivetrainSubsystem);
   }
 
   // Called just before this Command runs the first time
@@ -42,7 +44,7 @@ public class LineFollowerCommandV2 extends Command implements PIDOutput{
       case 0b000:  
       case 0b101:
       case 0b111:
-        Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(),Robot.drivetrainSubsystem.getAngle());
+        Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(),Robot.gyroSubsystem.getAngle());
         return "Joystick control";
       case 0b010:
         return "Go Straight";

@@ -17,10 +17,11 @@ import frc.robot.commands.DepositCargoAutoCommandGroup;
 import frc.robot.commands.FrontPnuematicLiftCommand;
 import frc.robot.commands.HatchOutakeCommand;
 import frc.robot.commands.LiftIntakeCommand;
-import frc.robot.commands.LineFollowerCommand;
+// import frc.robot.commands.LineFollowerCommand;
 import frc.robot.commands.LineFollowerCommandV2;
 import frc.robot.commands.LineFollowingAbortCommand;
 import frc.robot.commands.NinjaStarCommand;
+import frc.robot.commands.ResetFieldCentricCommand;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -105,6 +106,7 @@ public class OI {
     xboxControllerXButton.whenPressed(new LiftIntakeCommand());
     
     driveStick9Button.whenPressed(new BrushlessMotorCommand());
+    driveStick7Button.whenPressed(new ResetFieldCentricCommand());
   }
 
 }

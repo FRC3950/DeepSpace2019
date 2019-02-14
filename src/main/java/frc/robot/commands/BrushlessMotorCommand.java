@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class BrushlessMotorCommand extends Command {
   public BrushlessMotorCommand() {
@@ -20,14 +21,14 @@ public class BrushlessMotorCommand extends Command {
   @Override
   protected void initialize() {
     System.out.println("initialized");
-    Robot.drivetrainSubsystem.frontRight.set(1.0);
+    RobotMap.frontRight.set(1.0);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    System.out.println("fr= " + Robot.drivetrainSubsystem.frontRight.getEncoder().getVelocity());
-    System.out.println("fr= " + Robot.drivetrainSubsystem.frontRight.getEncoder().getPosition());
+    System.out.println("fr= " + RobotMap.frontRight.getEncoder().getVelocity());
+    System.out.println("fr= " + RobotMap.frontRight.getEncoder().getPosition());
 
   }
 

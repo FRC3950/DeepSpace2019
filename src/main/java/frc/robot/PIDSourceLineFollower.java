@@ -17,9 +17,9 @@ import edu.wpi.first.wpilibj.PIDSourceType;
  */
 public class PIDSourceLineFollower implements PIDSource {
     PIDSourceType type;
-    AHRS navx;
+    // AHRS navx;
     public PIDSourceLineFollower(){
-        navx = RobotMap.ahrs;
+        // navx = RobotMap.ahrs;
     }
 	@Override
 	public void setPIDSourceType(PIDSourceType pidSource) {
