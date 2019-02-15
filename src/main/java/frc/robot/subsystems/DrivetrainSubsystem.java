@@ -11,6 +11,8 @@ package frc.robot.subsystems;
 
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel;
+import com.revrobotics.CANSparkMax.IdleMode;
 
 //import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -25,20 +27,16 @@ import frc.robot.commands.DriveCommand;
  */
 public class DrivetrainSubsystem extends Subsystem {
   
-  // final int frontLeftChannel = 3;
-  // final int backLeftChannel = 2;
-  // final int frontRightChannel =1;
-  // final int backRightChannel = 0;
+  final int frontLeftChannel = 3;
+  final int backLeftChannel = 2;
+  final int frontRightChannel =1;
+  final int backRightChannel = 0;
   
-  // public CANSparkMax frontLeft = new CANSparkMax(frontLeftChannel, MotorType.kBrushless);
-  // public CANSparkMax backLeft = new CANSparkMax(backLeftChannel, MotorType.kBrushless);
-  // public CANSparkMax frontRight = new CANSparkMax(frontRightChannel, MotorType.kBrushless);
-  // public CANSparkMax backRight = new CANSparkMax(backRightChannel, MotorType.kBrushless);
+  public CANSparkMax frontLeft = new CANSparkMax(frontLeftChannel, CANSparkMaxLowLevel.MotorType.kBrushless);
+  public CANSparkMax backLeft = new CANSparkMax(backLeftChannel, CANSparkMaxLowLevel.MotorType.kBrushless);
+  public CANSparkMax frontRight = new CANSparkMax(frontRightChannel, CANSparkMaxLowLevel.MotorType.kBrushless);
+  public CANSparkMax backRight = new CANSparkMax(backRightChannel, CANSparkMaxLowLevel.MotorType.kBrushless);
 
-    CANSparkMax frontLeft;
-    CANSparkMax backLeft;
-    CANSparkMax frontRight;
-    CANSparkMax backRight;
 
   MecanumDrive drivetrain;
 
@@ -55,11 +53,7 @@ public class DrivetrainSubsystem extends Subsystem {
   public void initDefaultCommand() {
 
      //navx = RobotMap.ahrs;
-     
-    frontLeft = RobotMap.frontLeft;
-    backLeft = RobotMap.backLeft;
-    frontRight = RobotMap.frontRight;
-    backRight = RobotMap.backRight;
+
 
     // setStartingAngle();
 
@@ -76,6 +70,10 @@ public class DrivetrainSubsystem extends Subsystem {
 
     drivetrain = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
   
+    frontLeft.setIdleMode(IdleMode.kBrake);
+    backLeft.setIdleMode(IdleMode.kBrake);
+    frontRight.setIdleMode(IdleMode.kBrake);
+    backRight.setIdleMode(IdleMode.kBrake);
 
     //drivetrain.setSafetyEnabled(true);
     //  drivetrain = new DifferentialDrive(left, right);
@@ -94,26 +92,26 @@ public class DrivetrainSubsystem extends Subsystem {
     z = zRotation;
     if(y<0.1 && y>-0.1) y = 0;
     if(x<0.1 && x>-0.1) x = 0;
-    //if(z<0.1 && z>-0.1) z = 0;
+    if(z<0.2 && z>-0.2) z = 0;
     // if (y < 0) y = -(y*y); else y = y*y;
     // if (x < 0) x = -(x*x); else x = x*x;
-    System.out.println("x=" + x + "  y=" + y + "  z=" + z + "  gyroAngle=" + gyroAngle + "   startAngle=" + Robot.gyroSubsystem.getStartAngle());
+    System.out.println("x=" + x + "  y=" + y + "  z=" + z + "  gyroAngle=" + gyroAngle);
     drivetrain.driveCartesian(y, x, z, gyroAngle);
   }
-  public void driveCartesian(double ySpeed, double xSpeed, double zRotation){
-    double y, x, z;
-    x = ySpeed;
-    y = xSpeed;
-    z = zRotation;
-    if(y<0.35 && y>-0.35) y = 0;
-    if(x<0.35 && x>-0.35) x = 0;
-    //if(z<0.35 && z>-0.35) z = 0;
-    // if (y < 0) y = -(y*y); else y = y*y;
-    // if (x < 0) x = -(x*x); else x = x*x;
-    System.out.println("x=" + x + "  y=" + y + "  z=" + z);
-    drivetrain.driveCartesian(y, x, z);
+  // public void driveCartesian(double ySpeed, double xSpeed, double zRotation){
+  //   double y, x, z;
+  //   x = ySpeed;
+  //   y = xSpeed;
+  //   z = zRotation;
+  //   if(y<0.35 && y>-0.35) y = 0;
+  //   if(x<0.35 && x>-0.35) x = 0;
+  //   //if(z<0.35 && z>-0.35) z = 0;
+  //   // if (y < 0) y = -(y*y); else y = y*y;
+  //   // if (x < 0) x = -(x*x); else x = x*x;
+  //   System.out.println("x=" + x + "  y=" + y + "  z=" + z);
+  //   drivetrain.driveCartesian(y, x, z);
 
-   }
+  //  }
 //  public double getAngle() {
 //    return RobotMap.ahrs.getAngle() - startingAngle;
 //    //math to get angle from navx

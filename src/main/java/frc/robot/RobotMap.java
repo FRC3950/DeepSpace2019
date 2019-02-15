@@ -26,12 +26,8 @@ import edu.wpi.first.wpilibj.SPI;
  */
 public class RobotMap {
   
-  public static CANSparkMax frontLeft = new CANSparkMax(3, MotorType.kBrushless);
-  public static CANSparkMax backLeft = new CANSparkMax(2, MotorType.kBrushless);
-  public static CANSparkMax frontRight = new CANSparkMax(1, MotorType.kBrushless);
-  public static CANSparkMax backRight = new CANSparkMax(0, MotorType.kBrushless);
-
-  public static DigitalInput rightSensor = new DigitalInput(4);
+  public static final String frontLeft = null;
+public static DigitalInput rightSensor = new DigitalInput(4);
   public static DigitalInput centerSensor = new DigitalInput(5);
   public static DigitalInput leftSensor = new DigitalInput(6);
 

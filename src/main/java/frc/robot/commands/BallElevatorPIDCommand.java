@@ -29,7 +29,7 @@ public class BallElevatorPIDCommand extends Command implements PIDOutput{
   double setpoint = 0;
   PIDSourceElevator source;
   int range = 10;
-
+  boolean start = true;
 
   public BallElevatorPIDCommand(double input) {
     // Use requires() here to declare subsystem dependencies
@@ -57,14 +57,18 @@ public class BallElevatorPIDCommand extends Command implements PIDOutput{
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    if(start == true){
+      pid.enable();
+      start = false;
+    } 
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     int velocity = Robot.ballElevatorSubsystem.ballElevatorMotor.getSelectedSensorVelocity(0);
-    System.out.println("velocity is " + velocity);
-    System.out.println("pid on target is" + pid.onTarget());
+    // System.out.println("velocity is " + velocity);
+    // System.out.println("pid on target is" + pid.onTarget());
     return(pid.onTarget() && (velocity >= range) && (velocity <= range)) || (Robot.ballElevatorSubsystem.bottomGetter()) ||(Robot.ballElevatorSubsystem.topGetter());
 
   }
@@ -73,24 +77,28 @@ public class BallElevatorPIDCommand extends Command implements PIDOutput{
   @Override
   protected void end() {
   //  Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
-    pid.disable();
-    System.out.println("done intr");
+  pid.disable();
+  start = true;
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    pid.disable();
+    start = true;
   }
 
   @Override
   public void pidWrite(double output) {
     // set motor voltage for elevatotr subsystem
-    Robot.ballElevatorSubsystem.BallElevatorMotorSet(output);
-    if(Robot.ballElevatorSubsystem.topGetter())
+    if(Robot.ballElevatorSubsystem.topGetter() && output > 0)
       Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
-    Logger.log(LogLevel.info, "Encoder Height" + Robot.ballElevatorSubsystem.getElevatorHeight());
-    Logger.log(Logger.LogLevel.info, "elevator enc counts" + Robot.ballElevatorSubsystem.ballElevatorMotor.getSelectedSensorPosition(0));  
+    if(Robot.ballElevatorSubsystem.bottomGetter() && output < 0)
+      Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
+      Robot.ballElevatorSubsystem.BallElevatorMotorSet(output);
+    // Logger.log(LogLevel.info, "Encoder Height" + Robot.ballElevatorSubsystem.getElevatorHeight());
+    // Logger.log(Logger.LogLevel.info, "elevator enc counts" + Robot.ballElevatorSubsystem.ballElevatorMotor.getSelectedSensorPosition(0));  
 
   }
 }

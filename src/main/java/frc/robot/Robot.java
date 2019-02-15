@@ -61,8 +61,6 @@ public class Robot extends TimedRobot {
     
     m_oi = new OI();
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-
-    Robot.gyroSubsystem.setStartingAngle();
     
   }
 
@@ -162,13 +160,13 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {
     if(!started) {
       started = true;
-      RobotMap.frontLeft.setInverted(true);
-       RobotMap.frontRight.setInverted(true);
+      Robot.drivetrainSubsystem.frontLeft.setInverted(true);
+      Robot.drivetrainSubsystem.frontRight.setInverted(true);
 
-      RobotMap.frontLeft.set(0.5);
-      RobotMap.backLeft.set(0.5);
-      RobotMap.frontRight.set(0.5);
-      RobotMap.backRight.set(0.5);
+      Robot.drivetrainSubsystem.frontLeft.set(0.5);
+      Robot.drivetrainSubsystem.backLeft.set(0.5);
+      Robot.drivetrainSubsystem.frontRight.set(0.5);
+      Robot.drivetrainSubsystem.backRight.set(0.5);
     }
   //   System.out.println("fL " + Robot.drivetrainSubsystem.frontLeft.get());
   //   System.out.println("bL " + Robot.drivetrainSubsystem.backLeft.getEncoder().getVelocity());

@@ -17,9 +17,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class GyroSubsystem extends Subsystem {
   private AHRS ahrs = new AHRS(SPI.Port.kMXP);
-  private double startingAngle = 0.0;
+  // private double startingAngle = 0.0;
   
-
+ public GyroSubsystem(){
+  setStartingAngle();
+ }
 
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
@@ -27,16 +29,18 @@ public class GyroSubsystem extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-
+ 
   }
   public void setStartingAngle() {
-    startingAngle = ahrs.getYaw();
+    ahrs.zeroYaw();
+    ahrs.reset();
+    // startingAngle = ahrs.getYaw();
     //sets angle of navx
   }
-  public double getStartAngle(){
-    return startingAngle;
-  }
-  public double getAngle() {
+  // public double getStartAngle(){
+  //   return startingAngle;
+  // }
+  public double getCurrentAngle() {
     return ahrs.getYaw();
     //math to get angle from navx
   }

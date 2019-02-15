@@ -15,8 +15,9 @@ public class LineUpRobotCommandGroup extends CommandGroup {
    */
   public LineUpRobotCommandGroup() {
 
-    addSequential(new UltrasonicSensorCommand());
+    addSequential(new StraightenRobotPIDCommand());
     addSequential(new LineFollowerCommandV2());
+  
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());

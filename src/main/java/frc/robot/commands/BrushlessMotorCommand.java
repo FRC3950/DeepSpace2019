@@ -21,14 +21,14 @@ public class BrushlessMotorCommand extends Command {
   @Override
   protected void initialize() {
     System.out.println("initialized");
-    RobotMap.frontRight.set(1.0);
+    Robot.drivetrainSubsystem.frontRight.set(1.0);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    System.out.println("fr= " + RobotMap.frontRight.getEncoder().getVelocity());
-    System.out.println("fr= " + RobotMap.frontRight.getEncoder().getPosition());
+    System.out.println("fr= " + Robot.drivetrainSubsystem.frontRight.getEncoder().getVelocity());
+    System.out.println("fr= " + Robot.drivetrainSubsystem.frontRight.getEncoder().getPosition());
 
   }
 

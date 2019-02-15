@@ -8,6 +8,8 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.commands.RobotLiftMotorCommand;
@@ -20,17 +22,21 @@ public class RobotLiftSubsystem extends Subsystem {
   // here. Call these from Commands.
   
   final int liftMotorChannel = 4;
-  final int backLeftLiftSolenoidChannel = 0;
-  final int backRightLiftSolenoidChannel = 1;
-  final int frontLeftLiftSolenoidChannel = 2;
-  final int frontRightLiftSolenoidChannel = 3;
+  final int backLeftLiftSolenoidChannel1 = 0;
+ // final int backLeftLiftSolenoidChannel2 = 1;
+  final int backRightLiftSolenoidChannel1 = 1;
+ // final int backRightLiftSolenoidChannel2 = 3;
+  final int frontLeftLiftSolenoidChannel1 = 2;
+ // final int frontLeftLiftSolenoidChannel2 = 5;
+  final int frontRightLiftSolenoidChannel1 = 3;
+  //final int frontRightLiftSolenoidChannel2 = 7;
   
   
   private WPI_TalonSRX liftMotor = new WPI_TalonSRX(liftMotorChannel);
-  private Solenoid backLeftLiftSolenoid = new Solenoid(backLeftLiftSolenoidChannel);
-  private Solenoid backRightLiftSolenoid = new Solenoid (backRightLiftSolenoidChannel);
-  private Solenoid frontLeftLiftSolenoid = new Solenoid (frontLeftLiftSolenoidChannel);
-  private Solenoid frontRightLiftSolenoid = new Solenoid (frontRightLiftSolenoidChannel);
+  private Solenoid backLeftLiftSolenoid = new Solenoid(backLeftLiftSolenoidChannel1);
+  private Solenoid backRightLiftSolenoid = new Solenoid (backRightLiftSolenoidChannel1);
+  private Solenoid frontLeftLiftSolenoid = new Solenoid (frontLeftLiftSolenoidChannel1);
+  private Solenoid frontRightLiftSolenoid = new Solenoid (frontRightLiftSolenoidChannel1);
 
   @Override
   public void initDefaultCommand() {
