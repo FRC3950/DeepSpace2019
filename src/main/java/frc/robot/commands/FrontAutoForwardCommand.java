@@ -10,28 +10,24 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class CargoElevatorHeightCommand extends Command {
-  public CargoElevatorHeightCommand() {
+public class FrontAutoForwardCommand extends Command {
+
+  public FrontAutoForwardCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.ballElevatorSubsystem);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+   
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
-// NOT USING
-
-    // if(Robot.ballElevatorSubsystem.cargoGetter() == true) {
-    //   Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
-    //   Robot.ballElevatorSubsystem.resetEncoder();
-    // }
+    
+    Robot.drivetrainSubsystem.Drive(0.3, 0, 0, 0);
   }
 
   // Make this return true when this Command no longer needs to run execute()

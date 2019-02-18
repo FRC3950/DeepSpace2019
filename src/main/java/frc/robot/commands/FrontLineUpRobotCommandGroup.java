@@ -1,0 +1,59 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
+package frc.robot.commands;
+
+import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.Robot;
+
+public class FrontLineUpRobotCommandGroup extends CommandGroup {
+  /**
+   * Add your docs here.
+   */
+  public FrontLineUpRobotCommandGroup() {
+
+    addSequential(new FrontLineRecognizerCommandV2());
+    if (Robot.gyroSubsystem.getCurrentAngle() > -22.5 && Robot.gyroSubsystem.getCurrentAngle() < 22.5) {
+      addSequential(new RotationPIDCommand(0));
+    } else if (Robot.gyroSubsystem.getCurrentAngle() > -67.5 && Robot.gyroSubsystem.getCurrentAngle() < -22.5) {
+      addSequential(new RotationPIDCommand(-45));
+    } else if (Robot.gyroSubsystem.getCurrentAngle() > -112.5 && Robot.gyroSubsystem.getCurrentAngle() < -67.5) {
+      addSequential(new RotationPIDCommand(-90));
+    } else if (Robot.gyroSubsystem.getCurrentAngle() > -157.5 && Robot.gyroSubsystem.getCurrentAngle() < -112.5) {
+      addSequential(new RotationPIDCommand(-135));
+    } else if (Robot.gyroSubsystem.getCurrentAngle() > 157.5 && Robot.gyroSubsystem.getCurrentAngle() < -157.5) {
+      addSequential(new RotationPIDCommand(-180));
+    } else if (Robot.gyroSubsystem.getCurrentAngle() > 22.5 && Robot.gyroSubsystem.getCurrentAngle() > 67.5) {
+      addSequential(new RotationPIDCommand(45));
+    } else if (Robot.gyroSubsystem.getCurrentAngle() > 67.5 && Robot.gyroSubsystem.getCurrentAngle() < 112.5) {
+      addSequential(new RotationPIDCommand(90));
+    } else if (Robot.gyroSubsystem.getCurrentAngle() > 112.5 && Robot.gyroSubsystem.getCurrentAngle() < 157.5) {
+      addSequential(new RotationPIDCommand(135));
+    } else if (Robot.gyroSubsystem.getCurrentAngle() > 157.5 && Robot.gyroSubsystem.getCurrentAngle() < -157.5) {
+      addSequential(new RotationPIDCommand(180));
+    }
+    addSequential(new FrontLineFollowerCommandV2());
+    addSequential(new FrontAutoForwardCommand());
+  
+    // Add Commands here:
+    // e.g. addSequential(new Command1());
+    // addSequential(new Command2());
+    // these will run in order.
+
+    // To run multiple commands at the same time,
+    // use addParallel()
+    // e.g. addParallel(new Command1());
+    // addSequential(new Command2());
+    // Command1 and Command2 will run in parallel.
+
+    // A command group will require all of the subsystems that each member
+    // would require.
+    // e.g. if Command1 requires chassis, and Command2 requires arm,
+    // a CommandGroup containing them would require both the chassis and the
+    // arm.
+  }
+}

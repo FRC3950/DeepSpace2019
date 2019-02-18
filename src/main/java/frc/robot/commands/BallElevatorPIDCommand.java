@@ -10,24 +10,23 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
+import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Logger;
 import frc.robot.PIDSourceElevator;
 import frc.robot.Robot;
-import frc.robot.Logger.LogLevel;
 
 public class BallElevatorPIDCommand extends Command implements PIDOutput{
 
-  double P = SmartDashboard.getNumber("P (elevator)",1.0);
+  double P = SmartDashboard.getNumber("P (elevator)",0.0);
   double I = SmartDashboard.getNumber("I (elevator)",0.0); 
   double D = SmartDashboard.getNumber("D (elevator)",0.0);
-  double F = SmartDashboard.getNumber("F (elevator)",0.0);
+  double F = SmartDashboard.getNumber("F (elevator)",0.5);
 
   PIDController pid;
   double setpoint = 0;
-  PIDSourceElevator source;
+  PIDSource source;
   int range = 10;
   boolean start = true;
 
@@ -35,14 +34,16 @@ public class BallElevatorPIDCommand extends Command implements PIDOutput{
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.ballElevatorSubsystem);
-    pid = null; //new PIDController(P, I, D, F, source, this);
-    source = null; //new PIDSourceElevator();
+  
     setpoint = input;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    source = new PIDSourceElevator();
+    pid = new PIDController(P, I, D, F, source, this);
+  
     Robot.ballElevatorSubsystem.resetEncoder();
     source.setPIDSourceType(PIDSourceType.kDisplacement);
     pid.setInputRange(0, setpoint);

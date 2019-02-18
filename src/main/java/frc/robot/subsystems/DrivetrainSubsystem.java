@@ -124,4 +124,19 @@ public class DrivetrainSubsystem extends Subsystem {
 // public void Drive(double y, double twist){
 //  drivetrain.arcadeDrive(-y, twist);
 //  }
+  public double getFrontLeftEncoder(){
+    return frontLeft.getEncoder().getPosition();
+  }
+  public double getBackLeftEncoder(){
+    return backLeft.getEncoder().getPosition();
+  }
+  public double getFrontRightEncoder(){
+    return frontRight.getEncoder().getPosition();
+  }
+  public double getBackRightEncoder(){
+    return backRight.getEncoder().getPosition();
+  }
+  public double getAverageEncoder() {
+    return (frontLeft.getEncoder().getPosition() + backLeft.getEncoder().getPosition() + frontRight.getEncoder().getPosition() + backRight.getEncoder().getPosition()) /4;
+ }
 }

@@ -26,8 +26,8 @@ public class ShootBallCommand extends Command {
   @Override
   protected void execute() {
 
-    System.out.println("execute shoot ball command");
-    Robot.ballShooterSubsystemV2.openShooter();
+    //System.out.println("execute shoot ball command");
+    //Robot.ballShooterSubsystemV2.openShooter();
     
   }
 

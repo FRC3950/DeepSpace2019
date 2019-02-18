@@ -19,15 +19,18 @@ public class BallElevatorSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   
+  final int ballElevatorShooterMotorChannel = 7;
   final int ballElevatorMotorChannel = 6;
   final int bottomLimitSwitchChannel = 0;
   final int cargoLimitSwitchChannel = 1;
   final int rocketLimitSwitchChannel = 2;
 
+  public WPI_TalonSRX ballElevatorShooterMotor = new WPI_TalonSRX(ballElevatorShooterMotorChannel);
   public WPI_TalonSRX ballElevatorMotor = new WPI_TalonSRX(ballElevatorMotorChannel);
   private DigitalInput bottomLimitSwitch = new DigitalInput(bottomLimitSwitchChannel);
   private DigitalInput cargoLimitSwitch = new DigitalInput(cargoLimitSwitchChannel);
   private DigitalInput rocketLimitSwitch = new DigitalInput(rocketLimitSwitchChannel);
+
   
 
   double distancePerRotation;
@@ -54,11 +57,14 @@ public void setBallElevatorMotor(WPI_TalonSRX ballElevatorMotor) {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
-  public void BallElevatorMotorSet(double leftstick){
-    ballElevatorMotor.set(leftstick);
+  public void BallElevatorMotorSet(double speed){
+    ballElevatorMotor.set(speed);
     //sets elevator motor to value of leftstick on xboxcontroller
     //chick-fil-a
    }
+  public void BallElevatorShooterMotorSet(double rightstick){
+    ballElevatorMotor.set(rightstick);
+  }
   public boolean bottomGetter() {
     return bottomLimitSwitch.get();
     //gets the status of the bottom limit switch

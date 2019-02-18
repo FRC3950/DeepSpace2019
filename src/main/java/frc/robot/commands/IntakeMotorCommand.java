@@ -29,7 +29,7 @@ public class IntakeMotorCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double trigger = controller.getTriggerAxis(Hand.kRight) - (controller.getTriggerAxis(Hand.kLeft));
+    double trigger = controller.getTriggerAxis(Hand.kLeft) - (controller.getTriggerAxis(Hand.kRight));
 
     Robot.intakeMotorSubsystem.intakeMotorSet(trigger);
 

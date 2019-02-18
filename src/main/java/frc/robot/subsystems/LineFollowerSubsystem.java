@@ -8,11 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Robot;
 import frc.robot.RobotMap;
-import java.lang.Math;
-
 /**
  * Add your docs here.
  */
@@ -27,47 +23,70 @@ public class LineFollowerSubsystem extends Subsystem {
     //RobotMap.leftUltraSonicTrigger.set(false);
   }
 
-  public int getLineFollowerState() {
-    boolean centerSensor = !RobotMap.centerSensor.get();
-    boolean leftSensor = !RobotMap.leftSensor.get();
-    boolean rightSensor = !RobotMap.rightSensor.get();
+  public int getFrontLineFollowerState() {
+    boolean frontCenterSensor = !RobotMap.frontCenterSensor.get();
+    boolean frontLeftSensor = !RobotMap.frontLeftSensor.get();
+    boolean frontRightSensor = !RobotMap.frontRightSensor.get();
+
     //gets the negation of the left, right, and center sensors
-    int currentState = ((leftSensor ? 1 : 0) << 2) | (centerSensor ? 1 : 0) << 1  | (rightSensor ? 1 : 0) << 0;
-    System.out.println("leftSensor=" + leftSensor + "  centerSensor=" + centerSensor + "  rightSensor=" +rightSensor);
+    int frontCurrentState = ((frontLeftSensor ? 1 : 0) << 2) | (frontCenterSensor ? 1 : 0) << 1  | (frontRightSensor ? 1 : 0) << 0;
+    //System.out.println("leftSensor=" + leftSensor + "  centerSensor=" + centerSensor + "  rightSensor=" +rightSensor);
     //prints the current state of the left, right, and center sensors
-    return currentState;
+    return frontCurrentState;
   }
 
-  public boolean getLeftSensor() {
-    return RobotMap.leftSensor.get();
+  public int getBackLineFollowerState() {
+  boolean backCenterSensor = !RobotMap.backCenterSensor.get();
+  boolean backLeftSensor = !RobotMap.backLeftSensor.get();
+  boolean backRightSensor = !RobotMap.backRightSensor.get();
+
+    //gets the negation of the left, right, and center sensors
+    int frontCurrentState = ((backLeftSensor ? 1 : 0) << 2) | (backCenterSensor ? 1 : 0) << 1  | (backRightSensor ? 1 : 0) << 0;
+    //System.out.println("leftSensor=" + leftSensor + "  centerSensor=" + centerSensor + "  rightSensor=" +rightSensor);
+    //prints the current state of the left, right, and center sensors
+    return frontCurrentState;
   }
-  public boolean getCenterSensor() {
-    return RobotMap.centerSensor.get();
+  
+  public boolean getFrontLeftSensor() {
+    return RobotMap.frontLeftSensor.get();
   }
-  public boolean getRightSensor() {
-    return RobotMap.rightSensor.get();
+  public boolean getFrontCenterSensor() {
+    return RobotMap.frontCenterSensor.get();
+  }
+  public boolean getFrontRightSensor() {
+    return RobotMap.frontRightSensor.get();
+  }
+
+  public boolean getBackLeftSensor() {
+    return RobotMap.backLeftSensor.get();
+  }
+  public boolean getBackCenterSensor() {
+    return RobotMap.backCenterSensor.get();
+  }
+  public boolean getBackRightSensor() {
+    return RobotMap.backRightSensor.get();
   }
 
 
 
-  public float getLeftDistance(){
-    RobotMap.leftUltraSonicTrigger.set(true);
-    try {
-      Thread.sleep((long)0.01);
-    }
-    catch(Exception ex)
-    {
-    }
-    RobotMap.leftUltraSonicTrigger.set(false);
-    while(RobotMap.leftUltraSonicEcho.get() == false) {
-    }
-    long startTime = System.nanoTime();
-    while(RobotMap.leftUltraSonicEcho.get() == true) {
-    }
-    long endTime = System.nanoTime();
-    System.out.println("startTime=" + startTime + "  endTime=" + endTime + "  distance=" + ((endTime - startTime)/1e3)/2/29.1/2.54);
-        return 0.0f;
-  }
+  // public float getLeftDistance(){
+  //   RobotMap.leftUltraSonicTrigger.set(true);
+  //   try {
+  //     Thread.sleep((long)0.01);
+  //   }
+  //   catch(Exception ex)
+  //   {
+  //   }
+  //   RobotMap.leftUltraSonicTrigger.set(false);
+  //   while(RobotMap.leftUltraSonicEcho.get() == false) {
+  //   }
+  //   long startTime = System.nanoTime();
+  //   while(RobotMap.leftUltraSonicEcho.get() == true) {
+  //   }
+  //   long endTime = System.nanoTime();
+  //   System.out.println("startTime=" + startTime + "  endTime=" + endTime + "  distance=" + ((endTime - startTime)/1e3)/2/29.1/2.54);
+  //       return 0.0f;
+  // }
   // public float getRightDistance(){
   //   return 0.0f;
   //   //gets right distance

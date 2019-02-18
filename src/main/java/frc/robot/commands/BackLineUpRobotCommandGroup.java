@@ -10,13 +10,13 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.Robot;
 
-public class LineUpRobotCommandGroup extends CommandGroup {
+public class BackLineUpRobotCommandGroup extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public LineUpRobotCommandGroup() {
-
-    addSequential(new LineRecognizerCommandV2());
+  public BackLineUpRobotCommandGroup() {
+    
+    addSequential(new BackLineRecognizerCommandV2());
     if (Robot.gyroSubsystem.getCurrentAngle() > -22.5 && Robot.gyroSubsystem.getCurrentAngle() < 22.5) {
       addSequential(new RotationPIDCommand(0));
     } else if (Robot.gyroSubsystem.getCurrentAngle() > -67.5 && Robot.gyroSubsystem.getCurrentAngle() < -22.5) {
@@ -25,7 +25,19 @@ public class LineUpRobotCommandGroup extends CommandGroup {
       addSequential(new RotationPIDCommand(-90));
     } else if (Robot.gyroSubsystem.getCurrentAngle() > -157.5 && Robot.gyroSubsystem.getCurrentAngle() < -112.5) {
       addSequential(new RotationPIDCommand(-135));
+    } else if (Robot.gyroSubsystem.getCurrentAngle() > 157.5 && Robot.gyroSubsystem.getCurrentAngle() < -157.5) {
+      addSequential(new RotationPIDCommand(-180));
+    } else if (Robot.gyroSubsystem.getCurrentAngle() > 22.5 && Robot.gyroSubsystem.getCurrentAngle() > 67.5) {
+      addSequential(new RotationPIDCommand(45));
+    } else if (Robot.gyroSubsystem.getCurrentAngle() > 67.5 && Robot.gyroSubsystem.getCurrentAngle() < 112.5) {
+      addSequential(new RotationPIDCommand(90));
+    } else if (Robot.gyroSubsystem.getCurrentAngle() > 112.5 && Robot.gyroSubsystem.getCurrentAngle() < 157.5) {
+      addSequential(new RotationPIDCommand(135));
+    } else if (Robot.gyroSubsystem.getCurrentAngle() > 157.5 && Robot.gyroSubsystem.getCurrentAngle() < -157.5) {
+      addSequential(new RotationPIDCommand(180));
     }
+    addSequential(new BackLineFollowerCommandV2());
+    addSequential(new BackAutoForwardCommand());
   
     // Add Commands here:
     // e.g. addSequential(new Command1());

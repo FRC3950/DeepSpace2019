@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.Robot;
 
 /**
  * Add your docs here.
@@ -71,5 +72,8 @@ public class IntakePnuematicsSubsystem extends Subsystem {
           ninjaStarSolenoid.set(true);
 
         }
-  }
+      }
+        public boolean getNinjaStar() {
+          return Robot.intakePnuematicsSubsystem.ninjaStarSolenoid.get();
+        }
 }

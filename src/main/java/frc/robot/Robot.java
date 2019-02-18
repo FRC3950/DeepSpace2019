@@ -75,9 +75,13 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    SmartDashboard.putBoolean("Left Sensor" + !Robot.lineFollowerSubsystem.getLeftSensor(), false);
-    SmartDashboard.putBoolean("Center Sensor" + !Robot.lineFollowerSubsystem.getCenterSensor(), false);
-    SmartDashboard.putBoolean("Right Sensor" + !Robot.lineFollowerSubsystem.getRightSensor(), false);
+   boolean fLS = SmartDashboard.putBoolean("Front Left Sensor" + !Robot.lineFollowerSubsystem.getFrontLeftSensor(),false);
+   boolean fCS = SmartDashboard.putBoolean("Front Center Sensor" + !Robot.lineFollowerSubsystem.getFrontCenterSensor(), false);
+   boolean fRS = SmartDashboard.putBoolean("Front Right Sensor" + !Robot.lineFollowerSubsystem.getFrontRightSensor(), false);
+   boolean bLS = SmartDashboard.putBoolean("Back Left Sensor" + !Robot.lineFollowerSubsystem.getBackLeftSensor(),false);
+   boolean bCS = SmartDashboard.putBoolean("Back Center Sensor" + !Robot.lineFollowerSubsystem.getBackCenterSensor(), false);
+   boolean bRS = SmartDashboard.putBoolean("Back Right Sensor" + !Robot.lineFollowerSubsystem.getBackRightSensor(), false);
+   boolean nS = SmartDashboard.putBoolean("Ninja Star" + Robot.intakePnuematicsSubsystem.getNinjaStar(), false);
   }
 
   /**

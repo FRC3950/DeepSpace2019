@@ -19,8 +19,9 @@ public class BallShooterSubsystemV2 extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-   public DoubleSolenoid shooterSolenoid = new DoubleSolenoid(1, 0, 7);
+  //  public DoubleSolenoid shooterSolenoid = new DoubleSolenoid(1, 0, 7);
 
+  // NOT USING BECAUSE NOT USING PISTON ANYMORE
 
   @Override
   public void initDefaultCommand() {
@@ -41,10 +42,10 @@ public class BallShooterSubsystemV2 extends Subsystem {
   //   return shooterSolenoid.get();
   //   //ask solenoids their state
   // }
-  public void closeShooter(){
-    shooterSolenoid.set(Value.kReverse);
-  }
-  public void openShooter(){
-    shooterSolenoid.set(Value.kForward);
-  }
+  // public void closeShooter(){
+  //   shooterSolenoid.set(Value.kReverse);
+  // }
+  // public void openShooter(){
+  //   shooterSolenoid.set(Value.kForward);
+  // }
 }

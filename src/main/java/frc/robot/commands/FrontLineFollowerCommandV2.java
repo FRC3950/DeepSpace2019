@@ -8,17 +8,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-public class LineFollowerCommandV2 extends Command implements PIDOutput{
+public class FrontLineFollowerCommandV2 extends Command {
 
   //Joystick stick = new Joystick(0);
   Joystick stick = null;
 
-  public LineFollowerCommandV2() {
+  public FrontLineFollowerCommandV2() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.lineFollowerSubsystem);
@@ -60,14 +58,12 @@ public class LineFollowerCommandV2 extends Command implements PIDOutput{
     }
   }
 
-  private boolean trigger = false;
-
   // Called repeatedly when this Command is scheduled to run
  
   @Override
   protected void execute() {
     disabled = false;
-    int currentState = Robot.lineFollowerSubsystem.getLineFollowerState();
+    int currentState = Robot.lineFollowerSubsystem.getFrontLineFollowerState();
    // System.out.println("priorState=" + priorState + "  currentState=" + currentState);
     System.out.println("JoystickX=" + stick.getX());
 
@@ -98,7 +94,7 @@ public class LineFollowerCommandV2 extends Command implements PIDOutput{
       Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(), Robot.gyroSubsystem.getCurrentAngle());
       System.out.println("joystick control");
     }
-    System.out.println("L=" + !RobotMap.leftSensor.get() + " C=" + !RobotMap.centerSensor.get() + " R=" + !RobotMap.rightSensor.get());
+    //System.out.println("L=" + !RobotMap.leftSensor.get() + " C=" + !RobotMap.centerSensor.get() + " R=" + !RobotMap.rightSensor.get());
 
   }
 
@@ -119,9 +115,5 @@ public class LineFollowerCommandV2 extends Command implements PIDOutput{
   @Override
   protected void interrupted() {
     priorState = 0b000;
-  }
-  @Override
-  public void pidWrite(double output) {
-
   }
 }

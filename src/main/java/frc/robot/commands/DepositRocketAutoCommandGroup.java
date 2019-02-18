@@ -14,16 +14,17 @@ public class DepositRocketAutoCommandGroup extends CommandGroup {
    * Add your docs here.
    */
   public DepositRocketAutoCommandGroup() {
+
+// NOT USING
+
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
 
        // addParallel(new BallElevatorPIDCommand());
-       addSequential(new RocketElevatorHeightCommand());
-       addSequential(new ShootBallCommand());
-       addSequential(new DelayCommand(500));
-       addSequential(new CloseDoorCommand());
+       addSequential(new ElevatorHeightCommand(2));
+       addSequential(new BallElevatorShooterMotorCommand(0.5));
        addSequential(new BallElevatorPIDCommand(0));
 
     // To run multiple commands at the same time,

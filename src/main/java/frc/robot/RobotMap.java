@@ -7,16 +7,9 @@
 
 package frc.robot;
 
-import com.kauailabs.navx.frc.AHRS;
-//import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-
-import edu.wpi.first.wpilibj.AnalogInput;
+//import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DigitalOutput;
-import edu.wpi.first.wpilibj.SPI;
-
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -26,11 +19,15 @@ import edu.wpi.first.wpilibj.SPI;
  */
 public class RobotMap {
   
-  public static DigitalInput rightSensor = new DigitalInput(3);
-  public static DigitalInput centerSensor = new DigitalInput(4);
-  public static DigitalInput leftSensor = new DigitalInput(5);
+  public static DigitalInput frontRightSensor = new DigitalInput(3);
+  public static DigitalInput frontCenterSensor = new DigitalInput(4);
+  public static DigitalInput frontLeftSensor = new DigitalInput(5);
 
-  public static AnalogInput distanceSensor = new AnalogInput(0);
+  public static DigitalInput backRightSensor = new DigitalInput(0);
+  public static DigitalInput backCenterSensor = new DigitalInput(1);
+  public static DigitalInput backLeftSensor = new DigitalInput(2);
+
+  // public static AnalogInput distanceSensor = new AnalogInput(0);
 
   public static DigitalOutput leftUltraSonicTrigger = new DigitalOutput(8);
   public static DigitalInput leftUltraSonicEcho = new DigitalInput(7);

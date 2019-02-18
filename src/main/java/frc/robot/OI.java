@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.BackLineFollowerCommandV2;
+import frc.robot.commands.BackLineFollowingAbortCommand;
 import frc.robot.commands.BackPnuematicLiftCommand;
-import frc.robot.commands.BrushlessMotorCommand;
-import frc.robot.commands.CloseDoorCommand;
 import frc.robot.commands.DepositBottomAutoCommandGroup;
 import frc.robot.commands.DepositCargoAutoCommandGroup;
 import frc.robot.commands.DepositRocketAutoCommandGroup;
@@ -22,12 +22,9 @@ import frc.robot.commands.FrontPnuematicLiftCommand;
 import frc.robot.commands.HatchOutakeCommand;
 import frc.robot.commands.LiftIntakeCommand;
 // import frc.robot.commands.LineFollowerCommand;
-import frc.robot.commands.LineFollowerCommandV2;
-import frc.robot.commands.LineFollowingAbortCommand;
+import frc.robot.commands.FrontLineFollowerCommandV2;
+import frc.robot.commands.FrontLineFollowingAbortCommand;
 import frc.robot.commands.NinjaStarCommand;
-import frc.robot.commands.ResetFieldCentricCommand;
-import frc.robot.commands.ShootBallCommand;
-import frc.robot.commands.BottomElevatorHeightCommand;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -94,15 +91,20 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
-  public static LineFollowerCommandV2 lfc = new LineFollowerCommandV2();
+  public static FrontLineFollowerCommandV2 Flfc = new FrontLineFollowerCommandV2();
+  public static BackLineFollowerCommandV2 Blfc = new BackLineFollowerCommandV2();
+
 
   public OI() {
  
-    driveStick2Button.whenPressed(lfc);
+    driveStick3Button.whenPressed(Flfc);
+    driveStick5Button.whenPressed(new FrontLineFollowingAbortCommand());
+
+    driveStick4Button.whenPressed(Blfc);
+    driveStick6Button.whenPressed(new BackLineFollowingAbortCommand()); 
+
     xboxControllerRBButton.whenPressed(new HatchOutakeCommand());
     xboxControllerLBButton.whenPressed(new LiftIntakeCommand());
-
-    driveStick5Button.whenPressed(new LineFollowingAbortCommand());
 
     driveStick8Button.whenPressed(new DropLiftPnuematicsCommand());
     driveStick12Button.whenPressed(new BackPnuematicLiftCommand());
@@ -112,6 +114,8 @@ public class OI {
     xboxControllerBButton.whenPressed(new DepositCargoAutoCommandGroup());
     xboxControllerYButton.whenPressed(new DepositRocketAutoCommandGroup());
     xboxControllerXButton.whenPressed(new NinjaStarCommand());
+
+    
 
     // driveStick9Button.whenPressed(new BrushlessMotorCommand());
     // driveStick7Button.whenPressed(new ResetFieldCentricCommand());

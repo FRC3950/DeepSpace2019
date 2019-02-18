@@ -26,8 +26,8 @@ public class CloseDoorCommand extends Command {
   @Override
   protected void execute() {
 
-    System.out.println("execute close door command");
-    Robot.ballShooterSubsystemV2.closeShooter();
+    // System.out.println("execute close door command");
+    // Robot.ballShooterSubsystemV2.closeShooter();
   }
 
   // Make this return true when this Command no longer needs to run execute()

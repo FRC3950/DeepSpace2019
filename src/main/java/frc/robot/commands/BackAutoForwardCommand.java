@@ -8,15 +8,12 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.OI;
 import frc.robot.Robot;
 
-
-public class LineFollowingAbortCommand extends Command {
-  public LineFollowingAbortCommand() {
+public class BackAutoForwardCommand extends Command {
+  public BackAutoForwardCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.lineFollowerSubsystem);
   }
 
   // Called just before this Command runs the first time
@@ -27,14 +24,13 @@ public class LineFollowingAbortCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    OI.lfc.disabled = true;
-
+    Robot.drivetrainSubsystem.Drive(-0.3, 0, 0, 0);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return false;
   }
 
   // Called once after isFinished returns true
