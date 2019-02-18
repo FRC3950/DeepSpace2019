@@ -20,7 +20,7 @@ public class DepositBottomAutoCommandGroup extends CommandGroup {
     // these will run in order.
    // addParallel(new BallElevatorPIDCommand());
     addSequential(new ElevatorHeightCommand(0));
-    addSequential(new BallElevatorShooterMotorCommand(0.5));
+    addSequential(new BallElevatorShooterCommand(0.5));
     addSequential(new BallElevatorPIDCommand(0));
 
     // To run multiple commands at the same time,

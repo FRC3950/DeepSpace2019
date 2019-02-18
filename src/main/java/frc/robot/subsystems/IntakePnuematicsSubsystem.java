@@ -7,7 +7,6 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;
@@ -31,13 +30,6 @@ public class IntakePnuematicsSubsystem extends Subsystem {
   public Solenoid hatchOuttakeLeftSolenoid = new Solenoid(1, hatchOuttakeLeftSolenoidChannel);
   public Solenoid hatchOuttakeRightSolenoid = new Solenoid(1, hatchOuttakeRightSolenoidChannel);
   public Solenoid ninjaStarSolenoid = new Solenoid(1, ninjaStarSolenoidChannel);
-
-
-  // private DoubleSolenoid liftSolenoid1 = RobotMap.liftIntakeSolenoid1;
-  // private DoubleSolenoid liftSolenoid2 = RobotMap.liftIntakeSolenoid2;
-  // private DoubleSolenoid hatchOuttake1 = RobotMap.hatchOuttakeSolenoid1;
-  // private DoubleSolenoid hatchOuttake2 = RobotMap.hatchOuttakeSolenoid2;
-  // private DoubleSolenoid ninjaStar = RobotMap.ninjaStarSolenoid;
 
   @Override
   public void initDefaultCommand() {

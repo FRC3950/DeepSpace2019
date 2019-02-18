@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.BallElevatorSubsystem;
-import frc.robot.subsystems.BallShooterSubsystemV2;
 import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.GyroSubsystem;
@@ -23,8 +22,9 @@ import frc.robot.subsystems.IntakePnuematicsSubsystem;
 import frc.robot.subsystems.LineFollowerSubsystem;
 import frc.robot.subsystems.RobotLiftSubsystem;
 import frc.robot.subsystems.USBCameraSubsystem;
-import frc.robot.subsystems.UltrasonicSubsystem;
 import frc.robot.commands.USBCameraCommand;
+// import frc.robot.subsystems.BallShooterSubsystemV2;
+// import frc.robot.subsystems.UltrasonicSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -39,16 +39,16 @@ public class Robot extends TimedRobot {
   public static OI m_oi;
 
   public static BallElevatorSubsystem ballElevatorSubsystem = new BallElevatorSubsystem();
-  public static BallShooterSubsystemV2 ballShooterSubsystemV2 = new BallShooterSubsystemV2(); 
   public static DrivetrainSubsystem drivetrainSubsystem = new DrivetrainSubsystem();
   public static IntakeMotorSubsystem intakeMotorSubsystem = new IntakeMotorSubsystem();
   public static IntakePnuematicsSubsystem intakePnuematicsSubsystem = new IntakePnuematicsSubsystem();
   public static LineFollowerSubsystem lineFollowerSubsystem = new LineFollowerSubsystem();
   public static RobotLiftSubsystem robotLiftSubsystem = new RobotLiftSubsystem();
-  public static UltrasonicSubsystem ultrasonicSubsystem = new UltrasonicSubsystem();
   public static USBCameraSubsystem usbCameraSubsystem = new USBCameraSubsystem();
   public static GyroSubsystem gyroSubsystem = new GyroSubsystem();
- 
+   // public static UltrasonicSubsystem ultrasonicSubsystem = new UltrasonicSubsystem();
+  // public static BallShooterSubsystemV2 ballShooterSubsystemV2 = new BallShooterSubsystemV2(); 
+
 
   Command m_autonomousCommand = null;
   SendableChooser<Command> m_chooser = new SendableChooser<>();

@@ -7,8 +7,6 @@
 
 package frc.robot;
 
-import com.kauailabs.navx.frc.AHRS;
-
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 
@@ -31,6 +29,6 @@ public class PIDSourceRotation implements PIDSource {
 	}
 	@Override
 	public double pidGet() {
-		return Robot.ultrasonicSubsystem.getRobotAngle();
+		return Robot.gyroSubsystem.getCurrentAngle();
     }
 }

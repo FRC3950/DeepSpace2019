@@ -26,7 +26,7 @@ public class BallElevatorPIDCommand extends Command implements PIDOutput{
 
   PIDController pid;
   double setpoint = 0;
-  PIDSource source;
+  PIDSourceElevator source;
   int range = 10;
   boolean start = true;
 
@@ -36,13 +36,15 @@ public class BallElevatorPIDCommand extends Command implements PIDOutput{
     requires(Robot.ballElevatorSubsystem);
   
     setpoint = input;
+    source = new PIDSourceElevator();
+    pid = new PIDController(P, I, D, F, source, this);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    source = new PIDSourceElevator();
-    pid = new PIDController(P, I, D, F, source, this);
+    // source = new PIDSourceElevator();
+    // pid = new PIDController(P, I, D, F, source, this);
   
     Robot.ballElevatorSubsystem.resetEncoder();
     source.setPIDSourceType(PIDSourceType.kDisplacement);

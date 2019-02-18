@@ -5,47 +5,47 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystems;
+// NOT USING
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-import edu.wpi.first.wpilibj.command.Subsystem;
+// package frc.robot.subsystems;
 
-/**
- * Add your docs here.
- */
-public class BallShooterSubsystemV2 extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+// import edu.wpi.first.wpilibj.DoubleSolenoid;
+// import edu.wpi.first.wpilibj.Solenoid;
+// import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+// import edu.wpi.first.wpilibj.command.Subsystem;
 
-  //  public DoubleSolenoid shooterSolenoid = new DoubleSolenoid(1, 0, 7);
+// /**
+//  * Add your docs here.
+//  */
+// public class BallShooterSubsystemV2 extends Subsystem {
+//   // Put methods for controlling this subsystem
+//   // here. Call these from Commands.
 
-  // NOT USING BECAUSE NOT USING PISTON ANYMORE
+//    public DoubleSolenoid shooterSolenoid = new DoubleSolenoid(1, 0, 7);
 
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
-  }
+//   // NOT USING BECAUSE NOT USING PISTON ANYMORE
 
+//   @Override
+//   public void initDefaultCommand() {
+//     // Set the default command for a subsystem here.
+//     // setDefaultCommand(new MySpecialCommand());
+//   }
 
-
-  // public boolean closeCargoDoor(){
-  //   if(isOpen()){
-  //     shooterSolenoid.set(false);
-  //   }
-  //   //closes solenoid
-  //   return isOpen();
-  // }
-  // private boolean isOpen(){
-  //   return shooterSolenoid.get();
-  //   //ask solenoids their state
-  // }
-  // public void closeShooter(){
-  //   shooterSolenoid.set(Value.kReverse);
-  // }
-  // public void openShooter(){
-  //   shooterSolenoid.set(Value.kForward);
-  // }
-}
+//   public boolean closeCargoDoor(){
+//     if(isOpen()){
+//       shooterSolenoid.set(false);
+//     }
+//     //closes solenoid
+//     return isOpen();
+//   }
+//   private boolean isOpen(){
+//     return shooterSolenoid.get();
+//     //ask solenoids their state
+//   }
+//   public void closeShooter(){
+//     shooterSolenoid.set(Value.kReverse);
+//   }
+//   public void openShooter(){
+//     shooterSolenoid.set(Value.kForward);
+//   }
+// }

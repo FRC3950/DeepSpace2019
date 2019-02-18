@@ -5,49 +5,51 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+// NOT USING
 
-import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
+// package frc.robot.commands;
 
-public class BrushlessMotorCommand extends Command {
-  public BrushlessMotorCommand() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
-    requires(Robot.drivetrainSubsystem);
-  }
-    // Called just before this Command runs the first time
-  @Override
-  protected void initialize() {
-    System.out.println("initialized");
-    Robot.drivetrainSubsystem.frontRight.set(1.0);
-  }
+// import edu.wpi.first.wpilibj.command.Command;
+// import frc.robot.Robot;
 
-  // Called repeatedly when this Command is scheduled to run
-  @Override
-  protected void execute() {
-    System.out.println("fr= " + Robot.drivetrainSubsystem.frontRight.getEncoder().getVelocity());
-    System.out.println("fr= " + Robot.drivetrainSubsystem.frontRight.getEncoder().getPosition());
+// public class BrushlessMotorCommand extends Command {
+//   public BrushlessMotorCommand() {
+//     // Use requires() here to declare subsystem dependencies
+//     // eg. requires(chassis);
+//     requires(Robot.drivetrainSubsystem);
+//   }
+//     // Called just before this Command runs the first time
+//   @Override
+//   protected void initialize() {
+//     System.out.println("initialized");
+//     Robot.drivetrainSubsystem.frontRight.set(1.0);
+//   }
 
-  }
+//   // Called repeatedly when this Command is scheduled to run
+//   @Override
+//   protected void execute() {
+//     System.out.println("fr= " + Robot.drivetrainSubsystem.frontRight.getEncoder().getVelocity());
+//     System.out.println("fr= " + Robot.drivetrainSubsystem.frontRight.getEncoder().getPosition());
 
-  // Make this return true when this Command no longer needs to run execute()
-  @Override
-  protected boolean isFinished() {
-    System.out.println("isFinished");
-    return true;
-  }
+//   }
 
-  // Called once after isFinished returns true
-  @Override
-  protected void end() {
-    System.out.println("end");
-  }
+//   // Make this return true when this Command no longer needs to run execute()
+//   @Override
+//   protected boolean isFinished() {
+//     System.out.println("isFinished");
+//     return true;
+//   }
 
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
-  @Override
-  protected void interrupted() {
-    System.out.println("interrupted");
-  }
-}
+//   // Called once after isFinished returns true
+//   @Override
+//   protected void end() {
+//     System.out.println("end");
+//   }
+
+//   // Called when another command which requires one or more of the same
+//   // subsystems is scheduled to run
+//   @Override
+//   protected void interrupted() {
+//     System.out.println("interrupted");
+//   }
+// }

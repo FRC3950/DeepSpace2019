@@ -5,45 +5,47 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+// NOT USING
 
-import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
+// package frc.robot.commands;
 
-public class CloseDoorCommand extends Command {
-  public CloseDoorCommand() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
-    requires(Robot.ballShooterSubsystemV2);
-  }
+// import edu.wpi.first.wpilibj.command.Command;
+// import frc.robot.Robot;
 
-  // Called just before this Command runs the first time
-  @Override
-  protected void initialize() {
-  }
+// public class CloseDoorCommand extends Command {
+//   public CloseDoorCommand() {
+//     // Use requires() here to declare subsystem dependencies
+//     // eg. requires(chassis);
+//     requires(Robot.ballShooterSubsystemV2);
+//   }
 
-  // Called repeatedly when this Command is scheduled to run
-  @Override
-  protected void execute() {
+//   // Called just before this Command runs the first time
+//   @Override
+//   protected void initialize() {
+//   }
 
-    // System.out.println("execute close door command");
-    // Robot.ballShooterSubsystemV2.closeShooter();
-  }
+//   // Called repeatedly when this Command is scheduled to run
+//   @Override
+//   protected void execute() {
 
-  // Make this return true when this Command no longer needs to run execute()
-  @Override
-  protected boolean isFinished() {
-    return true;
-  }
+//     // System.out.println("execute close door command");
+//     // Robot.ballShooterSubsystemV2.closeShooter();
+//   }
 
-  // Called once after isFinished returns true
-  @Override
-  protected void end() {
-  }
+//   // Make this return true when this Command no longer needs to run execute()
+//   @Override
+//   protected boolean isFinished() {
+//     return true;
+//   }
 
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
-  @Override
-  protected void interrupted() {
-  }
-}
+//   // Called once after isFinished returns true
+//   @Override
+//   protected void end() {
+//   }
+
+//   // Called when another command which requires one or more of the same
+//   // subsystems is scheduled to run
+//   @Override
+//   protected void interrupted() {
+//   }
+// }

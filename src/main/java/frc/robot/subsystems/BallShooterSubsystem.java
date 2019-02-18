@@ -5,31 +5,33 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystems;
+// NOT USING
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+// package frc.robot.subsystems;
 
-/**
- * Add your docs here.
- */
-public class BallShooterSubsystem extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
-  // final int cargoShooterSolenoidChannel = 5;
+// import edu.wpi.first.wpilibj.command.Subsystem;
 
-  // private Solenoid cargoShooterSolenoid = new Solenoid(cargoShooterSolenoidChannel);
+// /**
+//  * Add your docs here.
+//  */
+// public class BallShooterSubsystem extends Subsystem {
+//   // Put methods for controlling this subsystem
+//   // here. Call these from Commands.
+//   final int cargoShooterSolenoidChannel = 5;
 
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
-  }
-  // public boolean shoot(){
-  //   if(cargoDoorSubsystem.openCargoDoor()){
-  //     cargoShooterSolenoid.set(!cargoShooterSolenoid.get());
-  //    //shoot
-  //    cargoDoorSubsystem.closeCargoDoor();
-  //   }
-  //   return true;
-  // }
-}
+//   private Solenoid cargoShooterSolenoid = new Solenoid(cargoShooterSolenoidChannel);
+
+//   @Override
+//   public void initDefaultCommand() {
+//     // Set the default command for a subsystem here.
+//     // setDefaultCommand(new MySpecialCommand());
+//   }
+//   public boolean shoot(){
+//     if(cargoDoorSubsystem.openCargoDoor()){
+//       cargoShooterSolenoid.set(!cargoShooterSolenoid.get());
+//      //shoot
+//      cargoDoorSubsystem.closeCargoDoor();
+//     }
+//     return true;
+//   }
+// }
