@@ -48,7 +48,7 @@ public class BottomElevatorHeightCommand extends Command {
     }
 
       Robot.ballElevatorSubsystem.resetEncoder();
-    } //Might need to add more, very unsure
+    //Might need to add more, very unsure
   }
 
   // Make this return true when this Command no longer needs to run execute()
