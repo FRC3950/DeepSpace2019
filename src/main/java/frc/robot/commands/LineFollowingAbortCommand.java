@@ -28,6 +28,7 @@ public class LineFollowingAbortCommand extends Command {
   @Override
   protected void execute() {
     OI.lfc.disabled = true;
+
   }
 
   // Make this return true when this Command no longer needs to run execute()

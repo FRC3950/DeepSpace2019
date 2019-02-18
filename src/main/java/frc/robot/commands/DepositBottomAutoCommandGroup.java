@@ -8,29 +8,22 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.Robot;
 
-public class LineUpRobotCommandGroup extends CommandGroup {
+public class DepositBottomAutoCommandGroup extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public LineUpRobotCommandGroup() {
-
-    addSequential(new LineRecognizerCommandV2());
-    if (Robot.gyroSubsystem.getCurrentAngle() > -22.5 && Robot.gyroSubsystem.getCurrentAngle() < 22.5) {
-      addSequential(new RotationPIDCommand(0));
-    } else if (Robot.gyroSubsystem.getCurrentAngle() > -67.5 && Robot.gyroSubsystem.getCurrentAngle() < -22.5) {
-      addSequential(new RotationPIDCommand(-45));
-    } else if (Robot.gyroSubsystem.getCurrentAngle() > -112.5 && Robot.gyroSubsystem.getCurrentAngle() < -67.5) {
-      addSequential(new RotationPIDCommand(-90));
-    } else if (Robot.gyroSubsystem.getCurrentAngle() > -157.5 && Robot.gyroSubsystem.getCurrentAngle() < -112.5) {
-      addSequential(new RotationPIDCommand(-135));
-    }
-  
+  public DepositBottomAutoCommandGroup() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
+   // addParallel(new BallElevatorPIDCommand());
+    addSequential(new BottomElevatorHeightCommand());
+    addSequential(new ShootBallCommand());
+    addSequential(new DelayCommand(500));
+    addSequential(new CloseDoorCommand());
+    addSequential(new BallElevatorPIDCommand(0));
 
     // To run multiple commands at the same time,
     // use addParallel()

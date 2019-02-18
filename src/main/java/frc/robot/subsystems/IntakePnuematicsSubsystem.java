@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -18,22 +19,17 @@ public class IntakePnuematicsSubsystem extends Subsystem {
   // here. Call these from Commands.
 
   //Change values of these to be the correct ones
-  final int intakeRotateLeftSolenoidChannel1 = 0;
-  final int intakeRotateLeftSolenoidChannel2 = 2;
-  final int intakeRotateRightSolenoidChannel1 = 5;
-  final int intakeRotateRightSolenoidChannel2 = 7;
-  final int hatchOuttakeLeftSolenoidChannel1 = 2;
-  final int hatchOuttakeLeftSolenoidChannel2 = 0;
-  final int hatchOuttakeRightSolenoidChannel1 = 3;
-  final int hatchOuttakeRightSolenoidChannel2 = 0;
-  final int ninjaStarSolenoidChannel1 = 0;
-  final int ninjaStarSolenoidChannel2 = 1;
+  final int intakeRotateLeftSolenoidChannel = 1;
+  final int intakeRotateRightSolenoidChannel = 2;
+  final int hatchOuttakeLeftSolenoidChannel = 3;
+  final int hatchOuttakeRightSolenoidChannel = 4;
+  final int ninjaStarSolenoidChannel = 5;
 
-  public DoubleSolenoid intakeLeftRotateSolenoid = null; //new DoubleSolenoid(intakeRotateLeftSolenoidChannel1, intakeRotateLeftSolenoidChannel2);
-  public DoubleSolenoid intakeRightRotateSolenoid = null; //new DoubleSolenoid(intakeRotateRightSolenoidChannel1, intakeRotateRightSolenoidChannel2);
-  private DoubleSolenoid hatchOuttakeLeftSolenoid = null; //new DoubleSolenoid(hatchOuttakeLeftSolenoidChannel1, hatchOuttakeLeftSolenoidChannel2);
-  private DoubleSolenoid hatchOuttakeRightSolenoid = null; //new DoubleSolenoid(hatchOuttakeRightSolenoidChannel1, hatchOuttakeRightSolenoidChannel2);
-  private DoubleSolenoid ninjaStarSolenoid = null; //new DoubleSolenoid(ninjaStarSolenoidChannel1, ninjaStarSolenoidChannel2);
+  public Solenoid intakeLeftRotateSolenoid = new Solenoid(1, intakeRotateLeftSolenoidChannel);
+  public Solenoid intakeRightRotateSolenoid = new Solenoid(1, intakeRotateRightSolenoidChannel);
+  public Solenoid hatchOuttakeLeftSolenoid = new Solenoid(1, hatchOuttakeLeftSolenoidChannel);
+  public Solenoid hatchOuttakeRightSolenoid = new Solenoid(1, hatchOuttakeRightSolenoidChannel);
+  public Solenoid ninjaStarSolenoid = new Solenoid(1, ninjaStarSolenoidChannel);
 
 
   // private DoubleSolenoid liftSolenoid1 = RobotMap.liftIntakeSolenoid1;
@@ -50,31 +46,29 @@ public class IntakePnuematicsSubsystem extends Subsystem {
    }
 
   public void toggleLift(){
-    if (intakeLeftRotateSolenoid.get() == DoubleSolenoid.Value.kForward && 
-        intakeRightRotateSolenoid.get() == DoubleSolenoid.Value.kForward) {
-      intakeLeftRotateSolenoid.set(DoubleSolenoid.Value.kReverse);
-      intakeRightRotateSolenoid.set(DoubleSolenoid.Value.kReverse);
+    if (intakeLeftRotateSolenoid.get() == true && intakeRightRotateSolenoid.get() == true) {
+      intakeLeftRotateSolenoid.set(false);
+      intakeRightRotateSolenoid.set(false);
     } else {
-      intakeLeftRotateSolenoid.set(DoubleSolenoid.Value.kForward);
-      intakeRightRotateSolenoid.set(DoubleSolenoid.Value.kForward);
+      intakeLeftRotateSolenoid.set(true);
+      intakeRightRotateSolenoid.set(true);
       //if the left solenoid is out and the right solenoid is out, then set it to the in postion, else, put them in the forward position
     }
   }
     public void toggleHatchOuttake(){
-      if (hatchOuttakeLeftSolenoid.get() == DoubleSolenoid.Value.kForward && 
-        hatchOuttakeRightSolenoid.get() == DoubleSolenoid.Value.kForward) {
-        hatchOuttakeLeftSolenoid.set(DoubleSolenoid.Value.kReverse);
-        hatchOuttakeRightSolenoid.set(DoubleSolenoid.Value.kReverse);
+      if (hatchOuttakeLeftSolenoid.get() == true && hatchOuttakeRightSolenoid.get() == true) {
+        hatchOuttakeLeftSolenoid.set(false);
+        hatchOuttakeRightSolenoid.set(false);
       } else {
-        hatchOuttakeLeftSolenoid.set(DoubleSolenoid.Value.kForward);
-        hatchOuttakeRightSolenoid.set(DoubleSolenoid.Value.kForward);
+        hatchOuttakeLeftSolenoid.set(true);
+        hatchOuttakeRightSolenoid.set(true);
       }
     }
       public void toggleNinjaStar(){
-        if (ninjaStarSolenoid.get() == DoubleSolenoid.Value.kForward) {
-          ninjaStarSolenoid.set(DoubleSolenoid.Value.kReverse);
+        if (ninjaStarSolenoid.get() == true) {
+          ninjaStarSolenoid.set(false);
         } else {
-          ninjaStarSolenoid.set(DoubleSolenoid.Value.kForward);
+          ninjaStarSolenoid.set(true);
 
         }
   }

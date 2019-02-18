@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.PIDOutput;
 /**
  * Add your docs here.
  */
-public class PIDOutputLineFollower implements PIDOutput{
+public class PIDOutputRotation implements PIDOutput {
     double outsource = 0;
     @Override
     public void pidWrite(double output) {

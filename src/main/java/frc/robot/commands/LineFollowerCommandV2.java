@@ -15,7 +15,8 @@ import frc.robot.RobotMap;
 
 public class LineFollowerCommandV2 extends Command implements PIDOutput{
 
-  Joystick stick = null; //Robot.m_oi.driveStick;
+  //Joystick stick = new Joystick(0);
+  Joystick stick = null;
 
   public LineFollowerCommandV2() {
     // Use requires() here to declare subsystem dependencies
@@ -28,12 +29,11 @@ public class LineFollowerCommandV2 extends Command implements PIDOutput{
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    stick = Robot.m_oi.driveStick;
+
   }
 
   private static int priorState = 0b000;
-  private static boolean prior_centerCamera = false;
-  private static boolean prior_leftCamera = false;
-  private static boolean prior_rightCamera = false;
   public static boolean disabled = false;
   
 
@@ -44,21 +44,17 @@ public class LineFollowerCommandV2 extends Command implements PIDOutput{
       case 0b000:  
       case 0b101:
       case 0b111:
-        Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(),Robot.gyroSubsystem.getCurrentAngle());
         return "Joystick control";
       case 0b010:
         return "Go Straight";
       case 0b110:
-        Robot.drivetrainSubsystem.Drive(0, 0.75, 0, 0);
-        return "move right and go straight";
+        return "move right";
       case 0b011:
-        Robot.drivetrainSubsystem.Drive(0, 0.75, 0, 0);
-        return "move left and go straight";
+        return "move left";
       case 0b100:
-        return " move right and go straight";
+        return " move right";
       case 0b001:
-        Robot.drivetrainSubsystem.Drive(-0.75, 0.75, 0, 0);
-        return "move left and go striaght";
+        return "move left";
       default:
         return "ignore";
     }
@@ -67,39 +63,42 @@ public class LineFollowerCommandV2 extends Command implements PIDOutput{
   private boolean trigger = false;
 
   // Called repeatedly when this Command is scheduled to run
+ 
   @Override
   protected void execute() {
+    disabled = false;
     int currentState = Robot.lineFollowerSubsystem.getLineFollowerState();
-    System.out.println("priorState=" + priorState + "  currentState=" + currentState);
+   // System.out.println("priorState=" + priorState + "  currentState=" + currentState);
+    System.out.println("JoystickX=" + stick.getX());
 
     if(priorState == currentState){
       System.out.println("No state change");
     }
     else if(currentState == 0b000) {
-      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(), Robot.gyroSubsystem.getCurrentAngle());
+      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), 0, Robot.gyroSubsystem.getCurrentAngle());
       System.out.println("joystick control");  
     } else if((currentState & 0b100) == 0b100){
-      Robot.drivetrainSubsystem.Drive(-0.5, 0.5, 0, 0);
-      System.out.println("move left and go straight");
+      Robot.drivetrainSubsystem.Drive(0, -0.16, 0, 0);
+      System.out.println("move left");
       if(!((currentState & 0b010) == 0b010)) {
-        Robot.drivetrainSubsystem.Drive(-0.75, 0.75, 0, 0);
+        Robot.drivetrainSubsystem.Drive(0,-0.16, 0, 0);
         System.out.println("move left");
       }
     } else if((currentState & 0b001) == 0b001){
-      Robot.drivetrainSubsystem.Drive(0.75, 0.75, 0, 0);
-      System.out.println("move right and go straight");
+      Robot.drivetrainSubsystem.Drive(0, 0.16, 0, 0);
+      System.out.println("move right");
       if(!((currentState & 0b010) == 0b010)) {
-        Robot.drivetrainSubsystem.Drive(0.75, 0.75, 0, 0);
-        System.out.println("move rigjt");
+        Robot.drivetrainSubsystem.Drive(0, 0.16, 0, 0);
+        System.out.println("move right");
       }
     } else if((currentState & 0b010) == 0b010){
-      Robot.drivetrainSubsystem.Drive(0, 0.75, 0, 0);
+      Robot.drivetrainSubsystem.Drive(0, 0, 0, 0); //-0.16
       System.out.println("move forward");
     } else {
       Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(), Robot.gyroSubsystem.getCurrentAngle());
       System.out.println("joystick control");
     }
-    System.out.println("L=" + RobotMap.leftSensor.get() + " C=" + RobotMap.centerSensor.get() + " R=" + RobotMap.rightSensor.get());
+    System.out.println("L=" + !RobotMap.leftSensor.get() + " C=" + !RobotMap.centerSensor.get() + " R=" + !RobotMap.rightSensor.get());
 
   }
 
@@ -113,9 +112,6 @@ public class LineFollowerCommandV2 extends Command implements PIDOutput{
   @Override
   protected void end() {
     priorState = 0b000;
-    prior_centerCamera = false;
-    prior_leftCamera = false;
-    prior_rightCamera = false;
   }
 
   // Called when another command which requires one or more of the same
@@ -123,9 +119,6 @@ public class LineFollowerCommandV2 extends Command implements PIDOutput{
   @Override
   protected void interrupted() {
     priorState = 0b000;
-    prior_centerCamera = false;
-    prior_leftCamera = false;
-    prior_rightCamera = false;
   }
   @Override
   public void pidWrite(double output) {

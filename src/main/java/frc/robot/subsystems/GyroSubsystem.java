@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Add your docs here.
  */
 public class GyroSubsystem extends Subsystem {
-  private AHRS ahrs = new AHRS(SPI.Port.kMXP);
+  public AHRS ahrs = new AHRS(SPI.Port.kMXP);
   // private double startingAngle = 0.0;
   
  public GyroSubsystem(){

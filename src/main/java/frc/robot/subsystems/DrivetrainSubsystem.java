@@ -29,13 +29,13 @@ public class DrivetrainSubsystem extends Subsystem {
   
   final int frontLeftChannel = 3;
   final int backLeftChannel = 2;
-  final int frontRightChannel =1;
-  final int backRightChannel = 0;
+  final int frontRightChannel = 1;
+  final int backRightChannel = 4;
   
-  public CANSparkMax frontLeft = new CANSparkMax(frontLeftChannel, CANSparkMaxLowLevel.MotorType.kBrushless);
-  public CANSparkMax backLeft = new CANSparkMax(backLeftChannel, CANSparkMaxLowLevel.MotorType.kBrushless);
-  public CANSparkMax frontRight = new CANSparkMax(frontRightChannel, CANSparkMaxLowLevel.MotorType.kBrushless);
-  public CANSparkMax backRight = new CANSparkMax(backRightChannel, CANSparkMaxLowLevel.MotorType.kBrushless);
+  public CANSparkMax frontLeft = new CANSparkMax(frontRightChannel, CANSparkMaxLowLevel.MotorType.kBrushless);
+  public CANSparkMax backLeft = new CANSparkMax(backRightChannel, CANSparkMaxLowLevel.MotorType.kBrushless);
+  public CANSparkMax frontRight = new CANSparkMax(frontLeftChannel, CANSparkMaxLowLevel.MotorType.kBrushless);
+  public CANSparkMax backRight = new CANSparkMax(backLeftChannel, CANSparkMaxLowLevel.MotorType.kBrushless);
 
 
   MecanumDrive drivetrain;
@@ -65,8 +65,8 @@ public class DrivetrainSubsystem extends Subsystem {
     // SpeedControllerGroup left = new SpeedControllerGroup(frontLeft, backLeft);
     // SpeedControllerGroup right = new SpeedControllerGroup(frontRight, backRight);
 
-    backLeft.setInverted(true);
-    backRight.setInverted(true);
+     backLeft.setInverted(true);
+     backRight.setInverted(true);
 
     drivetrain = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
   
@@ -87,25 +87,25 @@ public class DrivetrainSubsystem extends Subsystem {
 
   public void Drive(double ySpeed, double xSpeed, double zRotation, double gyroAngle){
     double x, y, z;
-    x = ySpeed;
-    y = xSpeed;
-    z = zRotation;
-    if(y<0.1 && y>-0.1) y = 0;
-    if(x<0.1 && x>-0.1) x = 0;
-    if(z<0.2 && z>-0.2) z = 0;
+    x = -ySpeed;
+    y = -xSpeed;
+    z = -zRotation;
+    if(y<0.15 && y>-0.15) y = 0;
+    if(x<0.15 && x>-0.15) x = 0;
+    if(z<0.3 && z>-0.3) z = 0;
     // if (y < 0) y = -(y*y); else y = y*y;
     // if (x < 0) x = -(x*x); else x = x*x;
-    System.out.println("x=" + x + "  y=" + y + "  z=" + z + "  gyroAngle=" + gyroAngle);
-    drivetrain.driveCartesian(y, x, z, gyroAngle);
+    //System.out.println("x=" + x + "  y=" + y + "  z=" + z + "  gyroAngle=" + gyroAngle);
+    drivetrain.driveCartesian(y, x, .75 * z, gyroAngle);
   }
   // public void driveCartesian(double ySpeed, double xSpeed, double zRotation){
   //   double y, x, z;
-  //   x = ySpeed;
-  //   y = xSpeed;
-  //   z = zRotation;
+  //   x = -ySpeed;
+  //   y = -xSpeed;
+  //   z = -zRotation;
   //   if(y<0.35 && y>-0.35) y = 0;
   //   if(x<0.35 && x>-0.35) x = 0;
-  //   //if(z<0.35 && z>-0.35) z = 0;
+  //   if(z<0.35 && z>-0.35) z = 0;
   //   // if (y < 0) y = -(y*y); else y = y*y;
   //   // if (x < 0) x = -(x*x); else x = x*x;
   //   System.out.println("x=" + x + "  y=" + y + "  z=" + z);

@@ -15,10 +15,10 @@ import edu.wpi.first.wpilibj.PIDSourceType;
 /**
  * Add your docs here.
  */
-public class PIDSourceLineFollower implements PIDSource {
+public class PIDSourceRotation implements PIDSource {
     PIDSourceType type;
     // AHRS navx;
-    public PIDSourceLineFollower(){
+    public PIDSourceRotation() {
         // navx = RobotMap.ahrs;
     }
 	@Override

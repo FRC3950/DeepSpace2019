@@ -7,32 +7,14 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.PIDController;
-import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.PIDSourceLineFollower;
 import frc.robot.Robot;
 
-public class LineFollowerPIDCommand extends Command implements PIDOutput {
-  
-  double P = SmartDashboard.getNumber("P (lineFollower)",0.0);
-  double I = SmartDashboard.getNumber("I (lineFollower)",0.0); 
-  double D = SmartDashboard.getNumber("D (lineFollower)",0.0);
-  double F = SmartDashboard.getNumber("F (lineFollower)",0.0);
-
-  PIDController pid;
-  double setpoint = 0;
-  PIDSourceLineFollower source;
-  int range = 10;
-
-  public LineFollowerPIDCommand(double input) {
+public class CargoElevatorHeightCommand extends Command {
+  public CargoElevatorHeightCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.lineFollowerSubsystem);
-    pid = new PIDController(P, I, D, F, source, this);
-    source = new PIDSourceLineFollower();
-    setpoint = input;
+    requires(Robot.ballElevatorSubsystem);
   }
 
   // Called just before this Command runs the first time
@@ -43,6 +25,10 @@ public class LineFollowerPIDCommand extends Command implements PIDOutput {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    if(Robot.ballElevatorSubsystem.cargoGetter() == true) {
+      Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
+      Robot.ballElevatorSubsystem.resetEncoder();
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -60,10 +46,5 @@ public class LineFollowerPIDCommand extends Command implements PIDOutput {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-  }
-
-  @Override
-  public void pidWrite(double output) {
-
   }
 }

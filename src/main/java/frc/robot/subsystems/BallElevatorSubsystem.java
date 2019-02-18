@@ -20,37 +20,19 @@ public class BallElevatorSubsystem extends Subsystem {
   // here. Call these from Commands.
   
   final int ballElevatorMotorChannel = 6;
-  final int bottomLimitSwitchChannel = 2;
-  final int topLimitSwitchChannel = 3;
+  final int bottomLimitSwitchChannel = 0;
+  final int cargoLimitSwitchChannel = 1;
+  final int rocketLimitSwitchChannel = 2;
 
   public WPI_TalonSRX ballElevatorMotor = new WPI_TalonSRX(ballElevatorMotorChannel);
   private DigitalInput bottomLimitSwitch = new DigitalInput(bottomLimitSwitchChannel);
-  private DigitalInput topLimitSwitch = new DigitalInput(topLimitSwitchChannel);
+  private DigitalInput cargoLimitSwitch = new DigitalInput(cargoLimitSwitchChannel);
+  private DigitalInput rocketLimitSwitch = new DigitalInput(rocketLimitSwitchChannel);
   
 
-  double cargoHeight = 38;
-  double firstRocketHeight = 27.5;
-  double secondRocketHeight = 55.5;
-  double groundHeight = 6;
   double distancePerRotation;
 //Center values, not sure what they should be for sure (could be top or bottom)
 
-public double getCargoHeight(){
-  return cargoHeight;
-  //get height of cargoship
-}
-public double getFirstRocketHeight(){
-  return firstRocketHeight;
-  //gets height of first stage rocket
-}
-public double getSecondRocketHeight(){
-  return secondRocketHeight;
-  //gets height of second stage rocket
-}
-public double getGroundHeight(){
-  return groundHeight;
-  //gets height of bottom position of elevator
-}
 /**
  * @return the ballElevatorMotor
  */
@@ -81,10 +63,16 @@ public void setBallElevatorMotor(WPI_TalonSRX ballElevatorMotor) {
     return bottomLimitSwitch.get();
     //gets the status of the bottom limit switch
   }
-  public boolean topGetter(){
-    return topLimitSwitch.get();
-    //gets the status of the top limit switch
+  public boolean cargoGetter(){
+    return cargoLimitSwitch.get();
+    //gets the status of the cargo limit switch
   }
+  public boolean rocketGetter(){
+    return rocketLimitSwitch.get();
+    //gets the status of the rocket limit switch
+  }
+  
+
   public int getEncoder(){
     return getBallElevatorMotor().getSelectedSensorPosition(0);
     //gets the encoder value

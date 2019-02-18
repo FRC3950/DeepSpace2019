@@ -7,12 +7,11 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public abstract class BallElevatorMotorCommand extends Command  implements PIDOutput {
-  public BallElevatorMotorCommand() {
+public class RocketElevatorHeightCommand extends Command {
+  public RocketElevatorHeightCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.ballElevatorSubsystem);
@@ -26,7 +25,10 @@ public abstract class BallElevatorMotorCommand extends Command  implements PIDOu
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.ballElevatorSubsystem.BallElevatorMotorSet(1);
+    if(Robot.ballElevatorSubsystem.rocketGetter() == true) {
+      Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
+      Robot.ballElevatorSubsystem.resetEncoder();
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()

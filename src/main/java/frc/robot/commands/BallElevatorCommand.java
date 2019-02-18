@@ -37,26 +37,24 @@ public class BallElevatorCommand extends Command {
   @Override
   protected void execute() {
     getY = -controller.getY(Hand.kLeft);
-    top = Robot.ballElevatorSubsystem.topGetter();
     gndHeight = Robot.ballElevatorSubsystem.getElevatorHeight();
     // height of elevator from ground 
 
-    if(Robot.ballElevatorSubsystem.bottomGetter() && getY < 0) {
-      Robot.ballElevatorSubsystem.resetEncoder();
-      Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
-    } else if (Robot.ballElevatorSubsystem.topGetter() && getY > 0){
-      Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
-    } else {
-      Robot.ballElevatorSubsystem.BallElevatorMotorSet(getY);
-    }
+    // if(Robot.ballElevatorSubsystem.bottomGetter() && getY < 0) {
+    //   Robot.ballElevatorSubsystem.resetEncoder();
+    //   Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
+    // } else if (Robot.ballElevatorSubsystem.topGetter() && getY > 0){
+    //   Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
+    // } else {
+    //   Robot.ballElevatorSubsystem.BallElevatorMotorSet(getY);
+    // }
 
-    // Has to do with controlling the elevator at certain heights
-    if(getY == 0 && gndHeight <= 5.4) {
-      Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
-    } else if (getY == 0) {
-      Robot.ballElevatorSubsystem.BallElevatorMotorSet(0.1);
-      }
-
+    // // Has to do with controlling the elevator at certain heights
+    // if(getY == 0 && gndHeight <= 5.4) {
+    //   Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
+    // } else if (getY == 0) {
+    //   Robot.ballElevatorSubsystem.BallElevatorMotorSet(0.1);
+    //   }
     }
 
    

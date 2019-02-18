@@ -36,7 +36,10 @@ public class DriveCommand extends Command {
     Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(),Robot.gyroSubsystem.getCurrentAngle());
     //Robot.drivetrainSubsystem.driveCartesian(stick.getY(), stick.getX(), stick.getTwist());
     //Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getTwist());
-
+    // System.out.println("fL" + Robot.drivetrainSubsystem.frontLeft.getBusVoltage());
+    // System.out.println("bL" + Robot.drivetrainSubsystem.backLeft.getBusVoltage());
+    // System.out.println("fR" + Robot.drivetrainSubsystem.frontRight.getBusVoltage());    
+    // System.out.println("bR" + Robot.drivetrainSubsystem.backRight.getBusVoltage());
   }
 
   // Make this return true when this Command no longer needs to run execute()

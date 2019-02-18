@@ -13,7 +13,11 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.BackPnuematicLiftCommand;
 import frc.robot.commands.BrushlessMotorCommand;
+import frc.robot.commands.CloseDoorCommand;
+import frc.robot.commands.DepositBottomAutoCommandGroup;
 import frc.robot.commands.DepositCargoAutoCommandGroup;
+import frc.robot.commands.DepositRocketAutoCommandGroup;
+import frc.robot.commands.DropLiftPnuematicsCommand;
 import frc.robot.commands.FrontPnuematicLiftCommand;
 import frc.robot.commands.HatchOutakeCommand;
 import frc.robot.commands.LiftIntakeCommand;
@@ -22,6 +26,8 @@ import frc.robot.commands.LineFollowerCommandV2;
 import frc.robot.commands.LineFollowingAbortCommand;
 import frc.robot.commands.NinjaStarCommand;
 import frc.robot.commands.ResetFieldCentricCommand;
+import frc.robot.commands.ShootBallCommand;
+import frc.robot.commands.BottomElevatorHeightCommand;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -93,20 +99,24 @@ public class OI {
   public OI() {
  
     driveStick2Button.whenPressed(lfc);
-    driveStick3Button.whenPressed(new HatchOutakeCommand());
-    driveStick4Button.whenPressed(new NinjaStarCommand());
+    xboxControllerRBButton.whenPressed(new HatchOutakeCommand());
+    xboxControllerLBButton.whenPressed(new LiftIntakeCommand());
+
     driveStick5Button.whenPressed(new LineFollowingAbortCommand());
 
-    xboxControllerLBButton.whenPressed(new BackPnuematicLiftCommand());
-    xboxControllerRBButton.whenPressed(new FrontPnuematicLiftCommand());
+    driveStick8Button.whenPressed(new DropLiftPnuematicsCommand());
+    driveStick12Button.whenPressed(new BackPnuematicLiftCommand());
+    driveStick10Button.whenPressed(new FrontPnuematicLiftCommand());
 
-    //xboxControllerAButton.whenPressed(new DepositCargoAutoCommandGroup(Robot.ballElevatorSubsystem.getCargoHeight()));
-    xboxControllerBButton.whenPressed(new DepositCargoAutoCommandGroup(Robot.ballElevatorSubsystem.getFirstRocketHeight()));
-    xboxControllerYButton.whenPressed(new DepositCargoAutoCommandGroup(Robot.ballElevatorSubsystem.getSecondRocketHeight()));
-    xboxControllerXButton.whenPressed(new LiftIntakeCommand());
-    
-    driveStick9Button.whenPressed(new BrushlessMotorCommand());
-    driveStick7Button.whenPressed(new ResetFieldCentricCommand());
+    xboxControllerAButton.whenPressed(new DepositBottomAutoCommandGroup());
+    xboxControllerBButton.whenPressed(new DepositCargoAutoCommandGroup());
+    xboxControllerYButton.whenPressed(new DepositRocketAutoCommandGroup());
+    xboxControllerXButton.whenPressed(new NinjaStarCommand());
+
+    // driveStick9Button.whenPressed(new BrushlessMotorCommand());
+    // driveStick7Button.whenPressed(new ResetFieldCentricCommand());
+    // driveStick1Button.whenPressed(new CloseDoorCommand());
+    // xboxControllerRBButton.whenPressed(new ShootBallCommand());
   }
 
 }

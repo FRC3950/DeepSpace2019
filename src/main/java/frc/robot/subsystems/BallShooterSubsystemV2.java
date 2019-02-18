@@ -7,7 +7,9 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -16,9 +18,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class BallShooterSubsystemV2 extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-   final int shooterSolenoidChannel = 6;
 
-   private Solenoid shooterSolenoid = new Solenoid(shooterSolenoidChannel);
+   public DoubleSolenoid shooterSolenoid = new DoubleSolenoid(1, 0, 7);
 
 
   @Override
@@ -26,22 +27,24 @@ public class BallShooterSubsystemV2 extends Subsystem {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
-  public boolean openCargoDoor(){
-    if(!isOpen()){
-      shooterSolenoid.set(true);
-    //opens solenoid
-    }
-    return isOpen();
+
+
+
+  // public boolean closeCargoDoor(){
+  //   if(isOpen()){
+  //     shooterSolenoid.set(false);
+  //   }
+  //   //closes solenoid
+  //   return isOpen();
+  // }
+  // private boolean isOpen(){
+  //   return shooterSolenoid.get();
+  //   //ask solenoids their state
+  // }
+  public void closeShooter(){
+    shooterSolenoid.set(Value.kReverse);
   }
-  public boolean closeCargoDoor(){
-    if(isOpen()){
-      shooterSolenoid.set(false);
-    }
-    //closes solenoid
-    return isOpen();
-  }
-  private boolean isOpen(){
-    return shooterSolenoid.get();
-    //ask solenoids their state
+  public void openShooter(){
+    shooterSolenoid.set(Value.kForward);
   }
 }

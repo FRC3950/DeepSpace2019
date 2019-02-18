@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
@@ -29,10 +30,10 @@ public class RobotLiftMotorCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-  // if(Robot.robotLiftSubsystem.isBackDown()){
-  //   Robot.robotLiftSubsystem.liftMotorSet(stick.getY());
-  //   }
-  // Robot.robotLiftSubsystem.liftMotorSet(0);
+  if((Robot.robotLiftSubsystem.backLeftLiftSolenoid.get() == Value.kForward) && (Robot.robotLiftSubsystem.backRightLiftSolenoid.get() == Value.kForward)){
+    Robot.robotLiftSubsystem.liftMotorSet(stick.getY());
+    }
+  Robot.robotLiftSubsystem.liftMotorSet(0);
   }
 
   // Make this return true when this Command no longer needs to run execute()

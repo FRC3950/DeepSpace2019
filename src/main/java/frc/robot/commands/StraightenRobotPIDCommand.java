@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.PIDSourceLineFollower;
+import frc.robot.PIDSourceRotation;
 import frc.robot.Robot;
 
 public class StraightenRobotPIDCommand extends Command implements PIDOutput {
@@ -26,6 +26,7 @@ public class StraightenRobotPIDCommand extends Command implements PIDOutput {
   double setpoint = 0;
   double lastOut = 1;
   boolean start = true;
+  
   public StraightenRobotPIDCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -36,7 +37,7 @@ public class StraightenRobotPIDCommand extends Command implements PIDOutput {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    source = new PIDSourceLineFollower();
+    source = new PIDSourceRotation();
     pid = new PIDController(P, I, D, F, source, this);
   
     pid.setInputRange(-30, 30);

@@ -7,7 +7,7 @@ public class PIDSourceElevator implements PIDSource {
 
 	@Override
 	public void setPIDSourceType(PIDSourceType pidSource) {
-		// TODO Auto-generated method stub
+		//pidSource = PIDSourceType.kDisplacement;
 		
 	}
 

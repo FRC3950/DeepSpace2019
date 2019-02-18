@@ -10,7 +10,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.commands.RobotLiftMotorCommand;
 
@@ -22,21 +22,21 @@ public class RobotLiftSubsystem extends Subsystem {
   // here. Call these from Commands.
   
   final int liftMotorChannel = 4;
-  final int backLeftLiftSolenoidChannel1 = 0;
- // final int backLeftLiftSolenoidChannel2 = 1;
-  final int backRightLiftSolenoidChannel1 = 1;
- // final int backRightLiftSolenoidChannel2 = 3;
+  final int backLeftLiftSolenoidChannel1 = 1;
+  final int backLeftLiftSolenoidChannel2 = 6;
+  final int backRightLiftSolenoidChannel1 = 0;
+  final int backRightLiftSolenoidChannel2 = 7;
   final int frontLeftLiftSolenoidChannel1 = 2;
- // final int frontLeftLiftSolenoidChannel2 = 5;
+  final int frontLeftLiftSolenoidChannel2 = 5;
   final int frontRightLiftSolenoidChannel1 = 3;
-  //final int frontRightLiftSolenoidChannel2 = 7;
+  final int frontRightLiftSolenoidChannel2 = 4;
   
   
   private WPI_TalonSRX liftMotor = new WPI_TalonSRX(liftMotorChannel);
-  private Solenoid backLeftLiftSolenoid = new Solenoid(backLeftLiftSolenoidChannel1);
-  private Solenoid backRightLiftSolenoid = new Solenoid (backRightLiftSolenoidChannel1);
-  private Solenoid frontLeftLiftSolenoid = new Solenoid (frontLeftLiftSolenoidChannel1);
-  private Solenoid frontRightLiftSolenoid = new Solenoid (frontRightLiftSolenoidChannel1);
+  public DoubleSolenoid backLeftLiftSolenoid = new DoubleSolenoid(0,backLeftLiftSolenoidChannel1,backLeftLiftSolenoidChannel2);
+  public DoubleSolenoid backRightLiftSolenoid = new DoubleSolenoid(0,backRightLiftSolenoidChannel1,backRightLiftSolenoidChannel2);
+  public DoubleSolenoid frontLeftLiftSolenoid = new DoubleSolenoid(frontLeftLiftSolenoidChannel1,frontLeftLiftSolenoidChannel2);
+  public DoubleSolenoid frontRightLiftSolenoid = new DoubleSolenoid(frontRightLiftSolenoidChannel1,frontRightLiftSolenoidChannel2);
 
   @Override
   public void initDefaultCommand() {
@@ -44,64 +44,43 @@ public class RobotLiftSubsystem extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
     setDefaultCommand(new RobotLiftMotorCommand());
   }
-  public void liftMotorSet(double ySpeed){
+  public void liftMotorSet(double xSpeed){
     double y;
-    y = ySpeed;
-    if(y<0.05 && y>-0.05) y = 0;
+    y = -xSpeed;
+    if(y<0.3 && y>-0.3) y = 0;
     liftMotor.set(y);
   }
 
-  public boolean dropBackPistons(){
-    if(!isBackDown()){
-      backLeftLiftSolenoid.set(true);
-      backRightLiftSolenoid.set(true);
-    //open solenoid
-    }
-    return isFrontDown();
+  public void dropPistons(){
+      if((backLeftLiftSolenoid.get() == Value.kForward) && (backRightLiftSolenoid.get() == Value.kForward)
+        && (frontLeftLiftSolenoid.get() == Value.kReverse) && (frontRightLiftSolenoid.get() == Value.kReverse)) {
+      backLeftLiftSolenoid.set(Value.kReverse);
+      backRightLiftSolenoid.set(Value.kReverse);
+      frontLeftLiftSolenoid.set(Value.kForward);
+      frontRightLiftSolenoid.set(Value.kForward);
+      } else {
+        backLeftLiftSolenoid.set(Value.kForward);
+        backRightLiftSolenoid.set(Value.kForward);
+        frontLeftLiftSolenoid.set(Value.kReverse);
+        frontRightLiftSolenoid.set(Value.kReverse);
+      }
   }
-  public boolean raiseBackPistons(){
-    if(isBackDown()){
-      backLeftLiftSolenoid.set(false);
-      backRightLiftSolenoid.set(false);
-    }
-    //close solenoid
-    return isBackDown();
+  public void toggleBackPistons(){
+    if((backLeftLiftSolenoid.get() == Value.kForward) && (backRightLiftSolenoid.get() == Value.kForward)) {
+  backLeftLiftSolenoid.set(Value.kReverse);
+  backRightLiftSolenoid.set(Value.kReverse);
+  } else {
+    backLeftLiftSolenoid.set(Value.kForward);
+    backRightLiftSolenoid.set(Value.kForward);
   }
-  public boolean isBackDown(){
-    return backLeftLiftSolenoid.get()&& backRightLiftSolenoid.get();
-    //ask solenoids their state
   }
-
-  public boolean dropFrontPistons(){
-    if(!isBackDown()){
-      frontLeftLiftSolenoid.set(true);
-      frontRightLiftSolenoid.set(true);
-    //open solenoid
-    }
-    return isFrontDown();
+  public void toggleFrontPistons(){
+    if((frontLeftLiftSolenoid.get() == Value.kReverse) && (frontRightLiftSolenoid.get() == Value.kReverse)) {
+  frontLeftLiftSolenoid.set(Value.kForward);
+  frontRightLiftSolenoid.set(Value.kForward);
+  } else {
+    frontLeftLiftSolenoid.set(Value.kReverse);
+    frontRightLiftSolenoid.set(Value.kReverse);
   }
-  public boolean raiseFrontPistons(){
-    if(isBackDown()){
-      frontLeftLiftSolenoid.set(false);
-      frontRightLiftSolenoid.set(false);
-    }
-    //close solenoid
-    return isBackDown();
-  }
-  public boolean isFrontDown(){
-    return frontLeftLiftSolenoid.get()&& frontRightLiftSolenoid.get();
-    //ask solenoids their state
-  }
-  public boolean toggleBackPistons(){
-    backLeftLiftSolenoid.set(!backLeftLiftSolenoid.get());
-    backRightLiftSolenoid.set(!backRightLiftSolenoid.get());
-    //open solenoid
-    return isBackDown();
-  }
-  public boolean toggleFrontPistons(){
-    frontLeftLiftSolenoid.set(!frontLeftLiftSolenoid.get());
-    frontRightLiftSolenoid.set(!frontRightLiftSolenoid.get());
-    //open solenoid
-    return isFrontDown();
   }
 }

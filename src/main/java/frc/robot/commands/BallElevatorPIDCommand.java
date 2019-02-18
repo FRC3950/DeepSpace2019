@@ -20,7 +20,7 @@ import frc.robot.Logger.LogLevel;
 
 public class BallElevatorPIDCommand extends Command implements PIDOutput{
 
-  double P = SmartDashboard.getNumber("P (elevator)",0.0);
+  double P = SmartDashboard.getNumber("P (elevator)",1.0);
   double I = SmartDashboard.getNumber("I (elevator)",0.0); 
   double D = SmartDashboard.getNumber("D (elevator)",0.0);
   double F = SmartDashboard.getNumber("F (elevator)",0.0);
@@ -69,7 +69,7 @@ public class BallElevatorPIDCommand extends Command implements PIDOutput{
     int velocity = Robot.ballElevatorSubsystem.ballElevatorMotor.getSelectedSensorVelocity(0);
     // System.out.println("velocity is " + velocity);
     // System.out.println("pid on target is" + pid.onTarget());
-    return(pid.onTarget() && (velocity >= range) && (velocity <= range)) || (Robot.ballElevatorSubsystem.bottomGetter()) ||(Robot.ballElevatorSubsystem.topGetter());
+    return(pid.onTarget() && (velocity >= range) && (velocity <= range)) || (Robot.ballElevatorSubsystem.bottomGetter());
 
   }
 
@@ -92,7 +92,7 @@ public class BallElevatorPIDCommand extends Command implements PIDOutput{
   @Override
   public void pidWrite(double output) {
     // set motor voltage for elevatotr subsystem
-    if(Robot.ballElevatorSubsystem.topGetter() && output > 0)
+    if(Robot.ballElevatorSubsystem.rocketGetter() && output > 0)
       Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);
     if(Robot.ballElevatorSubsystem.bottomGetter() && output < 0)
       Robot.ballElevatorSubsystem.BallElevatorMotorSet(0);

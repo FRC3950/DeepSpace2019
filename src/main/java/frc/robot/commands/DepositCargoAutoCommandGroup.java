@@ -13,16 +13,18 @@ public class DepositCargoAutoCommandGroup extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public DepositCargoAutoCommandGroup(double elevatorHeight) {
+  public DepositCargoAutoCommandGroup() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    //addSequential(new BallElevatorPIDCommand(elevatorHeight));
-    addSequential(new ShootBallCommand());
-    addSequential(new DelayCommand(500));
-    addSequential(new CloseDoorCommand());
-    addSequential(new BallElevatorPIDCommand(0));
+
+       //addParallel(new BallElevatorPIDCommand());
+       addSequential(new CargoElevatorHeightCommand());
+       addSequential(new ShootBallCommand());
+       addSequential(new DelayCommand(500));
+       addSequential(new CloseDoorCommand());
+       addSequential(new BallElevatorPIDCommand(0));
 
     // To run multiple commands at the same time,
     // use addParallel()

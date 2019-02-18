@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.BallElevatorSubsystem;
 import frc.robot.subsystems.BallShooterSubsystemV2;
@@ -74,6 +75,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    SmartDashboard.putBoolean("Left Sensor" + !Robot.lineFollowerSubsystem.getLeftSensor(), false);
+    SmartDashboard.putBoolean("Center Sensor" + !Robot.lineFollowerSubsystem.getCenterSensor(), false);
+    SmartDashboard.putBoolean("Right Sensor" + !Robot.lineFollowerSubsystem.getRightSensor(), false);
   }
 
   /**
@@ -162,11 +166,15 @@ public class Robot extends TimedRobot {
       started = true;
       Robot.drivetrainSubsystem.frontLeft.setInverted(true);
       Robot.drivetrainSubsystem.frontRight.setInverted(true);
-
       Robot.drivetrainSubsystem.frontLeft.set(0.5);
       Robot.drivetrainSubsystem.backLeft.set(0.5);
       Robot.drivetrainSubsystem.frontRight.set(0.5);
       Robot.drivetrainSubsystem.backRight.set(0.5);
+      System.out.println("fL=" + Robot.drivetrainSubsystem.frontLeft.isFollower());
+      System.out.println("fR=" + Robot.drivetrainSubsystem.frontRight.isFollower());
+      System.out.println("bL=" + Robot.drivetrainSubsystem.backLeft.isFollower());
+      System.out.println("bR=" + Robot.drivetrainSubsystem.backRight.isFollower());
+
     }
   //   System.out.println("fL " + Robot.drivetrainSubsystem.frontLeft.get());
   //   System.out.println("bL " + Robot.drivetrainSubsystem.backLeft.getEncoder().getVelocity());
