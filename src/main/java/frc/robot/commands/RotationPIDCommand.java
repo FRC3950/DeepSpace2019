@@ -22,7 +22,7 @@ public class RotationPIDCommand extends Command {
   double P = SmartDashboard.getNumber("P (lineFollower)",0.0);
   double I = SmartDashboard.getNumber("I (lineFollower)",0.0); 
   double D = SmartDashboard.getNumber("D (lineFollower)",0.0);
-  double F = SmartDashboard.getNumber("F (lineFollower)",1.0);
+  double F = SmartDashboard.getNumber("F (lineFollower)",0.7);
 
   private PIDController gyroPid;
   double setpoint = 0;

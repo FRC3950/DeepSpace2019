@@ -154,6 +154,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
 
+    Scheduler.getInstance().run();
+
     boolean fLS = SmartDashboard.putBoolean("Front Left Sensor" + false, !Robot.lineFollowerSubsystem.getFrontLeftSensor());
     boolean fCS = SmartDashboard.putBoolean("Front Center Sensor" + false, !Robot.lineFollowerSubsystem.getFrontCenterSensor());
     boolean fRS = SmartDashboard.putBoolean("Front Right Sensor" + false, !Robot.lineFollowerSubsystem.getFrontRightSensor());
@@ -161,7 +163,7 @@ public class Robot extends TimedRobot {
     boolean bCS = SmartDashboard.putBoolean("Back Center Sensor" + false, !Robot.lineFollowerSubsystem.getBackCenterSensor());
     boolean bRS = SmartDashboard.putBoolean("Back Right Sensor" + false, !Robot.lineFollowerSubsystem.getBackRightSensor());
     boolean nS = SmartDashboard.putBoolean("Ninja Star" + false, Robot.intakePnuematicsSubsystem.getNinjaStar());
-    Scheduler.getInstance().run();
+    
     // System.out.println("bl Position" + Robot.drivetrainSubsystem.backLeft.getEncoder().getPosition());
     // System.out.println("fl Position" + Robot.drivetrainSubsystem.frontLeft.getEncoder().getPosition());
     // System.out.println("br Position" + -Robot.drivetrainSubsystem.backRight.getEncoder().getPosition());
