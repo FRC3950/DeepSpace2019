@@ -10,10 +10,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class BackAutoForwardCommand extends Command {
-  boolean isFinished = false;
-
-  public BackAutoForwardCommand() {
+public class BallElevatorIntakeCommand extends Command {
+  public BallElevatorIntakeCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -21,38 +19,32 @@ public class BackAutoForwardCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.drivetrainSubsystem.setPositionZero();
-    isFinished = false;
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Robot.drivetrainSubsystem.getAverageEncoder() < 12){
-      Robot.drivetrainSubsystem.Drive(.4,0,0,0);
-    }else{
-      Robot.drivetrainSubsystem.Drive(0, 0, 0, 0);
-      isFinished =true;
+    if(Robot.ballElevatorSubsystem.isBallIn() == true) {
+      Robot.ballElevatorSubsystem.ballElevatorShooterMotor.set(0);
+    } else {
+      Robot.ballElevatorSubsystem.ballElevatorShooterMotor.set(-.7);
     }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return isFinished;
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    isFinished = false;
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    isFinished = false;
-    Robot.drivetrainSubsystem.Drive(0,0,0,0);
   }
 }

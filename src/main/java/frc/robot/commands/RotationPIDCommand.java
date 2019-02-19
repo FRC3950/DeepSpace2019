@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.PIDOutputRotation;
 import frc.robot.PIDSourceRotation;
 import frc.robot.Robot;
+import com.kauailabs.navx.frc.AHRS;
 
 
 public class RotationPIDCommand extends Command {
@@ -27,16 +28,17 @@ public class RotationPIDCommand extends Command {
   double setpoint = 0;
   PIDSourceRotation source;
   int range = 10;
+  double robotAngle = 0;
+  double rotateTo = 0;
 
   private double gyroOutput = Double.MAX_VALUE;
   double maxSpeed = 1.6;
 
-  public RotationPIDCommand(double input) {
+  public RotationPIDCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     //requires(Robot.gyroSubsystem);
     source = new PIDSourceRotation();
-    setpoint = input;
 
     source = new PIDSourceRotation() {
 
@@ -74,6 +76,8 @@ public class RotationPIDCommand extends Command {
   @Override
   protected void initialize() {
 
+    robotAngle = Robot.gyroSubsystem.getCurrentAngle();
+
     setpoint = Robot.gyroSubsystem.ahrs.getYaw();
     System.out.println("in rotation pid init");
     Robot.gyroSubsystem.ahrs.reset();
@@ -87,6 +91,25 @@ public class RotationPIDCommand extends Command {
     gyroPid.setSetpoint(setpoint);
     gyroPid.enable();
 
+    if (robotAngle > -22.5 && robotAngle < 22.5) {
+      setpoint = 0;
+   } else if (robotAngle > -67.5 && robotAngle < -22.5) {
+    setpoint = -45;
+   } else if (robotAngle > -112.5 && robotAngle < -67.5) {
+    setpoint = -90;
+   } else if (robotAngle > -157.5 && robotAngle < -112.5) {
+    setpoint = -135;
+   } else if (robotAngle > 157.5 && robotAngle < -157.5) {
+    setpoint = -180;
+   } else if (robotAngle > 22.5 && robotAngle > 67.5) {
+    setpoint = 45;
+   } else if (robotAngle > 67.5 && robotAngle < 112.5) {
+    setpoint = 90;
+   } else if (robotAngle > 112.5 && robotAngle < 157.5) {
+    setpoint = 135;
+   } else if (robotAngle > 157.5 && robotAngle < -157.5) {
+    setpoint = 180;
+   }
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -95,7 +118,6 @@ public class RotationPIDCommand extends Command {
     if(gyroOutput != Double.MAX_VALUE) {
       Robot.drivetrainSubsystem.Drive(0, 0, 0, gyroOutput);	
     }
-    
   }
 
   // Make this return true when this Command no longer needs to run execute()

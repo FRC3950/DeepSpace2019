@@ -35,7 +35,7 @@ public class ElevatorHeightCommand extends Command {
 
     //NOELLE DOESNT KNOW WHICH IS HIGHER ROCKET OR CARGO SOMEONE FIND OUT PLEASE
     //Rocket is 27.5 inch from ground to center of whole
-    //Cargo is 19 inch from ground to center of whole
+    //Cargo is higher
 
     if(stage == 0) {
       Robot.ballElevatorSubsystem.ballElevatorMotor.set(1);
@@ -49,13 +49,13 @@ public class ElevatorHeightCommand extends Command {
     }
     if(stage == 1) {
       Robot.ballElevatorSubsystem.ballElevatorMotor.set(1);
-      if(Robot.ballElevatorSubsystem.cargoGetter()){
+      if(Robot.ballElevatorSubsystem.rocketGetter()){
         Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
       }
     }
     if(stage == 2) {
-      Robot.ballElevatorSubsystem.ballElevatorMotor.set(1);
-      if(Robot.ballElevatorSubsystem.rocketGetter()){
+      Robot.ballElevatorSubsystem.ballElevatorMotor.set(2);
+      if(Robot.ballElevatorSubsystem.cargoGetter()){
         Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
       }
     }

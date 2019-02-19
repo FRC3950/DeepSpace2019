@@ -22,14 +22,17 @@ public class BallElevatorSubsystem extends Subsystem {
   final int ballElevatorShooterMotorChannel = 7;
   final int ballElevatorMotorChannel = 6;
   final int bottomLimitSwitchChannel = 0;
-  final int cargoLimitSwitchChannel = 1;
-  final int rocketLimitSwitchChannel = 2;
+  final int rocketLimitSwitchChannel = 1;
+  final int cargoLimitSwitchChannel = 2;
+  final int isBallInLimitSwitchChannel = 9;
+  
 
   public WPI_TalonSRX ballElevatorShooterMotor = new WPI_TalonSRX(ballElevatorShooterMotorChannel);
   public WPI_TalonSRX ballElevatorMotor = new WPI_TalonSRX(ballElevatorMotorChannel);
   private DigitalInput bottomLimitSwitch = new DigitalInput(bottomLimitSwitchChannel);
   private DigitalInput cargoLimitSwitch = new DigitalInput(cargoLimitSwitchChannel);
   private DigitalInput rocketLimitSwitch = new DigitalInput(rocketLimitSwitchChannel);
+  private DigitalInput isBallIn = new DigitalInput(isBallInLimitSwitchChannel);
 
   
 
@@ -77,7 +80,9 @@ public void setBallElevatorMotor(WPI_TalonSRX ballElevatorMotor) {
     return rocketLimitSwitch.get();
     //gets the status of the rocket limit switch
   }
-  
+  public boolean isBallIn(){
+    return isBallIn.get();
+  }
 
   public int getEncoder(){
     return getBallElevatorMotor().getSelectedSensorPosition(0);

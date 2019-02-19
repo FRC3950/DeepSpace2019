@@ -75,13 +75,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-   boolean fLS = SmartDashboard.putBoolean("Front Left Sensor" + !Robot.lineFollowerSubsystem.getFrontLeftSensor(),false);
-   boolean fCS = SmartDashboard.putBoolean("Front Center Sensor" + !Robot.lineFollowerSubsystem.getFrontCenterSensor(), false);
-   boolean fRS = SmartDashboard.putBoolean("Front Right Sensor" + !Robot.lineFollowerSubsystem.getFrontRightSensor(), false);
-   boolean bLS = SmartDashboard.putBoolean("Back Left Sensor" + !Robot.lineFollowerSubsystem.getBackLeftSensor(),false);
-   boolean bCS = SmartDashboard.putBoolean("Back Center Sensor" + !Robot.lineFollowerSubsystem.getBackCenterSensor(), false);
-   boolean bRS = SmartDashboard.putBoolean("Back Right Sensor" + !Robot.lineFollowerSubsystem.getBackRightSensor(), false);
-   boolean nS = SmartDashboard.putBoolean("Ninja Star" + Robot.intakePnuematicsSubsystem.getNinjaStar(), false);
   }
 
   /**
@@ -139,6 +132,12 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
+
+    // Robot.drivetrainSubsystem.backLeft.getEncoder().setPosition(0.0);
+    // Robot.drivetrainSubsystem.frontLeft.getEncoder().setPosition(0.0);
+    // Robot.drivetrainSubsystem.backRight.getEncoder().setPosition(0.0);
+    // Robot.drivetrainSubsystem.frontRight.getEncoder().setPosition(0.0);
+
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -154,8 +153,19 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+
+    boolean fLS = SmartDashboard.putBoolean("Front Left Sensor" + false, !Robot.lineFollowerSubsystem.getFrontLeftSensor());
+    boolean fCS = SmartDashboard.putBoolean("Front Center Sensor" + false, !Robot.lineFollowerSubsystem.getFrontCenterSensor());
+    boolean fRS = SmartDashboard.putBoolean("Front Right Sensor" + false, !Robot.lineFollowerSubsystem.getFrontRightSensor());
+    boolean bLS = SmartDashboard.putBoolean("Back Left Sensor" + false, !Robot.lineFollowerSubsystem.getBackLeftSensor());
+    boolean bCS = SmartDashboard.putBoolean("Back Center Sensor" + false, !Robot.lineFollowerSubsystem.getBackCenterSensor());
+    boolean bRS = SmartDashboard.putBoolean("Back Right Sensor" + false, !Robot.lineFollowerSubsystem.getBackRightSensor());
+    boolean nS = SmartDashboard.putBoolean("Ninja Star" + false, Robot.intakePnuematicsSubsystem.getNinjaStar());
     Scheduler.getInstance().run();
-    
+    // System.out.println("bl Position" + Robot.drivetrainSubsystem.backLeft.getEncoder().getPosition());
+    // System.out.println("fl Position" + Robot.drivetrainSubsystem.frontLeft.getEncoder().getPosition());
+    // System.out.println("br Position" + -Robot.drivetrainSubsystem.backRight.getEncoder().getPosition());
+    // System.out.println("fr Position" + -Robot.drivetrainSubsystem.frontRight.getEncoder().getPosition());
     //System.out.println("L=" + RobotMap.leftLight.get() + " C=" + RobotMap.centerLight.get() + " R=" + RobotMap.rightLight.get());
     //System.out.println("L=" + RobotMap.leftSensor.get() + " C=" + RobotMap.centerSensor.get() + " R=" + RobotMap.rightSensor.get());
   }
@@ -166,20 +176,21 @@ public class Robot extends TimedRobot {
   boolean started = false;
   @Override
   public void testPeriodic() {
-    if(!started) {
-      started = true;
-      Robot.drivetrainSubsystem.frontLeft.setInverted(true);
-      Robot.drivetrainSubsystem.frontRight.setInverted(true);
-      Robot.drivetrainSubsystem.frontLeft.set(0.5);
-      Robot.drivetrainSubsystem.backLeft.set(0.5);
-      Robot.drivetrainSubsystem.frontRight.set(0.5);
-      Robot.drivetrainSubsystem.backRight.set(0.5);
-      System.out.println("fL=" + Robot.drivetrainSubsystem.frontLeft.isFollower());
-      System.out.println("fR=" + Robot.drivetrainSubsystem.frontRight.isFollower());
-      System.out.println("bL=" + Robot.drivetrainSubsystem.backLeft.isFollower());
-      System.out.println("bR=" + Robot.drivetrainSubsystem.backRight.isFollower());
+    // if(!started) {
+    //   started = true;
+    //   Robot.drivetrainSubsystem.frontLeft.setInverted(true);
+    //   Robot.drivetrainSubsystem.frontRight.setInverted(true);
+    //   Robot.drivetrainSubsystem.frontLeft.set(0.5);
+    //   Robot.drivetrainSubsystem.backLeft.set(0.5);
+    //   Robot.drivetrainSubsystem.frontRight.set(0.5);
+    //   Robot.drivetrainSubsystem.backRight.set(0.5);
+    //   System.out.println("fL=" + Robot.drivetrainSubsystem.frontLeft.isFollower());
+    //   System.out.println("fR=" + Robot.drivetrainSubsystem.frontRight.isFollower());
+    //   System.out.println("bL=" + Robot.drivetrainSubsystem.backLeft.isFollower());
+    //   System.out.println("bR=" + Robot.drivetrainSubsystem.backRight.isFollower());
 
-    }
+
+    
   //   System.out.println("fL " + Robot.drivetrainSubsystem.frontLeft.get());
   //   System.out.println("bL " + Robot.drivetrainSubsystem.backLeft.getEncoder().getVelocity());
   //   System.out.println("fR " + Robot.drivetrainSubsystem.frontRight.getEncoder().getVelocity());

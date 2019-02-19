@@ -15,8 +15,9 @@ public class DepositRocketAutoCommandGroup extends CommandGroup {
    */
   public DepositRocketAutoCommandGroup() {
 
-    addSequential(new ElevatorHeightCommand(2));
-    addSequential(new BallElevatorShooterCommand(0.5));
+    addSequential(new BallElevatorIntakeCommand());
+    addSequential(new ElevatorHeightCommand(1));
+    addSequential(new BallElevatorShooterCommand());
     addSequential(new BallElevatorPIDCommand(0));
 
     // Add Commands here:

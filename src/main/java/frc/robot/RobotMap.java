@@ -23,14 +23,14 @@ public class RobotMap {
   public static DigitalInput frontCenterSensor = new DigitalInput(4);
   public static DigitalInput frontLeftSensor = new DigitalInput(5);
 
-  public static DigitalInput backRightSensor = new DigitalInput(0);
-  public static DigitalInput backCenterSensor = new DigitalInput(1);
-  public static DigitalInput backLeftSensor = new DigitalInput(2);
+  public static DigitalInput backRightSensor = new DigitalInput(8);
+  public static DigitalInput backCenterSensor = new DigitalInput(7);
+  public static DigitalInput backLeftSensor = new DigitalInput(6);
 
   // public static AnalogInput distanceSensor = new AnalogInput(0);
 
-  public static DigitalOutput leftUltraSonicTrigger = new DigitalOutput(8);
-  public static DigitalInput leftUltraSonicEcho = new DigitalInput(7);
+  // public static DigitalOutput leftUltraSonicTrigger = new DigitalOutput(8);
+  // public static DigitalInput leftUltraSonicEcho = new DigitalInput(7);
 
   // public static AHRS ahrs = new AHRS(SPI.Port.kMXP);
 
@@ -51,7 +51,7 @@ public class RobotMap {
 
   // public static WPI_TalonSRX ballElevatorMotor = new WPI_TalonSRX(2);
   // public static Solenoid ballElevatorSolenoid = new Solenoid(5);
-  // public static DigitalInput bottomLimitSwitch = new DigitalInput(2);
+  // public static DigitalInput bottomLimitSwitch = new DigitalInput(3);
   // public static DigitalInput topLimitSwitch = new DigitalInput(3);
 
   

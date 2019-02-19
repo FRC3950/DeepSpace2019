@@ -17,25 +17,7 @@ public class BackLineUpRobotCommandGroup extends CommandGroup {
   public BackLineUpRobotCommandGroup() {
     
     addSequential(new BackLineRecognizerCommandV2());
-    if (Robot.gyroSubsystem.getCurrentAngle() > -22.5 && Robot.gyroSubsystem.getCurrentAngle() < 22.5) {
-      addSequential(new RotationPIDCommand(0));
-    } else if (Robot.gyroSubsystem.getCurrentAngle() > -67.5 && Robot.gyroSubsystem.getCurrentAngle() < -22.5) {
-      addSequential(new RotationPIDCommand(-45));
-    } else if (Robot.gyroSubsystem.getCurrentAngle() > -112.5 && Robot.gyroSubsystem.getCurrentAngle() < -67.5) {
-      addSequential(new RotationPIDCommand(-90));
-    } else if (Robot.gyroSubsystem.getCurrentAngle() > -157.5 && Robot.gyroSubsystem.getCurrentAngle() < -112.5) {
-      addSequential(new RotationPIDCommand(-135));
-    } else if (Robot.gyroSubsystem.getCurrentAngle() > 157.5 && Robot.gyroSubsystem.getCurrentAngle() < -157.5) {
-      addSequential(new RotationPIDCommand(-180));
-    } else if (Robot.gyroSubsystem.getCurrentAngle() > 22.5 && Robot.gyroSubsystem.getCurrentAngle() > 67.5) {
-      addSequential(new RotationPIDCommand(45));
-    } else if (Robot.gyroSubsystem.getCurrentAngle() > 67.5 && Robot.gyroSubsystem.getCurrentAngle() < 112.5) {
-      addSequential(new RotationPIDCommand(90));
-    } else if (Robot.gyroSubsystem.getCurrentAngle() > 112.5 && Robot.gyroSubsystem.getCurrentAngle() < 157.5) {
-      addSequential(new RotationPIDCommand(135));
-    } else if (Robot.gyroSubsystem.getCurrentAngle() > 157.5 && Robot.gyroSubsystem.getCurrentAngle() < -157.5) {
-      addSequential(new RotationPIDCommand(180));
-    }
+    addSequential(new RotationPIDCommand());
     addSequential(new BackLineFollowerCommandV2());
     addSequential(new BackAutoForwardCommand());
   

@@ -32,7 +32,7 @@ public class FrontLineFollowerCommandV2 extends Command {
   }
 
   private static int priorState = 0b000;
-  public static boolean disabled = false;
+  public boolean disabled = false;
   
 
   private String getState(int state)

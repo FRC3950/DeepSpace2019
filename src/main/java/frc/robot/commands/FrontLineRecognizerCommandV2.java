@@ -22,6 +22,7 @@ public class FrontLineRecognizerCommandV2 extends Command {
     requires(Robot.drivetrainSubsystem);
   }
 
+
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
@@ -58,7 +59,7 @@ public class FrontLineRecognizerCommandV2 extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-   lastLineFollowerState = Robot.lineFollowerSubsystem.getFrontLineFollowerState();
+    lastLineFollowerState = Robot.lineFollowerSubsystem.getFrontLineFollowerState();
   }
 
   // Called when another command which requires one or more of the same

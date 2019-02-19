@@ -136,5 +136,11 @@ public class DrivetrainSubsystem extends Subsystem {
   }
   public double getAverageEncoder() {
     return (frontLeft.getEncoder().getPosition() + backLeft.getEncoder().getPosition() + frontRight.getEncoder().getPosition() + backRight.getEncoder().getPosition()) /4;
- }
+  }
+  public void setPositionZero(){
+    backLeft.getEncoder().setPosition(0.0);
+    frontLeft.getEncoder().setPosition(0.0);
+    backRight.getEncoder().setPosition(0.0);
+    frontRight.getEncoder().setPosition(0.0);
+  }
 }

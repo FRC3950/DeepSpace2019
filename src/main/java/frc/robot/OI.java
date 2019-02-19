@@ -13,7 +13,9 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.BackLineFollowerCommandV2;
 import frc.robot.commands.BackLineFollowingAbortCommand;
+import frc.robot.commands.BackLineUpRobotCommandGroup;
 import frc.robot.commands.BackPnuematicLiftCommand;
+import frc.robot.commands.BallElevatorShooterCommand;
 import frc.robot.commands.DepositBottomAutoCommandGroup;
 import frc.robot.commands.DepositCargoAutoCommandGroup;
 import frc.robot.commands.DepositRocketAutoCommandGroup;
@@ -24,6 +26,7 @@ import frc.robot.commands.LiftIntakeCommand;
 // import frc.robot.commands.LineFollowerCommand;
 import frc.robot.commands.FrontLineFollowerCommandV2;
 import frc.robot.commands.FrontLineFollowingAbortCommand;
+import frc.robot.commands.FrontLineUpRobotCommandGroup;
 import frc.robot.commands.NinjaStarCommand;
 
 /**
@@ -91,8 +94,8 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
-  public static FrontLineFollowerCommandV2 Flfc = new FrontLineFollowerCommandV2();
-  public static BackLineFollowerCommandV2 Blfc = new BackLineFollowerCommandV2();
+  public static FrontLineUpRobotCommandGroup Flfc = new FrontLineUpRobotCommandGroup();
+  public static BackLineUpRobotCommandGroup Blfc = new BackLineUpRobotCommandGroup();
 
 
   public OI() {
@@ -114,6 +117,8 @@ public class OI {
     xboxControllerBButton.whenPressed(new DepositCargoAutoCommandGroup());
     xboxControllerYButton.whenPressed(new DepositRocketAutoCommandGroup());
     xboxControllerXButton.whenPressed(new NinjaStarCommand());
+
+    driveStick9Button.whileHeld(new BallElevatorShooterCommand());
 
     
 

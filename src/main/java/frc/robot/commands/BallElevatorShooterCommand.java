@@ -7,41 +7,34 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class BallElevatorShooterCommand extends Command {
 
-  double speed = 0;
-  Timer timer = new Timer();
   boolean finished = false;
 
-  public BallElevatorShooterCommand(double input) {
+  public BallElevatorShooterCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.ballElevatorSubsystem);
-
-    speed = input;
 
   }
 
   // Called just before this Command runs the first time
   @Override
-  protected void initialize() {
-    timer.start();
-  }
+  protected void initialize() { 
+    }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(timer.get() <= 3) {
-      Robot.ballElevatorSubsystem.BallElevatorShooterMotorSet(speed);
+    if(Robot.ballElevatorSubsystem.isBallIn() == false) {
+      Robot.ballElevatorSubsystem.ballElevatorShooterMotor.set(-1);
       System.out.println("I am in ball shooter auto execute");
       finished = false;
     } else {
-      timer.stop();
-      Robot.ballElevatorSubsystem.BallElevatorShooterMotorSet(0);
+      Robot.ballElevatorSubsystem.ballElevatorShooterMotor.set(0);
       finished = true;
     }
   }
