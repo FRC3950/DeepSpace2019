@@ -42,7 +42,7 @@ public class LineFollowerSubsystem extends Subsystem {
 
     //gets the negation of the left, right, and center sensors
     int frontCurrentState = ((backLeftSensor ? 1 : 0) << 2) | (backCenterSensor ? 1 : 0) << 1  | (backRightSensor ? 1 : 0) << 0;
-    //System.out.println("leftSensor=" + leftSensor + "  centerSensor=" + centerSensor + "  rightSensor=" +rightSensor);
+   // System.out.println("leftSensor=" + backLeftSensor + "  centerSensor=" + backCenterSensor + "  rightSensor=" + backRightSensor);
     //prints the current state of the left, right, and center sensors
     return frontCurrentState;
   }

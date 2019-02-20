@@ -19,12 +19,15 @@ public class BackLineRecognizerCommandV2 extends Command {
     // eg. requires(chassis);
     requires(Robot.gyroSubsystem);
     requires(Robot.drivetrainSubsystem);
+    System.out.println("BackLineRecognizerCommandV2.BackLineRecognizerCommandV2");
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    System.out.println("BackLineRecognizerCommandV2.initialize");
     stick = Robot.m_oi.driveStick;
+    disabled = false;
   }
 
   public static boolean disabled = false;
@@ -34,14 +37,14 @@ public class BackLineRecognizerCommandV2 extends Command {
  
   @Override
   protected void execute() {
-    disabled = false;
     int currentState = Robot.lineFollowerSubsystem.getBackLineFollowerState();
 
     if(currentState == 0b000) {
       Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getZ(), Robot.gyroSubsystem.getCurrentAngle());
-      System.out.println("joystick control");  
+//      System.out.println("joystick control");  
       lastLineFollowerState = currentState;
     } else {
+      System.out.println("BackLineRecognizerCommandV2.executeELSE");
       disabled = true;
     }
   }
@@ -50,6 +53,7 @@ public class BackLineRecognizerCommandV2 extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
+   // System.out.println("BackLineRecognizerCommandV2.isFinished");
     return disabled;
 
   }
@@ -57,6 +61,7 @@ public class BackLineRecognizerCommandV2 extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    System.out.println("BackLineRecognizerCommandV2.end");
    lastLineFollowerState = Robot.lineFollowerSubsystem.getBackLineFollowerState();
   }
 

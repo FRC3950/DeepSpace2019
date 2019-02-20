@@ -27,6 +27,7 @@ public class FrontLineRecognizerCommandV2 extends Command {
   @Override
   protected void initialize() {
     stick = Robot.m_oi.driveStick;
+    System.out.println("FrontLineRecognizerCommandV2.initialize");
   }
 
   public static boolean disabled = false;
@@ -41,9 +42,11 @@ public class FrontLineRecognizerCommandV2 extends Command {
 
     if(currentState == 0b000) {
       Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getZ(), Robot.gyroSubsystem.getCurrentAngle());
-      System.out.println("joystick control");  
+      // System.out.println("joystick control");
+      // System.out.println("FrontLineRecognizerCommandV2.executeIF"); 
       lastLineFollowerState = currentState;
     } else {
+      System.out.println("FrontLineRecognizerCommandV2.executeELSE");
       disabled = true;
     }
   }
@@ -52,6 +55,7 @@ public class FrontLineRecognizerCommandV2 extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
+    System.out.println("FrontLineRecognizerCommandV2.isFinished");
     return disabled;
 
   }
@@ -59,6 +63,7 @@ public class FrontLineRecognizerCommandV2 extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    System.out.println("FrontLineRecognizerCommandV2.end");
     lastLineFollowerState = Robot.lineFollowerSubsystem.getFrontLineFollowerState();
   }
 
@@ -66,5 +71,6 @@ public class FrontLineRecognizerCommandV2 extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    System.out.println("FrontLineRecognizerCommandV2.interrupted");
   }
 }

@@ -10,31 +10,29 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class BallElevatorShooterCommand extends Command {
-
+public class ElevatorReturnToBottomCommand extends Command {
   boolean finished = false;
-
-  public BallElevatorShooterCommand() {
+  public ElevatorReturnToBottomCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.ballElevatorSubsystem);
-
   }
 
   // Called just before this Command runs the first time
   @Override
-  protected void initialize() { 
+  protected void initialize() {
     finished = false;
-    }
+  }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Robot.ballElevatorSubsystem.isBallIn() == false) {
-      Robot.ballElevatorSubsystem.ballElevatorShooterMotor.set(-1.0);
-    } else {
-       Robot.ballElevatorSubsystem.ballElevatorShooterMotor.set(0);
+    if(Robot.ballElevatorSubsystem.bottomGetter() == false){
+      Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
       finished = true;
+     // System.out.println("ElevatorRotateToBottomCommand.execute.bottom.end");
+    } else {
+      Robot.ballElevatorSubsystem.ballElevatorMotor.set(0.35);
+      //System.out.println("ElevatorReturnToBottomCommand.execute.bottom");
     }
   }
 

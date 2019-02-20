@@ -39,21 +39,10 @@ public class BallElevatorSubsystem extends Subsystem {
   double distancePerRotation;
 //Center values, not sure what they should be for sure (could be top or bottom)
 
-/**
- * @return the ballElevatorMotor
- */
 public WPI_TalonSRX getBallElevatorMotor() {
   return ballElevatorMotor;
   //gets the status of the elevator motor
 }
-/**
- * @param ballElevatorMotor the ballElevatorMotor to set
- */
-public void setBallElevatorMotor(WPI_TalonSRX ballElevatorMotor) {	
-  this.ballElevatorMotor = ballElevatorMotor;
-  //sets ball elevator motor for PID
-}
-
 
   @Override
   public void initDefaultCommand() {

@@ -88,8 +88,8 @@ public class DrivetrainSubsystem extends Subsystem {
     x = -ySpeed;
     y = -xSpeed;
     z = -zRotation;
-    if(y<0.15 && y>-0.15) y = 0;
-    if(x<0.15 && x>-0.15) x = 0;
+    if(y<0.25 && y>-0.25) y = 0;
+    if(x<0.25 && x>-0.25) x = 0;
     if(z<0.3 && z>-0.3) z = 0;
     // if (y < 0) y = -(y*y); else y = y*y;
     // if (x < 0) x = -(x*x); else x = x*x;

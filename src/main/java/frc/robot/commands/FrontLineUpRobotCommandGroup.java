@@ -17,7 +17,7 @@ public class FrontLineUpRobotCommandGroup extends CommandGroup {
   public FrontLineUpRobotCommandGroup() {
 
     addSequential(new FrontLineRecognizerCommandV2());
-    addSequential(new RotationPIDCommand());
+    addSequential(new RotateCommand());
     addSequential(new FrontLineFollowerCommandV2());
     addSequential(new FrontAutoForwardCommand());
   

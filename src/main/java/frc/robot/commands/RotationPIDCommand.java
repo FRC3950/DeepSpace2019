@@ -92,23 +92,23 @@ public class RotationPIDCommand extends Command {
     gyroPid.enable();
 
     if (robotAngle > -22.5 && robotAngle < 22.5) {
-      setpoint = 0;
+      rotateTo = 0;
    } else if (robotAngle > -67.5 && robotAngle < -22.5) {
-    setpoint = -45;
+    rotateTo = -45;
    } else if (robotAngle > -112.5 && robotAngle < -67.5) {
-    setpoint = -90;
+    rotateTo = -90;
    } else if (robotAngle > -157.5 && robotAngle < -112.5) {
-    setpoint = -135;
+    rotateTo = -135;
    } else if (robotAngle > 157.5 && robotAngle < -157.5) {
-    setpoint = -180;
+    rotateTo = -180;
    } else if (robotAngle > 22.5 && robotAngle > 67.5) {
-    setpoint = 45;
+    rotateTo = 45;
    } else if (robotAngle > 67.5 && robotAngle < 112.5) {
-    setpoint = 90;
+    rotateTo = 90;
    } else if (robotAngle > 112.5 && robotAngle < 157.5) {
-    setpoint = 135;
+    rotateTo = 135;
    } else if (robotAngle > 157.5 && robotAngle < -157.5) {
-    setpoint = 180;
+    rotateTo = 180;
    }
   }
 
@@ -116,7 +116,7 @@ public class RotationPIDCommand extends Command {
   @Override
   protected void execute() {
     if(gyroOutput != Double.MAX_VALUE) {
-      Robot.drivetrainSubsystem.Drive(0, 0, 0, gyroOutput);	
+      Robot.drivetrainSubsystem.Drive(0, 0, 0, rotateTo);	
     }
   }
 

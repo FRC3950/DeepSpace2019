@@ -14,6 +14,7 @@ import frc.robot.Robot;
 public class ElevatorHeightCommand extends Command {
 
   public int stage;
+  boolean finished = false;
 
   public ElevatorHeightCommand(int input) {
     // Use requires() here to declare subsystem dependencies
@@ -25,6 +26,7 @@ public class ElevatorHeightCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    finished = false;
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -38,25 +40,39 @@ public class ElevatorHeightCommand extends Command {
     //Cargo is higher
 
     if(stage == 0) {
-      Robot.ballElevatorSubsystem.ballElevatorMotor.set(1);
-      if(Robot.ballElevatorSubsystem.bottomGetter()){
+      if(Robot.ballElevatorSubsystem.bottomGetter() == false){
         Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
+        finished = true;
+        //System.out.println("ElevatorHeightCommand.execute.bottom.end");
+
+      } else {
+        Robot.ballElevatorSubsystem.ballElevatorMotor.set(-0.35);
+        //System.out.println("ElevatorHeightCommand.execute.bottom");
+      }
       // } else if(Robot.ballElevatorSubsystem.cargoGetter()) {
       //   Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
       // } else if(Robot.ballElevatorSubsystem.rocketGetter()) {
       //   Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
-     }
     }
     if(stage == 1) {
-      Robot.ballElevatorSubsystem.ballElevatorMotor.set(1);
-      if(Robot.ballElevatorSubsystem.rocketGetter()){
+      if(Robot.ballElevatorSubsystem.rocketGetter() == false){
         Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
+        finished = true;
+        //System.out.println("ElevatorHeightCommand.execute.rocket.end");
+      } else {
+        Robot.ballElevatorSubsystem.ballElevatorMotor.set(-0.35);
+        //System.out.println("ElevatorHeightCommand.execute.rocket");
       }
     }
     if(stage == 2) {
-      Robot.ballElevatorSubsystem.ballElevatorMotor.set(2);
-      if(Robot.ballElevatorSubsystem.cargoGetter()){
+      if(Robot.ballElevatorSubsystem.cargoGetter()== false){
         Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
+        finished = true;
+       // System.out.println("ElevatorHeightCommand.execute.cargo.end");
+
+      } else{
+        Robot.ballElevatorSubsystem.ballElevatorMotor.set(-0.35);
+        //System.out.println("ElevatorHeightCommand.execute.cargo");
       }
     }
 
@@ -68,17 +84,19 @@ public class ElevatorHeightCommand extends Command {
   @Override
   protected boolean isFinished() {
 
-    return true;
+    return finished;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    finished = false;
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    finished = false;
   }
 }

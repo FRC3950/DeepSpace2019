@@ -21,7 +21,7 @@ public class IntakeMotorSubsystem extends Subsystem {
   // here. Call these from Commands.
   final int intakeMotorChannel = 5;
   
-  private WPI_TalonSRX intakeMotor = new WPI_TalonSRX(intakeMotorChannel);
+  public WPI_TalonSRX intakeMotor = new WPI_TalonSRX(intakeMotorChannel);
 
   @Override
   public void initDefaultCommand() {

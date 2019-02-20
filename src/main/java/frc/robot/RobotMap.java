@@ -20,11 +20,11 @@ import edu.wpi.first.wpilibj.DigitalOutput;
 public class RobotMap {
   
   public static DigitalInput frontRightSensor = new DigitalInput(3);
-  public static DigitalInput frontCenterSensor = new DigitalInput(4);
-  public static DigitalInput frontLeftSensor = new DigitalInput(5);
+  public static DigitalInput frontCenterSensor = new DigitalInput(5);
+  public static DigitalInput frontLeftSensor = new DigitalInput(4);
 
-  public static DigitalInput backRightSensor = new DigitalInput(8);
-  public static DigitalInput backCenterSensor = new DigitalInput(7);
+  public static DigitalInput backRightSensor = new DigitalInput(7);
+  public static DigitalInput backCenterSensor = new DigitalInput(8);
   public static DigitalInput backLeftSensor = new DigitalInput(6);
 
   // public static AnalogInput distanceSensor = new AnalogInput(0);

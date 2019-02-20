@@ -66,7 +66,7 @@ public class BackLineFollowerCommandV2 extends Command {
     disabled = false;
     int currentState = Robot.lineFollowerSubsystem.getBackLineFollowerState();
    // System.out.println("priorState=" + priorState + "  currentState=" + currentState);
-    System.out.println("JoystickX=" + stick.getX());
+   // System.out.println("JoystickX=" + stick.getX());
 
     if(priorState == currentState){
       System.out.println("No state change");
@@ -91,6 +91,7 @@ public class BackLineFollowerCommandV2 extends Command {
     } else if((currentState & 0b010) == 0b010){
       Robot.drivetrainSubsystem.Drive(0, 0, 0, 0); //-0.16
       System.out.println("move forward");
+      disabled = true;
     } else {
       Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(), Robot.gyroSubsystem.getCurrentAngle());
       System.out.println("joystick control");
