@@ -17,7 +17,7 @@ public class BackLineUpRobotCommandGroup extends CommandGroup {
   public BackLineUpRobotCommandGroup() {
     
     addSequential(new BackLineRecognizerCommandV2());
-    addSequential(new RotateCommand());
+    addSequential(new BackRotateCommand());
     addSequential(new BackLineFollowerCommandV2());
     addSequential(new BackAutoForwardCommand());
   

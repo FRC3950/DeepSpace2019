@@ -10,12 +10,12 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class RotateCommand extends Command {
+public class FrontRotateCommand extends Command {
 
   double rotateTo = 0;
   boolean disabled = false;
 
-  public RotateCommand() {
+  public FrontRotateCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.gyroSubsystem);
