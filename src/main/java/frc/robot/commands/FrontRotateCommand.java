@@ -25,10 +25,10 @@ public class FrontRotateCommand extends Command {
   @Override
   protected void initialize() {
     disabled = false;
-    System.out.println("RotateCommand.initialize");
+    System.out.println("FrontRotateCommand.initialize");
 
     double robotAngle = Robot.gyroSubsystem.getCurrentAngle();
-    System.out.println("RotateCommand.initialize robotAngle="  + robotAngle);
+    System.out.println("FrontRotateCommand.initialize robotAngle="  + robotAngle);
   
     if (robotAngle > -22.5 && robotAngle < 22.5) {
       rotateTo = 0;
@@ -49,7 +49,7 @@ public class FrontRotateCommand extends Command {
    } else if (robotAngle > 157.5 && robotAngle < -157.5) {
     rotateTo = 180;
    }
-   System.out.println("RotateCommand.initialize rotateTo="  + rotateTo);
+   System.out.println("FrontRotateCommand.initialize rotateTo="  + rotateTo);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -63,13 +63,14 @@ public class FrontRotateCommand extends Command {
     } else {
       disabled = true;
     }
+    System.out.println("FrontRotateCommand.execute");
     
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    System.out.println("RotateCommand.isFinished="  + Robot.gyroSubsystem.getCurrentAngle());
+    System.out.println("FrontRotateCommand.isFinished="  + Robot.gyroSubsystem.getCurrentAngle());
     return disabled;
   }
 
@@ -77,6 +78,7 @@ public class FrontRotateCommand extends Command {
   @Override
   protected void end() {
     disabled = false;
+    System.out.println("FrontRotateCommand.end");
   }
 
   // Called when another command which requires one or more of the same
@@ -84,5 +86,6 @@ public class FrontRotateCommand extends Command {
   @Override
   protected void interrupted() {
     disabled = false;
+    System.out.println("FrontRotateCommand.interrupted");
   }
 }

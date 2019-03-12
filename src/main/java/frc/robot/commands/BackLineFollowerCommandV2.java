@@ -27,7 +27,7 @@ public class BackLineFollowerCommandV2 extends Command {
   @Override
   protected void initialize() {
     stick = Robot.m_oi.driveStick;
-
+    System.out.println("BackLineFollowerCommandV2.initialize");
   }
 
   private static int priorState = 0b000;
@@ -97,7 +97,7 @@ public class BackLineFollowerCommandV2 extends Command {
       System.out.println("joystick control");
     }
     //System.out.println("L=" + !RobotMap.leftSensor.get() + " C=" + !RobotMap.centerSensor.get() + " R=" + !RobotMap.rightSensor.get());
-
+    System.out.println("BackLineFollowerCommandV2.execute");
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -110,6 +110,7 @@ public class BackLineFollowerCommandV2 extends Command {
   @Override
   protected void end() {
     priorState = 0b000;
+    System.out.println("BackLineFollowerCommandV2.end");
   }
 
   // Called when another command which requires one or more of the same
@@ -117,5 +118,6 @@ public class BackLineFollowerCommandV2 extends Command {
   @Override
   protected void interrupted() {
     priorState = 0b000;
+    System.out.println("BackLineFollowerCommandV2.interrupted");
   }
 }

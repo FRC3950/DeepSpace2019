@@ -69,5 +69,6 @@ public class BackLineRecognizerCommandV2 extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    System.out.println("BackLineRecognizerCommandV2.interrupted");
   }
 }

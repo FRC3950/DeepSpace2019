@@ -28,6 +28,7 @@ public class BallElevatorShooterTimerCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    timer.reset();
     timer.start();
   }
 
@@ -53,6 +54,7 @@ public class BallElevatorShooterTimerCommand extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    timer.reset();
     finished = false;
   }
 
@@ -60,6 +62,7 @@ public class BallElevatorShooterTimerCommand extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    timer.reset();
     finished = false;
   }
 }
