@@ -25,7 +25,22 @@ public class NinjaStarCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.intakePnuematicsSubsystem.toggleNinjaStar();
+
+    if(Robot.intakePnuematicsSubsystem.isHatchLeftLinedUp() == true && Robot.intakePnuematicsSubsystem.isHatchRightLinedUp() == true) {
+       Robot.intakePnuematicsSubsystem.ninjaStarSolenoid.set(true); //open   
+       // System.out.println("Robot is Lined Up" + "  HLS= " + Robot.intakePnuematicsSubsystem.isHatchLeftLinedUp() + "  HRS= " + Robot.intakePnuematicsSubsystem.isHatchRightLinedUp());
+    }
+    // else{
+    //   Robot.intakePnuematicsSubsystem.ninjaStarSolenoid.set(false);
+    //   // System.out.println("Robot is NOT Lined Up" + "  HLS= " + Robot.intakePnuematicsSubsystem.isHatchLeftLinedUp() + "  HRS= " + Robot.intakePnuematicsSubsystem.isHatchRightLinedUp());
+    //   //do not toggle Ninja Star
+    // }
+
+    if(Robot.intakePnuematicsSubsystem.isHatchLeftLinedUp() == false || Robot.intakePnuematicsSubsystem.isHatchRightLinedUp() == false) {
+      Robot.intakePnuematicsSubsystem.ninjaStarSolenoid.set(false);
+      // System.out.println("Robot is NOT Lined Up" + "  HLS= " + Robot.intakePnuematicsSubsystem.isHatchLeftLinedUp() + "  HRS= " + Robot.intakePnuematicsSubsystem.isHatchRightLinedUp());
+
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()

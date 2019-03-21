@@ -22,7 +22,7 @@ public class DepositCargoAutoCommandGroup extends CommandGroup {
     // addSequential(new Command2());
     // these will run in order.
 
-       addSequential(new BallElevatorIntakeCommand());
+       // addSequential(new BallElevatorIntakeCommand());
        addSequential(new ElevatorHeightCommand(2));
        addSequential(new BallElevatorShooterCommand());
        addSequential(new ElevatorReturnToBottomCommand());

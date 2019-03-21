@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class LiftIntakeCommand extends Command {
+  boolean finished = false;
   public LiftIntakeCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -20,28 +21,41 @@ public class LiftIntakeCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    finished = false;
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
     Robot.intakePnuematicsSubsystem.toggleLift();
+
+  //flase is true???
+    if(Robot.ballElevatorSubsystem.isBallIn() == false) {
+      Robot.ballElevatorSubsystem.ballElevatorShooterMotor.set(0);
+      Robot.intakeMotorSubsystem.intakeMotor.set(0);
+      finished = true;
+    } else {
+      Robot.ballElevatorSubsystem.ballElevatorShooterMotor.set(-.7);
+      Robot.intakeMotorSubsystem.intakeMotor.set(.7);
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return finished;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    finished = false;
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    finished = false;
   }
 }

@@ -30,9 +30,15 @@ public class IntakeMotorCommand extends Command {
   @Override
   protected void execute() {
     double trigger = controller.getTriggerAxis(Hand.kLeft) - (controller.getTriggerAxis(Hand.kRight));
+      
+      Robot.intakeMotorSubsystem.intakeMotorSet(trigger);
 
-    Robot.intakeMotorSubsystem.intakeMotorSet(trigger);
-
+    // if (Robot.intakePnuematicsSubsystem.intakeLeftRotateSolenoid.get() == true && Robot.intakePnuematicsSubsystem.intakeRightRotateSolenoid.get()) {
+    //   Robot.intakeMotorSubsystem.intakeMotorSet(-1.0);
+    // }
+    // else (Robot.ballElevatorSubsystem.isBallIn() == true) {
+    //   Robot.ballElevatorSubsystem.intakeMotorSet(0);
+    // }
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -11,21 +11,16 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.BackLineFollowerCommandV2;
 import frc.robot.commands.BackLineFollowingAbortCommand;
 import frc.robot.commands.BackLineUpRobotCommandGroup;
 import frc.robot.commands.BackPnuematicLiftCommand;
-import frc.robot.commands.BallElevatorShooterCommand;
 import frc.robot.commands.DepositBottomAutoCommandGroup;
 import frc.robot.commands.DepositCargoAutoCommandGroup;
 import frc.robot.commands.DepositRocketAutoCommandGroup;
 import frc.robot.commands.DropLiftPnuematicsCommand;
-import frc.robot.commands.ElevatorHeightCommand;
 import frc.robot.commands.FrontPnuematicLiftCommand;
 import frc.robot.commands.HatchOutakeCommand;
 import frc.robot.commands.LiftIntakeCommand;
-// import frc.robot.commands.LineFollowerCommand;
-import frc.robot.commands.FrontLineFollowerCommandV2;
 import frc.robot.commands.FrontLineFollowingAbortCommand;
 import frc.robot.commands.FrontLineUpRobotCommandGroup;
 import frc.robot.commands.NinjaStarCommand;
@@ -96,32 +91,32 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
-  public static FrontLineUpRobotCommandGroup Flfc = new FrontLineUpRobotCommandGroup();
-  public static BackLineUpRobotCommandGroup Blfc = new BackLineUpRobotCommandGroup();
+  public static FrontLineUpRobotCommandGroup Flrc = new FrontLineUpRobotCommandGroup();
+  public static BackLineUpRobotCommandGroup Blrc = new BackLineUpRobotCommandGroup();
 
 
   public OI() {
  
-    driveStick3Button.whenPressed(Flfc);
+    driveStick3Button.whenPressed(Flrc);
     driveStick5Button.whenPressed(new FrontLineFollowingAbortCommand());
 
-    driveStick4Button.whenPressed(Blfc);
+    driveStick4Button.whenPressed(Blrc);
     driveStick6Button.whenPressed(new BackLineFollowingAbortCommand()); 
 
     xboxControllerRBButton.whenPressed(new HatchOutakeCommand());
-    xboxControllerLBButton.whenPressed(new LiftIntakeCommand());
+    xboxControllerLBButton.whenPressed(new NinjaStarCommand());
 
-    driveStick8Button.whenPressed(new DropLiftPnuematicsCommand());
-    driveStick12Button.whenPressed(new BackPnuematicLiftCommand());
-    driveStick10Button.whenPressed(new FrontPnuematicLiftCommand());
+    xboxControllerXButton.whenPressed(new DropLiftPnuematicsCommand());
+    xboxControllerAButton.whenPressed(new BackPnuematicLiftCommand());
+    xboxControllerYButton.whenPressed(new FrontPnuematicLiftCommand());
 
-    xboxControllerAButton.whenPressed(new DepositBottomAutoCommandGroup());
-    xboxControllerYButton.whenPressed(new DepositCargoAutoCommandGroup());
-    xboxControllerBButton.whenPressed(new DepositRocketAutoCommandGroup());
-    xboxControllerXButton.whenPressed(new NinjaStarCommand());
+    driveStick11Button.whenPressed(new DepositBottomAutoCommandGroup());
+    driveStick12Button.whenPressed(new DepositCargoAutoCommandGroup());
+    driveStick9Button.whenPressed(new DepositRocketAutoCommandGroup());
+    xboxControllerBButton.whenPressed(new LiftIntakeCommand());
 
-    driveStick9Button.whileHeld(new ElevatorHeightCommand(2));
-    driveStick7Button.whileHeld(new ElevatorHeightCommand(1));
+    // driveStick9Button.whileHeld(new ElevatorHeightCommand(2));
+    // driveStick7Button.whileHeld(new ElevatorHeightCommand(1));
 
     
 

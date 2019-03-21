@@ -8,7 +8,6 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.Robot;
 
 public class BackLineUpRobotCommandGroup extends CommandGroup {
   /**
@@ -16,10 +15,10 @@ public class BackLineUpRobotCommandGroup extends CommandGroup {
    */
   public BackLineUpRobotCommandGroup() {
     
-    addSequential(new BackLineRecognizerCommandV2());
-    addSequential(new BackRotateCommand());
+     addSequential(new BackLineRecognizerCommandV2());
+    // addSequential(new BackRotateCommand());
     addSequential(new BackLineFollowerCommandV2());
-    addSequential(new BackAutoForwardCommand());
+    // addSequential(new BackAutoForwardCommand());
   
     // Add Commands here:
     // e.g. addSequential(new Command1());

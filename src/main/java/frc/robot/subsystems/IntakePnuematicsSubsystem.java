@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;
@@ -24,12 +25,16 @@ public class IntakePnuematicsSubsystem extends Subsystem {
   final int hatchOuttakeLeftSolenoidChannel = 3;
   final int hatchOuttakeRightSolenoidChannel = 4;
   final int ninjaStarSolenoidChannel = 5;
+  final int isHatchRightLinedUpChannel = 9; //change channel. may be on navx
+  final int isHatchLeftLinedUpChannel = 9; //change channel. may be on navx
 
   public Solenoid intakeLeftRotateSolenoid = new Solenoid(1, intakeRotateLeftSolenoidChannel);
   public Solenoid intakeRightRotateSolenoid = new Solenoid(1, intakeRotateRightSolenoidChannel);
   public Solenoid hatchOuttakeLeftSolenoid = new Solenoid(1, hatchOuttakeLeftSolenoidChannel);
   public Solenoid hatchOuttakeRightSolenoid = new Solenoid(1, hatchOuttakeRightSolenoidChannel);
   public Solenoid ninjaStarSolenoid = new Solenoid(1, ninjaStarSolenoidChannel);
+  public DigitalInput hatchRightLineUp = new DigitalInput(isHatchRightLinedUpChannel);
+  public DigitalInput hatchLeftLineUp = new DigitalInput(isHatchLeftLinedUpChannel);
 
   @Override
   public void initDefaultCommand() {
@@ -68,4 +73,12 @@ public class IntakePnuematicsSubsystem extends Subsystem {
         public boolean getNinjaStar() {
           return Robot.intakePnuematicsSubsystem.ninjaStarSolenoid.get();
         }
+
+        public boolean isHatchRightLinedUp(){
+          return Robot.intakePnuematicsSubsystem.hatchRightLineUp.get();
+        }
+
+        public boolean isHatchLeftLinedUp(){
+          return Robot.intakePnuematicsSubsystem.hatchLeftLineUp.get();
+        }          
 }

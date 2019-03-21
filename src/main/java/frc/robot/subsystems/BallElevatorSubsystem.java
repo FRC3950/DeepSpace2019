@@ -32,7 +32,7 @@ public class BallElevatorSubsystem extends Subsystem {
   private DigitalInput bottomLimitSwitch = new DigitalInput(bottomLimitSwitchChannel);
   private DigitalInput cargoLimitSwitch = new DigitalInput(cargoLimitSwitchChannel);
   private DigitalInput rocketLimitSwitch = new DigitalInput(rocketLimitSwitchChannel);
-  private DigitalInput isBallIn = new DigitalInput(isBallInLimitSwitchChannel);
+  public DigitalInput isBallIn = new DigitalInput(isBallInLimitSwitchChannel);
 
   
 
@@ -49,26 +49,32 @@ public WPI_TalonSRX getBallElevatorMotor() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
+
   public void BallElevatorMotorSet(double speed){
     ballElevatorMotor.set(speed);
     //sets elevator motor to value of leftstick on xboxcontroller
     //chick-fil-a
    }
+
   public void BallElevatorShooterMotorSet(double rightstick){
     ballElevatorMotor.set(rightstick);
   }
+
   public boolean bottomGetter() {
     return bottomLimitSwitch.get();
     //gets the status of the bottom limit switch
   }
+
   public boolean cargoGetter(){
     return cargoLimitSwitch.get();
     //gets the status of the cargo limit switch
   }
+
   public boolean rocketGetter(){
     return rocketLimitSwitch.get();
     //gets the status of the rocket limit switch
   }
+
   public boolean isBallIn(){
     return isBallIn.get();
   }
@@ -81,6 +87,7 @@ public WPI_TalonSRX getBallElevatorMotor() {
   public void resetEncoder() {
     getBallElevatorMotor().setSelectedSensorPosition(0, 0, 0);
   }
+
   public double getElevatorHeight() {
     return (getEncoder()/4096.0)*distancePerRotation;
     //not the actual value
