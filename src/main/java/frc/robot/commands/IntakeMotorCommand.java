@@ -32,6 +32,17 @@ public class IntakeMotorCommand extends Command {
     double trigger = controller.getTriggerAxis(Hand.kLeft) - (controller.getTriggerAxis(Hand.kRight));
       
       Robot.intakeMotorSubsystem.intakeMotorSet(trigger);
+    
+    if(Robot.intakePnuematicsSubsystem.intakeLeftRotateSolenoid.get() == false && Robot.intakePnuematicsSubsystem.intakeRightRotateSolenoid.get() == false) {
+      if(Robot.ballElevatorSubsystem.isBallIn() == false) {
+        Robot.ballElevatorSubsystem.ballElevatorShooterMotor.set(0);
+        //Robot.intakeMotorSubsystem.intakeMotor.set(0);
+      } else {
+        Robot.ballElevatorSubsystem.ballElevatorShooterMotor.set(.5 * -trigger);
+        //Robot.intakeMotorSubsystem.intakeMotor.set(trigger);
+      }
+      
+    }
 
     // if (Robot.intakePnuematicsSubsystem.intakeLeftRotateSolenoid.get() == true && Robot.intakePnuematicsSubsystem.intakeRightRotateSolenoid.get()) {
     //   Robot.intakeMotorSubsystem.intakeMotorSet(-1.0);

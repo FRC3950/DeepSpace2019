@@ -21,7 +21,7 @@ public class RobotLiftSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   
-  final int liftMotorChannel = 4;
+  final int liftMotorChannel = 8;
   final int backLeftLiftSolenoidChannel1 = 1;
   final int backLeftLiftSolenoidChannel2 = 6;
   final int backRightLiftSolenoidChannel1 = 0;
@@ -32,55 +32,55 @@ public class RobotLiftSubsystem extends Subsystem {
   final int frontRightLiftSolenoidChannel2 = 4;
   
   
-  private WPI_TalonSRX liftMotor = new WPI_TalonSRX(liftMotorChannel);
-  public DoubleSolenoid backLeftLiftSolenoid = new DoubleSolenoid(0,backLeftLiftSolenoidChannel1,backLeftLiftSolenoidChannel2);
-  public DoubleSolenoid backRightLiftSolenoid = new DoubleSolenoid(0,backRightLiftSolenoidChannel1,backRightLiftSolenoidChannel2);
-  public DoubleSolenoid frontLeftLiftSolenoid = new DoubleSolenoid(frontLeftLiftSolenoidChannel1,frontLeftLiftSolenoidChannel2);
-  public DoubleSolenoid frontRightLiftSolenoid = new DoubleSolenoid(frontRightLiftSolenoidChannel1,frontRightLiftSolenoidChannel2);
+  public WPI_TalonSRX liftMotor = new WPI_TalonSRX(liftMotorChannel);
+  public DoubleSolenoid backLeftLiftSolenoid = new DoubleSolenoid(2,backLeftLiftSolenoidChannel1,backLeftLiftSolenoidChannel2);
+  public DoubleSolenoid backRightLiftSolenoid = new DoubleSolenoid(2,backRightLiftSolenoidChannel1,backRightLiftSolenoidChannel2);
+  public DoubleSolenoid frontLeftLiftSolenoid = new DoubleSolenoid(2,frontLeftLiftSolenoidChannel1,frontLeftLiftSolenoidChannel2);
+  public DoubleSolenoid frontRightLiftSolenoid = new DoubleSolenoid(2,frontRightLiftSolenoidChannel1,frontRightLiftSolenoidChannel2);
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new RobotLiftMotorCommand());
+    // setDefaultCommand(new RobotLiftMotorCommand());
   }
-  public void liftMotorSet(double xSpeed){
-    double y;
-    y = -xSpeed;
-    if(y<0.3 && y>-0.3) y = 0;
-    liftMotor.set(y);
-  }
+  // public void liftMotorSet(double xSpeed){
+  //   double y;
+  //   y = -xSpeed;
+  //   if(y<0.2 && y>-0.2) y = 0;
+  //   liftMotor.set(y);
+  // }
 
   public void dropPistons(){
-      if((backLeftLiftSolenoid.get() == Value.kForward) && (backRightLiftSolenoid.get() == Value.kForward)
-        && (frontLeftLiftSolenoid.get() == Value.kReverse) && (frontRightLiftSolenoid.get() == Value.kReverse)) {
-      backLeftLiftSolenoid.set(Value.kReverse);
-      backRightLiftSolenoid.set(Value.kReverse);
-      frontLeftLiftSolenoid.set(Value.kForward);
-      frontRightLiftSolenoid.set(Value.kForward);
+      if((backLeftLiftSolenoid.get() == DoubleSolenoid.Value.kForward) && (backRightLiftSolenoid.get() == DoubleSolenoid.Value.kForward)
+        && (frontLeftLiftSolenoid.get() == DoubleSolenoid.Value.kReverse) && (frontRightLiftSolenoid.get() == DoubleSolenoid.Value.kReverse)) {
+      backLeftLiftSolenoid.set(DoubleSolenoid.Value.kReverse);
+      backRightLiftSolenoid.set(DoubleSolenoid.Value.kReverse);
+      frontLeftLiftSolenoid.set(DoubleSolenoid.Value.kForward);
+      frontRightLiftSolenoid.set(DoubleSolenoid.Value.kForward);
       } else {
-        backLeftLiftSolenoid.set(Value.kForward);
-        backRightLiftSolenoid.set(Value.kForward);
-        frontLeftLiftSolenoid.set(Value.kReverse);
-        frontRightLiftSolenoid.set(Value.kReverse);
+        backLeftLiftSolenoid.set(DoubleSolenoid.Value.kForward);
+        backRightLiftSolenoid.set(DoubleSolenoid.Value.kForward);
+        frontLeftLiftSolenoid.set(DoubleSolenoid.Value.kReverse);
+        frontRightLiftSolenoid.set(DoubleSolenoid.Value.kReverse);
       }
   }
   public void toggleBackPistons(){
-    if((backLeftLiftSolenoid.get() == Value.kForward) && (backRightLiftSolenoid.get() == Value.kForward)) {
-  backLeftLiftSolenoid.set(Value.kReverse);
-  backRightLiftSolenoid.set(Value.kReverse);
+    if((backLeftLiftSolenoid.get() == DoubleSolenoid.Value.kReverse) || (backRightLiftSolenoid.get() == DoubleSolenoid.Value.kReverse)) {
+  backLeftLiftSolenoid.set(DoubleSolenoid.Value.kForward);
+  backRightLiftSolenoid.set(DoubleSolenoid.Value.kForward);
   } else {
-    backLeftLiftSolenoid.set(Value.kForward);
-    backRightLiftSolenoid.set(Value.kForward);
+    backLeftLiftSolenoid.set(DoubleSolenoid.Value.kReverse);
+    backRightLiftSolenoid.set(DoubleSolenoid.Value.kReverse);
   }
   }
   public void toggleFrontPistons(){
-    if((frontLeftLiftSolenoid.get() == Value.kReverse) && (frontRightLiftSolenoid.get() == Value.kReverse)) {
-  frontLeftLiftSolenoid.set(Value.kForward);
-  frontRightLiftSolenoid.set(Value.kForward);
+    if((frontLeftLiftSolenoid.get() == DoubleSolenoid.Value.kReverse) || (frontRightLiftSolenoid.get() == DoubleSolenoid.Value.kReverse)) {
+  frontLeftLiftSolenoid.set(DoubleSolenoid.Value.kForward);
+  frontRightLiftSolenoid.set(DoubleSolenoid.Value.kForward);
   } else {
-    frontLeftLiftSolenoid.set(Value.kReverse);
-    frontRightLiftSolenoid.set(Value.kReverse);
+    frontLeftLiftSolenoid.set(DoubleSolenoid.Value.kReverse);
+    frontRightLiftSolenoid.set(DoubleSolenoid.Value.kReverse);
   }
   }
 }

@@ -40,7 +40,7 @@ public class ElevatorHeightCommand extends Command {
     //Cargo is higher
 
     if(stage == 0) {
-      if(Robot.ballElevatorSubsystem.bottomGetter() == false){
+      if(Robot.ballElevatorSubsystem.bottomGetter() == true){
         Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
         finished = true;
         //System.out.println("ElevatorHeightCommand.execute.bottom.end");
@@ -55,7 +55,7 @@ public class ElevatorHeightCommand extends Command {
       //   Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
     }
     if(stage == 1) {
-      if(Robot.ballElevatorSubsystem.rocketGetter() == false){
+      if(Robot.ballElevatorSubsystem.rocketGetter() == true){
         Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
         finished = true;
         //System.out.println("ElevatorHeightCommand.execute.rocket.end");
@@ -65,7 +65,7 @@ public class ElevatorHeightCommand extends Command {
       }
     }
     if(stage == 2) {
-      if(Robot.ballElevatorSubsystem.cargoGetter()== false){
+      if(Robot.ballElevatorSubsystem.cargoGetter()== true){
         Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
         finished = true;
        // System.out.println("ElevatorHeightCommand.execute.cargo.end");

@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
@@ -40,6 +41,9 @@ public class DriveCommand extends Command {
     // System.out.println("bL" + Robot.drivetrainSubsystem.backLeft.getBusVoltage());
     // System.out.println("fR" + Robot.drivetrainSubsystem.frontRight.getBusVoltage());    
     // System.out.println("bR" + Robot.drivetrainSubsystem.backRight.getBusVoltage());
+    // if(Robot.robotLiftSubsystem.backLeftLiftSolenoid.get() == Value.kForward) {
+    //   Robot.robotLiftSubsystem.liftMotor.set(stick.getY());
+    // }
   }
 
   // Make this return true when this Command no longer needs to run execute()

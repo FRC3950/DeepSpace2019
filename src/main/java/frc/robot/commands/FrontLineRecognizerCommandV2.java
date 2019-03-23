@@ -27,7 +27,7 @@ public class FrontLineRecognizerCommandV2 extends Command {
   @Override
   protected void initialize() {
     stick = Robot.m_oi.driveStick;
-    System.out.println("FrontLineRecognizerCommandV2.initialize");
+  //  System.out.println("FrontLineRecognizerCommandV2.initialize");
   }
 
   public static boolean disabled = false;

@@ -14,7 +14,7 @@ public class DropLiftPnuematicsCommand extends Command {
   public DropLiftPnuematicsCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.robotLiftSubsystem);
+    // requires(Robot.robotLiftSubsystem);
   }
 
   // Called just before this Command runs the first time

@@ -19,7 +19,6 @@ public class BackLineFollowerCommandV2 extends Command {
      // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.lineFollowerSubsystem);
-    requires(Robot.gyroSubsystem);
     requires(Robot.drivetrainSubsystem);
   }
 

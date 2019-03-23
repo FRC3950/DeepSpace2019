@@ -18,13 +18,16 @@ import frc.robot.commands.DepositBottomAutoCommandGroup;
 import frc.robot.commands.DepositCargoAutoCommandGroup;
 import frc.robot.commands.DepositRocketAutoCommandGroup;
 import frc.robot.commands.DropLiftPnuematicsCommand;
+import frc.robot.commands.ElevatorReturnToBottomCommand;
 import frc.robot.commands.FrontPnuematicLiftCommand;
 import frc.robot.commands.HatchOutakeCommand;
+import frc.robot.commands.HatchReleaseCommand;
 import frc.robot.commands.LiftIntakeCommand;
 import frc.robot.commands.FrontLineFollowingAbortCommand;
 import frc.robot.commands.FrontLineUpRobotCommandGroup;
 import frc.robot.commands.NinjaStarCommand;
 import frc.robot.commands.ResetFieldCentricCommand;
+import frc.robot.commands.RobotLiftMotorCommand;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -105,23 +108,27 @@ public class OI {
 
     xboxControllerRBButton.whenPressed(new HatchOutakeCommand());
     xboxControllerLBButton.whenPressed(new NinjaStarCommand());
+    xboxControllerBackButton.whenPressed(new HatchReleaseCommand());
 
-    xboxControllerXButton.whenPressed(new DropLiftPnuematicsCommand());
+    xboxControllerYButton.whenPressed(new DropLiftPnuematicsCommand());
     xboxControllerAButton.whenPressed(new BackPnuematicLiftCommand());
-    xboxControllerYButton.whenPressed(new FrontPnuematicLiftCommand());
+    xboxControllerBButton.whenPressed(new FrontPnuematicLiftCommand());
 
-    driveStick11Button.whenPressed(new DepositBottomAutoCommandGroup());
+    //driveStick11Button.whenPressed(new DepositBottomAutoCommandGroup());
     driveStick12Button.whenPressed(new DepositCargoAutoCommandGroup());
-    driveStick9Button.whenPressed(new DepositRocketAutoCommandGroup());
-    xboxControllerBButton.whenPressed(new LiftIntakeCommand());
+    driveStick11Button.whenPressed(new DepositRocketAutoCommandGroup());
+
+    xboxControllerXButton.whenPressed(new LiftIntakeCommand());
+
+    driveStick9Button.whenPressed(new ElevatorReturnToBottomCommand());
 
     // driveStick9Button.whileHeld(new ElevatorHeightCommand(2));
     // driveStick7Button.whileHeld(new ElevatorHeightCommand(1));
 
-    
+    driveStick2Button.whileHeld(new RobotLiftMotorCommand());
 
     // driveStick9Button.whenPressed(new BrushlessMotorCommand());
-     driveStick11Button.whenPressed(new ResetFieldCentricCommand());
+     driveStick8Button.whenPressed(new ResetFieldCentricCommand());
     // driveStick1Button.whenPressed(new CloseDoorCommand());
     // xboxControllerRBButton.whenPressed(new ShootBallCommand());
   }

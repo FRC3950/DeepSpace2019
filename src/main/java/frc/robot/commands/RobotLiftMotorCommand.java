@@ -19,21 +19,23 @@ public class RobotLiftMotorCommand extends Command {
   public RobotLiftMotorCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.robotLiftSubsystem);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    // System.out.println("Robot Lift Motor Initialize");
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-  if((Robot.robotLiftSubsystem.backLeftLiftSolenoid.get() == Value.kForward) && (Robot.robotLiftSubsystem.backRightLiftSolenoid.get() == Value.kForward)){
-    Robot.robotLiftSubsystem.liftMotorSet(stick.getY());
-    }
-  Robot.robotLiftSubsystem.liftMotorSet(0);
+    // System.out.println("Robot Lift Motor Execute");
+  // if((Robot.robotLiftSubsystem.backLeftLiftSolenoid.get() == Value.kForward) && (Robot.robotLiftSubsystem.backRightLiftSolenoid.get() == Value.kForward)){
+  //   Robot.robotLiftSubsystem.liftMotor.set(stick.getY());
+  //   }
+  Robot.robotLiftSubsystem.liftMotor.set(0.5);
   }
 
   // Make this return true when this Command no longer needs to run execute()

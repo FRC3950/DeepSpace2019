@@ -14,7 +14,7 @@ public class HatchOutakeCommand extends Command {
   public HatchOutakeCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.intakeMotorSubsystem);
+    requires(Robot.intakePnuematicsSubsystem);
   }
 
   // Called just before this Command runs the first time
@@ -26,6 +26,7 @@ public class HatchOutakeCommand extends Command {
   @Override
   protected void execute() {
     Robot.intakePnuematicsSubsystem.toggleHatchOuttake();
+    System.out.println("Push out");
   }
 
   // Make this return true when this Command no longer needs to run execute()

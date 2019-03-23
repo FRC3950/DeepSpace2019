@@ -25,8 +25,8 @@ public class IntakePnuematicsSubsystem extends Subsystem {
   final int hatchOuttakeLeftSolenoidChannel = 3;
   final int hatchOuttakeRightSolenoidChannel = 4;
   final int ninjaStarSolenoidChannel = 5;
-  final int isHatchRightLinedUpChannel = 9; //change channel. may be on navx
-  final int isHatchLeftLinedUpChannel = 9; //change channel. may be on navx
+  final int isHatchRightLinedUpChannel = 10; //change channel. may be on navx
+  final int isHatchLeftLinedUpChannel = 11; //change channel. may be on navx
 
   public Solenoid intakeLeftRotateSolenoid = new Solenoid(1, intakeRotateLeftSolenoidChannel);
   public Solenoid intakeRightRotateSolenoid = new Solenoid(1, intakeRotateRightSolenoidChannel);
@@ -44,24 +44,24 @@ public class IntakePnuematicsSubsystem extends Subsystem {
    }
 
   public void toggleLift(){
-    if (intakeLeftRotateSolenoid.get() == true && intakeRightRotateSolenoid.get() == true) {
-      intakeLeftRotateSolenoid.set(false);
-      intakeRightRotateSolenoid.set(false);
+    if (Robot.intakePnuematicsSubsystem.intakeLeftRotateSolenoid.get() == true && Robot.intakePnuematicsSubsystem.intakeRightRotateSolenoid.get() == true) {
+      Robot.intakePnuematicsSubsystem.intakeLeftRotateSolenoid.set(false);
+      Robot.intakePnuematicsSubsystem.intakeRightRotateSolenoid.set(false);
     } else {
-      intakeLeftRotateSolenoid.set(true);
-      intakeRightRotateSolenoid.set(true);
+      Robot.intakePnuematicsSubsystem.intakeLeftRotateSolenoid.set(true);
+      Robot.intakePnuematicsSubsystem.intakeRightRotateSolenoid.set(true);
       //if the left solenoid is out and the right solenoid is out, then set it to the in postion, else, put them in the forward position
     }
   }
     public void toggleHatchOuttake(){
-      if (hatchOuttakeLeftSolenoid.get() == true && hatchOuttakeRightSolenoid.get() == true) {
-        hatchOuttakeLeftSolenoid.set(false);
-        hatchOuttakeRightSolenoid.set(false);
-      } else {
+      if (hatchOuttakeLeftSolenoid.get() == false && hatchOuttakeRightSolenoid.get() == false) {
         hatchOuttakeLeftSolenoid.set(true);
         hatchOuttakeRightSolenoid.set(true);
+      } else {
+        hatchOuttakeLeftSolenoid.set(false);
+        hatchOuttakeRightSolenoid.set(false);
       }
-    }
+     }
       public void toggleNinjaStar(){
         if (ninjaStarSolenoid.get() == true) {
           ninjaStarSolenoid.set(false);

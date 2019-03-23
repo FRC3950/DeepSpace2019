@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -132,7 +133,12 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-
+    Robot.robotLiftSubsystem.backLeftLiftSolenoid.set(DoubleSolenoid.Value.kReverse);
+    Robot.robotLiftSubsystem.backRightLiftSolenoid.set(DoubleSolenoid.Value.kReverse);
+    Robot.robotLiftSubsystem.frontLeftLiftSolenoid.set(DoubleSolenoid.Value.kForward);
+    Robot.robotLiftSubsystem.frontRightLiftSolenoid.set(DoubleSolenoid.Value.kForward);
+    // Robot.intakePnuematicsSubsystem.intakeLeftRotateSolenoid.set(true);
+    // Robot.intakePnuematicsSubsystem.intakeRightRotateSolenoid.set(true);
     // Robot.drivetrainSubsystem.backLeft.getEncoder().setPosition(0.0);
     // Robot.drivetrainSubsystem.frontLeft.getEncoder().setPosition(0.0);
     // Robot.drivetrainSubsystem.backRight.getEncoder().setPosition(0.0);

@@ -17,9 +17,9 @@ public class BackLineRecognizerCommandV2 extends Command {
   public BackLineRecognizerCommandV2() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.gyroSubsystem);
+    requires(Robot.lineFollowerSubsystem);
     requires(Robot.drivetrainSubsystem);
-    System.out.println("BackLineRecognizerCommandV2.BackLineRecognizerCommandV2");
+  //  System.out.println("BackLineRecognizerCommandV2.BackLineRecognizerCommandV2");
   }
 
   // Called just before this Command runs the first time

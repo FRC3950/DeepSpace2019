@@ -26,7 +26,8 @@ public class ElevatorReturnToBottomCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Robot.ballElevatorSubsystem.bottomGetter() == false){
+    //might have to change the value to false
+    if(Robot.ballElevatorSubsystem.bottomGetter() == true){
       Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
       finished = true;
      // System.out.println("ElevatorRotateToBottomCommand.execute.bottom.end");
