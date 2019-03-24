@@ -34,7 +34,7 @@ public class DriveCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(),Robot.gyroSubsystem.getCurrentAngle());
+    Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist());
     //Robot.drivetrainSubsystem.driveCartesian(stick.getY(), stick.getX(), stick.getTwist());
     //Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getTwist());
     // System.out.println("fL" + Robot.drivetrainSubsystem.frontLeft.getBusVoltage());

@@ -57,9 +57,9 @@ public class FrontRotateCommand extends Command {
   protected void execute() {
     double robotAngle = Robot.gyroSubsystem.getCurrentAngle();
     if(Math.abs(robotAngle - rotateTo) > 1 && (robotAngle - rotateTo) < 0){
-      Robot.drivetrainSubsystem.Drive(0, 0, 0.3, 0);
+      Robot.drivetrainSubsystem.Drive(0, 0, 0.3);
     } else if(Math.abs(robotAngle - rotateTo) > 1 && (robotAngle - rotateTo) > 0) {
-      Robot.drivetrainSubsystem.Drive(0, 0, -0.3, 0);
+      Robot.drivetrainSubsystem.Drive(0, 0, -0.3);
     } else {
       disabled = true;
     }

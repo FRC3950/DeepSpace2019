@@ -62,6 +62,9 @@ public class OI {
   public Button xboxControllerStartButton = new JoystickButton(xboxController, 8);
   public Button xboxControllerLeftStickButton = new JoystickButton(xboxController, 9);
   public Button xboxControllerRightStickButton = new JoystickButton(xboxController, 10);
+
+  public Button hatchButton = new HatchButton();
+
 // Kushmaker
 
 
@@ -107,8 +110,8 @@ public class OI {
     driveStick6Button.whenPressed(new BackLineFollowingAbortCommand()); 
 
     xboxControllerRBButton.whenPressed(new HatchOutakeCommand());
-    xboxControllerLBButton.whenPressed(new NinjaStarCommand());
-    xboxControllerBackButton.whenPressed(new HatchReleaseCommand());
+   // xboxControllerLBButton.whenPressed(new NinjaStarCommand());
+    xboxControllerLBButton.whileHeld(new HatchReleaseCommand());
 
     xboxControllerYButton.whenPressed(new DropLiftPnuematicsCommand());
     xboxControllerAButton.whenPressed(new BackPnuematicLiftCommand());
@@ -125,12 +128,15 @@ public class OI {
     // driveStick9Button.whileHeld(new ElevatorHeightCommand(2));
     // driveStick7Button.whileHeld(new ElevatorHeightCommand(1));
 
-    driveStick2Button.whileHeld(new RobotLiftMotorCommand());
+    driveStick2Button.whenPressed(new RobotLiftMotorCommand());
 
     // driveStick9Button.whenPressed(new BrushlessMotorCommand());
      driveStick8Button.whenPressed(new ResetFieldCentricCommand());
     // driveStick1Button.whenPressed(new CloseDoorCommand());
     // xboxControllerRBButton.whenPressed(new ShootBallCommand());
+    hatchButton.whenPressed(new NinjaStarCommand());
+
+    
   }
 
 }

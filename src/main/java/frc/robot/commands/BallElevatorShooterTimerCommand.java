@@ -35,12 +35,12 @@ public class BallElevatorShooterTimerCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(timer.get() <= 3) {
-      Robot.ballElevatorSubsystem.ballElevatorMotor.set(-1.0);
+    if(timer.get() <= 1) {
+      Robot.ballElevatorSubsystem.ballElevatorShooterMotor.set(-1.0);
       finished = false;
     } else {
       timer.stop();
-      Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
+      Robot.ballElevatorSubsystem.ballElevatorShooterMotor.set(0);
       finished = true;
     }
   }

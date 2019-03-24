@@ -24,7 +24,7 @@ public class DepositCargoAutoCommandGroup extends CommandGroup {
 
      //  addSequential(new BallElevatorIntakeCommand());
        addSequential(new ElevatorHeightCommand(2));
-       addSequential(new BallElevatorShooterCommand());    
+       addSequential(new BallElevatorShooterTimerCommand());    
        addSequential(new DelayCommand(500));
        addSequential(new ElevatorReturnToBottomCommand());
 

@@ -26,7 +26,7 @@ public class HatchOutakeCommand extends Command {
   @Override
   protected void execute() {
     Robot.intakePnuematicsSubsystem.toggleHatchOuttake();
-    System.out.println("Push out");
+  //  System.out.println("Push out");
   }
 
   // Make this return true when this Command no longer needs to run execute()

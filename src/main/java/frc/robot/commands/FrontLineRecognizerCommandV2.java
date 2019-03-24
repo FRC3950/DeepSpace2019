@@ -41,7 +41,7 @@ public class FrontLineRecognizerCommandV2 extends Command {
     int currentState = Robot.lineFollowerSubsystem.getFrontLineFollowerState();
 
     if(currentState == 0b000) {
-      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getZ(), Robot.gyroSubsystem.getCurrentAngle());
+      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getZ());
       // System.out.println("joystick control");
       // System.out.println("FrontLineRecognizerCommandV2.executeIF"); 
       lastLineFollowerState = currentState;

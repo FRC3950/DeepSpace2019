@@ -10,7 +10,9 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
+import frc.robot.commands.NinjaStarCommand;
 
 /**
  * Add your docs here.
@@ -28,11 +30,11 @@ public class IntakePnuematicsSubsystem extends Subsystem {
   final int isHatchRightLinedUpChannel = 10; //change channel. may be on navx
   final int isHatchLeftLinedUpChannel = 11; //change channel. may be on navx
 
-  public Solenoid intakeLeftRotateSolenoid = new Solenoid(1, intakeRotateLeftSolenoidChannel);
-  public Solenoid intakeRightRotateSolenoid = new Solenoid(1, intakeRotateRightSolenoidChannel);
-  public Solenoid hatchOuttakeLeftSolenoid = new Solenoid(1, hatchOuttakeLeftSolenoidChannel);
-  public Solenoid hatchOuttakeRightSolenoid = new Solenoid(1, hatchOuttakeRightSolenoidChannel);
-  public Solenoid ninjaStarSolenoid = new Solenoid(1, ninjaStarSolenoidChannel);
+  public Solenoid intakeLeftRotateSolenoid = new Solenoid(2, intakeRotateLeftSolenoidChannel);
+  public Solenoid intakeRightRotateSolenoid = new Solenoid(2, intakeRotateRightSolenoidChannel);
+  public Solenoid hatchOuttakeLeftSolenoid = new Solenoid(2, hatchOuttakeLeftSolenoidChannel);
+  public Solenoid hatchOuttakeRightSolenoid = new Solenoid(2, hatchOuttakeRightSolenoidChannel);
+  public Solenoid ninjaStarSolenoid = new Solenoid(2, ninjaStarSolenoidChannel);
   public DigitalInput hatchRightLineUp = new DigitalInput(isHatchRightLinedUpChannel);
   public DigitalInput hatchLeftLineUp = new DigitalInput(isHatchLeftLinedUpChannel);
 
@@ -40,7 +42,13 @@ public class IntakePnuematicsSubsystem extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    
+   // setDefaultCommand(new NinjaStarCommand());
+    // if(Robot.intakePnuematicsSubsystem.isHatchLeftLinedUp() == true && Robot.intakePnuematicsSubsystem.isHatchRightLinedUp() == true) {
+    //   Robot.intakePnuematicsSubsystem.ninjaStarSolenoid.set(false); //open
+    //   System.out.println("Ninja Star Command Execute OPEN");
+    // }
+    // SmartDashboard.putBoolean("Ninja Star" , Robot.intakePnuematicsSubsystem.ninjaStarSolenoid.get());
+  
    }
 
   public void toggleLift(){
@@ -63,12 +71,11 @@ public class IntakePnuematicsSubsystem extends Subsystem {
       }
      }
       public void toggleNinjaStar(){
-        if (ninjaStarSolenoid.get() == true) {
+      //   if (ninjaStarSolenoid.get() == true) {
           ninjaStarSolenoid.set(false);
-        } else {
-          ninjaStarSolenoid.set(true);
-
-        }
+        // } else {
+        //   ninjaStarSolenoid.set(true);
+      //  }
       }
         public boolean getNinjaStar() {
           return Robot.intakePnuematicsSubsystem.ninjaStarSolenoid.get();

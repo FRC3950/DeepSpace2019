@@ -21,7 +21,7 @@ public class LiftIntakeCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    System.out.println("Toggle Lift Initialize");
+  //  System.out.println("Toggle Lift Initialize");
     finished = false;
   }
 
@@ -29,7 +29,7 @@ public class LiftIntakeCommand extends Command {
   @Override
   protected void execute() {
     Robot.intakePnuematicsSubsystem.toggleLift();
-    System.out.println("Toggle Lift Execute");
+   // System.out.println("Toggle Lift Execute");
    
 
   //flase is true???

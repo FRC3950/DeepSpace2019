@@ -33,10 +33,10 @@ public class RobotLiftSubsystem extends Subsystem {
   
   
   public WPI_TalonSRX liftMotor = new WPI_TalonSRX(liftMotorChannel);
-  public DoubleSolenoid backLeftLiftSolenoid = new DoubleSolenoid(2,backLeftLiftSolenoidChannel1,backLeftLiftSolenoidChannel2);
-  public DoubleSolenoid backRightLiftSolenoid = new DoubleSolenoid(2,backRightLiftSolenoidChannel1,backRightLiftSolenoidChannel2);
-  public DoubleSolenoid frontLeftLiftSolenoid = new DoubleSolenoid(2,frontLeftLiftSolenoidChannel1,frontLeftLiftSolenoidChannel2);
-  public DoubleSolenoid frontRightLiftSolenoid = new DoubleSolenoid(2,frontRightLiftSolenoidChannel1,frontRightLiftSolenoidChannel2);
+  public DoubleSolenoid backLeftLiftSolenoid = new DoubleSolenoid(1,backLeftLiftSolenoidChannel1,backLeftLiftSolenoidChannel2);
+  public DoubleSolenoid backRightLiftSolenoid = new DoubleSolenoid(1,backRightLiftSolenoidChannel1,backRightLiftSolenoidChannel2);
+  public DoubleSolenoid frontLeftLiftSolenoid = new DoubleSolenoid(1,frontLeftLiftSolenoidChannel1,frontLeftLiftSolenoidChannel2);
+  public DoubleSolenoid frontRightLiftSolenoid = new DoubleSolenoid(1,frontRightLiftSolenoidChannel1,frontRightLiftSolenoidChannel2);
 
   @Override
   public void initDefaultCommand() {
@@ -66,7 +66,7 @@ public class RobotLiftSubsystem extends Subsystem {
       }
   }
   public void toggleBackPistons(){
-    if((backLeftLiftSolenoid.get() == DoubleSolenoid.Value.kReverse) || (backRightLiftSolenoid.get() == DoubleSolenoid.Value.kReverse)) {
+    if((backLeftLiftSolenoid.get() == DoubleSolenoid.Value.kReverse) && (backRightLiftSolenoid.get() == DoubleSolenoid.Value.kReverse)) {
   backLeftLiftSolenoid.set(DoubleSolenoid.Value.kForward);
   backRightLiftSolenoid.set(DoubleSolenoid.Value.kForward);
   } else {
@@ -75,7 +75,7 @@ public class RobotLiftSubsystem extends Subsystem {
   }
   }
   public void toggleFrontPistons(){
-    if((frontLeftLiftSolenoid.get() == DoubleSolenoid.Value.kReverse) || (frontRightLiftSolenoid.get() == DoubleSolenoid.Value.kReverse)) {
+    if((frontLeftLiftSolenoid.get() == DoubleSolenoid.Value.kReverse) && (frontRightLiftSolenoid.get() == DoubleSolenoid.Value.kReverse)) {
   frontLeftLiftSolenoid.set(DoubleSolenoid.Value.kForward);
   frontRightLiftSolenoid.set(DoubleSolenoid.Value.kForward);
   } else {

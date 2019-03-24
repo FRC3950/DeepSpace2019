@@ -17,7 +17,6 @@ public class BallElevatorShooterCommand extends Command {
   public BallElevatorShooterCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.ballElevatorSubsystem);
 
   }
 
@@ -31,7 +30,7 @@ public class BallElevatorShooterCommand extends Command {
   @Override
   protected void execute() {
       Robot.ballElevatorSubsystem.ballElevatorShooterMotor.set(-1.0);
-  
+  //System.out.println("Ball Elevator");
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -45,10 +45,10 @@ public class BackRotateCommand extends Command {
   protected void execute() {
     double robotAngle = Robot.gyroSubsystem.getCurrentAngle();
     if(Math.abs(robotAngle - rotateTo) > 1 && (robotAngle - rotateTo) < 0){
-      Robot.drivetrainSubsystem.Drive(0, 0, 0.3, 0);
+      Robot.drivetrainSubsystem.Drive(0, 0, 0.3);
     System.out.println("BackRotateCommand.executeIF");
     } else if(Math.abs(robotAngle - rotateTo) > 1 && (robotAngle - rotateTo) > 0) {
-      Robot.drivetrainSubsystem.Drive(0, 0, -0.3, 0);
+      Robot.drivetrainSubsystem.Drive(0, 0, -0.3);
     System.out.println("BackRotateCommand.executeELSEIF");
     } else {
       disabled = true;

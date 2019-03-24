@@ -25,7 +25,7 @@ public class BackLineRecognizerCommandV2 extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    System.out.println("BackLineRecognizerCommandV2.initialize");
+  //  System.out.println("BackLineRecognizerCommandV2.initialize");
     stick = Robot.m_oi.driveStick;
     disabled = false;
   }
@@ -40,11 +40,11 @@ public class BackLineRecognizerCommandV2 extends Command {
     int currentState = Robot.lineFollowerSubsystem.getBackLineFollowerState();
 
     if(currentState == 0b000) {
-      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getZ(), Robot.gyroSubsystem.getCurrentAngle());
+      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getZ());
 //      System.out.println("joystick control");  
       lastLineFollowerState = currentState;
     } else {
-      System.out.println("BackLineRecognizerCommandV2.executeELSE");
+     // System.out.println("BackLineRecognizerCommandV2.executeELSE");
       disabled = true;
     }
   }

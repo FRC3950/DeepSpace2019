@@ -85,7 +85,7 @@ public class DrivetrainSubsystem extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
 
-  public void Drive(double ySpeed, double xSpeed, double zRotation, double gyroAngle){
+  public void Drive(double ySpeed, double xSpeed, double zRotation){
     double x, y, z;
     x = -ySpeed;
     y = -xSpeed;
@@ -96,7 +96,7 @@ public class DrivetrainSubsystem extends Subsystem {
     // if (y < 0) y = -(y*y); else y = y*y;
     // if (x < 0) x = -(x*x); else x = x*x;
     //System.out.println("x=" + x + "  y=" + y + "  z=" + z + "  gyroAngle=" + gyroAngle);
-    drivetrain.driveCartesian(y, x, .75 * z, gyroAngle);
+    drivetrain.driveCartesian(y, x, .75 * z);
   }
   // public void driveCartesian(double ySpeed, double xSpeed, double zRotation){
   //   double y, x, z;

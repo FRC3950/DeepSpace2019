@@ -23,19 +23,19 @@ public class BackAutoForwardCommand extends Command {
   protected void initialize() {
     Robot.drivetrainSubsystem.setPositionZero();
     isFinished = false;
-    System.out.println("BackAutoForwardCommand.initialize");
+    //System.out.println("BackAutoForwardCommand.initialize");
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
     if(Robot.drivetrainSubsystem.getAverageEncoder() < 12){
-      Robot.drivetrainSubsystem.Drive(.4,0,0,0);
+      Robot.drivetrainSubsystem.Drive(.4,0,0);
     }else{
-      Robot.drivetrainSubsystem.Drive(0, 0, 0, 0);
+      Robot.drivetrainSubsystem.Drive(0, 0, 0);
       isFinished =true;
     }
-    System.out.println("BackAutoForwardCommand.execute");
+   // System.out.println("BackAutoForwardCommand.execute");
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -48,7 +48,7 @@ public class BackAutoForwardCommand extends Command {
   @Override
   protected void end() {
     isFinished = false;
-    System.out.println("BackAutoForwardCommand.end");
+   // System.out.println("BackAutoForwardCommand.end");
   }
 
   // Called when another command which requires one or more of the same
@@ -56,7 +56,7 @@ public class BackAutoForwardCommand extends Command {
   @Override
   protected void interrupted() {
     isFinished = false;
-    Robot.drivetrainSubsystem.Drive(0,0,0,0);
-    System.out.println("BackAutoForwardCommand.interrupted");
+    Robot.drivetrainSubsystem.Drive(0,0,0);
+  //  System.out.println("BackAutoForwardCommand.interrupted");
   }
 }

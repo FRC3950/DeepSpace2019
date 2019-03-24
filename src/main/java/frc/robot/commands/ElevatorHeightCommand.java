@@ -14,12 +14,12 @@ import frc.robot.Robot;
 public class ElevatorHeightCommand extends Command {
 
   public int stage;
-  boolean finished = false;
+  public boolean finished = false;
 
   public ElevatorHeightCommand(int input) {
     // Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
-    requires(Robot.ballElevatorSubsystem);
+    //requires(Robot.ballElevatorSubsystem);
     stage = input;
   }
 
@@ -40,7 +40,8 @@ public class ElevatorHeightCommand extends Command {
     //Cargo is higher
 
     if(stage == 0) {
-      if(Robot.ballElevatorSubsystem.bottomGetter() == true){
+      if(Robot.ballElevatorSubsystem.bottomGetter() == false){
+        System.out.println("Bottom Getter State" + Robot.ballElevatorSubsystem.bottomGetter());
         Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
         finished = true;
         //System.out.println("ElevatorHeightCommand.execute.bottom.end");
@@ -55,7 +56,8 @@ public class ElevatorHeightCommand extends Command {
       //   Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
     }
     if(stage == 1) {
-      if(Robot.ballElevatorSubsystem.rocketGetter() == true){
+      if(Robot.ballElevatorSubsystem.rocketGetter() == false || Robot.ballElevatorSubsystem.cargoGetter() == false){
+        System.out.println("Bottom Getter State" + Robot.ballElevatorSubsystem.rocketGetter());
         Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
         finished = true;
         //System.out.println("ElevatorHeightCommand.execute.rocket.end");
@@ -65,7 +67,8 @@ public class ElevatorHeightCommand extends Command {
       }
     }
     if(stage == 2) {
-      if(Robot.ballElevatorSubsystem.cargoGetter()== true){
+      if(Robot.ballElevatorSubsystem.cargoGetter()== false){
+        System.out.println("Bottom Getter State" + Robot.ballElevatorSubsystem.cargoGetter());
         Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
         finished = true;
        // System.out.println("ElevatorHeightCommand.execute.cargo.end");
@@ -90,6 +93,7 @@ public class ElevatorHeightCommand extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+   // System.out.println("Status of Hall Effect Sensor" + Robot.ballElevatorSubsystem.cargoGetter());
     finished = false;
   }
 

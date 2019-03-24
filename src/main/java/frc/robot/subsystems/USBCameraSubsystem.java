@@ -31,10 +31,9 @@ public class USBCameraSubsystem extends Subsystem {
   public void Enable() {
     if(camera == null)
       camera = CameraServer.getInstance().startAutomaticCapture(0);
-    camera.setResolution(640,480);
+    camera.setResolution(320,240);
     camera.setFPS(8);
-  
-  }
+    }
 
   public void Disable() {
     CameraServer.getInstance().removeCamera(camera.getName());

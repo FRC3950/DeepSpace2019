@@ -7,16 +7,21 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.PIDOutput;
-import frc.robot.Robot;
+import edu.wpi.first.wpilibj.buttons.Button;
 
 /**
  * Add your docs here.
  */
-public class rotatePIDOut implements PIDOutput {
+public class HatchButton extends Button{
+    public HatchButton() {
 
+    }
     @Override
-    public void pidWrite(double output) {
-        Robot.drivetrainSubsystem.Drive(0, 0, output);
+    public boolean get() {
+        if(Robot.intakePnuematicsSubsystem.isHatchLeftLinedUp() == false && Robot.intakePnuematicsSubsystem.isHatchRightLinedUp() == false) {
+            return true;
+        } else {
+        return false;
+        }
     }
 }

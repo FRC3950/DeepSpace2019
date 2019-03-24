@@ -13,7 +13,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.BallElevatorCommand;
+import frc.robot.commands.ElevatorHeightCommand;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.HatchReleaseCommand;
 import frc.robot.subsystems.BallElevatorSubsystem;
 import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -38,7 +41,7 @@ public class Robot extends TimedRobot {
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   // public static LimelightSubsystem limelightSubsystem = new LimelightSubsystem();
   public static OI m_oi;
-
+  public static HatchButton hatchButton;
   public static BallElevatorSubsystem ballElevatorSubsystem = new BallElevatorSubsystem();
   public static DrivetrainSubsystem drivetrainSubsystem = new DrivetrainSubsystem();
   public static IntakeMotorSubsystem intakeMotorSubsystem = new IntakeMotorSubsystem();
@@ -47,6 +50,9 @@ public class Robot extends TimedRobot {
   public static RobotLiftSubsystem robotLiftSubsystem = new RobotLiftSubsystem();
   public static USBCameraSubsystem usbCameraSubsystem = new USBCameraSubsystem();
   public static GyroSubsystem gyroSubsystem = new GyroSubsystem();
+
+  public static ElevatorHeightCommand elevatorHeightCommand = new ElevatorHeightCommand(0);
+  public static HatchReleaseCommand hatchReleaseCommand = new HatchReleaseCommand();
    // public static UltrasonicSubsystem ultrasonicSubsystem = new UltrasonicSubsystem();
   // public static BallShooterSubsystemV2 ballShooterSubsystemV2 = new BallShooterSubsystemV2(); 
 
@@ -76,6 +82,19 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+
+    if(Robot.ballElevatorSubsystem.ballElevatorMotor.getOutputCurrent() >= 40){
+      Robot.elevatorHeightCommand.finished = true;
+       }
+    // boolean fLS = SmartDashboard.putBoolean("Front Left Sensor" + false, !Robot.lineFollowerSubsystem.getFrontLeftSensor());
+    // boolean fCS = SmartDashboard.putBoolean("Front Center Sensor" + false, !Robot.lineFollowerSubsystem.getFrontCenterSensor());
+    // boolean fRS = SmartDashboard.putBoolean("Front Right Sensor" + false, !Robot.lineFollowerSubsystem.getFrontRightSensor());
+    // boolean bLS = SmartDashboard.putBoolean("Back Left Sensor" + false, !Robot.lineFollowerSubsystem.getBackLeftSensor());
+    // boolean bCS = SmartDashboard.putBoolean("Back Center Sensor" + false, !Robot.lineFollowerSubsystem.getBackCenterSensor());
+    // boolean bRS = SmartDashboard.putBoolean("Back Right Sensor" + false, !Robot.lineFollowerSubsystem.getBackRightSensor());
+    SmartDashboard.putBoolean("Ninja Star" , Robot.intakePnuematicsSubsystem.getNinjaStar());
+    // boolean lBNS = SmartDashboard.putBoolean("Left Button" + false, Robot.intakePnuematicsSubsystem.isHatchLeftLinedUp());
+    // boolean rBNS = SmartDashboard.putBoolean("Right Button" + false, Robot.intakePnuematicsSubsystem.isHatchRightLinedUp());
   }
 
   /**
@@ -161,14 +180,6 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
 
     Scheduler.getInstance().run();
-
-    boolean fLS = SmartDashboard.putBoolean("Front Left Sensor" + false, !Robot.lineFollowerSubsystem.getFrontLeftSensor());
-    boolean fCS = SmartDashboard.putBoolean("Front Center Sensor" + false, !Robot.lineFollowerSubsystem.getFrontCenterSensor());
-    boolean fRS = SmartDashboard.putBoolean("Front Right Sensor" + false, !Robot.lineFollowerSubsystem.getFrontRightSensor());
-    boolean bLS = SmartDashboard.putBoolean("Back Left Sensor" + false, !Robot.lineFollowerSubsystem.getBackLeftSensor());
-    boolean bCS = SmartDashboard.putBoolean("Back Center Sensor" + false, !Robot.lineFollowerSubsystem.getBackCenterSensor());
-    boolean bRS = SmartDashboard.putBoolean("Back Right Sensor" + false, !Robot.lineFollowerSubsystem.getBackRightSensor());
-    boolean nS = SmartDashboard.putBoolean("Ninja Star" + false, Robot.intakePnuematicsSubsystem.getNinjaStar());
     
     // System.out.println("bl Position" + Robot.drivetrainSubsystem.backLeft.getEncoder().getPosition());
     // System.out.println("fl Position" + Robot.drivetrainSubsystem.frontLeft.getEncoder().getPosition());

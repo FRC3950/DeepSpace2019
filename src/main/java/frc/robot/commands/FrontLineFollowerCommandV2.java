@@ -72,27 +72,27 @@ public class FrontLineFollowerCommandV2 extends Command {
       System.out.println("No state change");
     }
     else if(currentState == 0b000) {
-      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), 0, Robot.gyroSubsystem.getCurrentAngle());
+      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), 0);
       System.out.println("joystick control");  
     } else if((currentState & 0b100) == 0b100){
-      Robot.drivetrainSubsystem.Drive(0, -0.16, 0, 0);
+      Robot.drivetrainSubsystem.Drive(0, -0.16, 0);
       System.out.println("move left");
       if(!((currentState & 0b010) == 0b010)) {
-        Robot.drivetrainSubsystem.Drive(0,-0.16, 0, 0);
+        Robot.drivetrainSubsystem.Drive(0,-0.16, 0);
         System.out.println("move left");
       }
     } else if((currentState & 0b001) == 0b001){
-      Robot.drivetrainSubsystem.Drive(0, 0.16, 0, 0);
+      Robot.drivetrainSubsystem.Drive(0, 0.16, 0);
       System.out.println("move right");
       if(!((currentState & 0b010) == 0b010)) {
-        Robot.drivetrainSubsystem.Drive(0, 0.16, 0, 0);
+        Robot.drivetrainSubsystem.Drive(0, 0.16, 0);
         System.out.println("move right");
       }
     } else if((currentState & 0b010) == 0b010){
-      Robot.drivetrainSubsystem.Drive(0, 0, 0, 0); //-0.16
+      Robot.drivetrainSubsystem.Drive(0, 0, 0); //-0.16
       System.out.println("move forward");
     } else {
-      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist(), Robot.gyroSubsystem.getCurrentAngle());
+      Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist());
       System.out.println("joystick control");
     }
     //System.out.println("L=" + !RobotMap.leftSensor.get() + " C=" + !RobotMap.centerSensor.get() + " R=" + !RobotMap.rightSensor.get());

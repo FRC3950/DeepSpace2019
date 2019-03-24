@@ -27,7 +27,7 @@ public class ElevatorReturnToBottomCommand extends Command {
   @Override
   protected void execute() {
     //might have to change the value to false
-    if(Robot.ballElevatorSubsystem.bottomGetter() == true){
+    if(Robot.ballElevatorSubsystem.bottomGetter() == false){
       Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
       finished = true;
      // System.out.println("ElevatorRotateToBottomCommand.execute.bottom.end");
