@@ -75,6 +75,11 @@ public class DrivetrainSubsystem extends Subsystem {
     frontRight.setIdleMode(IdleMode.kBrake);
     backRight.setIdleMode(IdleMode.kBrake);
 
+    frontLeft.setSmartCurrentLimit(60);
+    backLeft.setSmartCurrentLimit(60);
+    frontRight.setSmartCurrentLimit(60);
+    backRight.setSmartCurrentLimit(60);
+
     //drivetrain.setSafetyEnabled(true);
     //  drivetrain = new DifferentialDrive(left, right);
     
@@ -97,6 +102,7 @@ public class DrivetrainSubsystem extends Subsystem {
     // if (x < 0) x = -(x*x); else x = x*x;
     //System.out.println("x=" + x + "  y=" + y + "  z=" + z + "  gyroAngle=" + gyroAngle);
     drivetrain.driveCartesian(y, x, .75 * z);
+
   }
   // public void driveCartesian(double ySpeed, double xSpeed, double zRotation){
   //   double y, x, z;
