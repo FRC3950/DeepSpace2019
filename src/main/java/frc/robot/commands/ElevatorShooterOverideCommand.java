@@ -10,50 +10,38 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ElevatorReturnToBottomCommand extends Command {
-  boolean finished = false;
-  public ElevatorReturnToBottomCommand() {
+public class ElevatorShooterOverideCommand extends Command {
+  public ElevatorShooterOverideCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
- //   requires(Robot.ballElevatorSubsystem);
+   // requires(Robot.ballElevatorSubsystem);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    finished = false;
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //might have to change the value to false
-    if(Robot.ballElevatorSubsystem.bottomGetter() == false){
-      Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
-      finished = true;
-     // System.out.println("ElevatorRotateToBottomCommand.execute.bottom.end");
-    } else {
-      Robot.ballElevatorSubsystem.ballElevatorMotor.set(0.35);
-      //System.out.println("ElevatorReturnToBottomCommand.execute.bottom");
-    }
+    Robot.ballElevatorSubsystem.ballElevatorShooterMotor.set(-.5);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return finished;
+    return true;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    finished = false;
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    finished = false;
   }
 }

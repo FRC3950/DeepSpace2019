@@ -66,7 +66,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    
+    Robot.intakePnuematicsSubsystem.ninjaStarSolenoid.set(false);
     m_oi = new OI();
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     
@@ -86,13 +86,16 @@ public class Robot extends TimedRobot {
     if(Robot.ballElevatorSubsystem.ballElevatorMotor.getOutputCurrent() >= 40){
       Robot.elevatorHeightCommand.finished = true;
        }
+
+    SmartDashboard.putNumber("Pressure", (RobotMap.pressureReader.getVoltage() * 56.471 -28.518));
+    SmartDashboard.putBoolean("Ball Sensor", Robot.ballElevatorSubsystem.isBallIn());
     // boolean fLS = SmartDashboard.putBoolean("Front Left Sensor" + false, !Robot.lineFollowerSubsystem.getFrontLeftSensor());
     // boolean fCS = SmartDashboard.putBoolean("Front Center Sensor" + false, !Robot.lineFollowerSubsystem.getFrontCenterSensor());
     // boolean fRS = SmartDashboard.putBoolean("Front Right Sensor" + false, !Robot.lineFollowerSubsystem.getFrontRightSensor());
     // boolean bLS = SmartDashboard.putBoolean("Back Left Sensor" + false, !Robot.lineFollowerSubsystem.getBackLeftSensor());
     // boolean bCS = SmartDashboard.putBoolean("Back Center Sensor" + false, !Robot.lineFollowerSubsystem.getBackCenterSensor());
     // boolean bRS = SmartDashboard.putBoolean("Back Right Sensor" + false, !Robot.lineFollowerSubsystem.getBackRightSensor());
-    SmartDashboard.putBoolean("Ninja Star" , Robot.intakePnuematicsSubsystem.getNinjaStar());
+    SmartDashboard.putBoolean("Ninja Star" , !Robot.intakePnuematicsSubsystem.ninjaStarSolenoid.get());
     // boolean lBNS = SmartDashboard.putBoolean("Left Button" + false, Robot.intakePnuematicsSubsystem.isHatchLeftLinedUp());
     // boolean rBNS = SmartDashboard.putBoolean("Right Button" + false, Robot.intakePnuematicsSubsystem.isHatchRightLinedUp());
   }

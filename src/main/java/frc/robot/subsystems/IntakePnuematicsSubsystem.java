@@ -72,7 +72,7 @@ public class IntakePnuematicsSubsystem extends Subsystem {
      }
       public void toggleNinjaStar(){
       //   if (ninjaStarSolenoid.get() == true) {
-          ninjaStarSolenoid.set(false);
+          ninjaStarSolenoid.set(true);
         // } else {
         //   ninjaStarSolenoid.set(true);
       //  }

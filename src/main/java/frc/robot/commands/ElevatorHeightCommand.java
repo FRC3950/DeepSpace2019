@@ -20,6 +20,7 @@ public class ElevatorHeightCommand extends Command {
     // Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
     //requires(Robot.ballElevatorSubsystem);
+  //  requires(Robot.ballElevatorSubsystem);
     stage = input;
   }
 
@@ -57,7 +58,7 @@ public class ElevatorHeightCommand extends Command {
     }
     if(stage == 1) {
       if(Robot.ballElevatorSubsystem.rocketGetter() == false || Robot.ballElevatorSubsystem.cargoGetter() == false){
-        System.out.println("Bottom Getter State" + Robot.ballElevatorSubsystem.rocketGetter());
+        //System.out.println("Bottom Getter State" + Robot.ballElevatorSubsystem.rocketGetter());
         Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
         finished = true;
         //System.out.println("ElevatorHeightCommand.execute.rocket.end");
@@ -68,7 +69,7 @@ public class ElevatorHeightCommand extends Command {
     }
     if(stage == 2) {
       if(Robot.ballElevatorSubsystem.cargoGetter()== false){
-        System.out.println("Bottom Getter State" + Robot.ballElevatorSubsystem.cargoGetter());
+       // System.out.println("Bottom Getter State" + Robot.ballElevatorSubsystem.cargoGetter());
         Robot.ballElevatorSubsystem.ballElevatorMotor.set(0);
         finished = true;
        // System.out.println("ElevatorHeightCommand.execute.cargo.end");

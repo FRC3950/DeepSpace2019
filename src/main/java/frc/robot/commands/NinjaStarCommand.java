@@ -30,7 +30,7 @@ public class NinjaStarCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      Robot.intakePnuematicsSubsystem.ninjaStarSolenoid.set(true); //open
+      Robot.intakePnuematicsSubsystem.ninjaStarSolenoid.set(false); //open
    //System.out.println("Ninja Star Command Execute OPEN");
    // SmartDashboard.putBoolean("Ninja Star" , Robot.intakePnuematicsSubsystem.ninjaStarSolenoid.get());
    // System.out.println("Ninja Star Command Execute");

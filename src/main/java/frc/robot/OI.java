@@ -19,6 +19,7 @@ import frc.robot.commands.DepositCargoAutoCommandGroup;
 import frc.robot.commands.DepositRocketAutoCommandGroup;
 import frc.robot.commands.DropLiftPnuematicsCommand;
 import frc.robot.commands.ElevatorReturnToBottomCommand;
+import frc.robot.commands.ElevatorShooterOverideCommand;
 import frc.robot.commands.FrontPnuematicLiftCommand;
 import frc.robot.commands.HatchOutakeCommand;
 import frc.robot.commands.HatchReleaseCommand;
@@ -135,6 +136,8 @@ public class OI {
     // driveStick1Button.whenPressed(new CloseDoorCommand());
     // xboxControllerRBButton.whenPressed(new ShootBallCommand());
     hatchButton.whenPressed(new NinjaStarCommand());
+
+    xboxControllerBackButton.whileHeld(new ElevatorShooterOverideCommand());
 
     
   }

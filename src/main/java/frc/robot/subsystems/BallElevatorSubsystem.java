@@ -7,10 +7,13 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.Robot;
 
 /**
  * Add your docs here.
@@ -22,9 +25,9 @@ public class BallElevatorSubsystem extends Subsystem {
   final int ballElevatorShooterMotorChannel = 7;
   final int ballElevatorMotorChannel = 6;
   final int bottomLimitSwitchChannel = 0;
-  final int rocketLimitSwitchChannel = 1;
+  final int rocketLimitSwitchChannel = 9;
   final int cargoLimitSwitchChannel = 2;
-  final int isBallInLimitSwitchChannel = 9;
+  final int isBallInLimitSwitchChannel = 1;
   
 
   public WPI_TalonSRX ballElevatorShooterMotor = new WPI_TalonSRX(ballElevatorShooterMotorChannel);
@@ -32,7 +35,7 @@ public class BallElevatorSubsystem extends Subsystem {
   private DigitalInput bottomLimitSwitch = new DigitalInput(bottomLimitSwitchChannel);
   private DigitalInput cargoLimitSwitch = new DigitalInput(cargoLimitSwitchChannel);
   private DigitalInput rocketLimitSwitch = new DigitalInput(rocketLimitSwitchChannel);
-  public DigitalInput isBallIn = new DigitalInput(isBallInLimitSwitchChannel);
+  public AnalogInput isBallIn = new AnalogInput(isBallInLimitSwitchChannel);
 
   
 
@@ -48,6 +51,7 @@ public WPI_TalonSRX getBallElevatorMotor() {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    ballElevatorMotor.setNeutralMode(NeutralMode.Brake);
   }
 
   public void BallElevatorMotorSet(double speed){
@@ -76,11 +80,15 @@ public WPI_TalonSRX getBallElevatorMotor() {
   }
 
   public boolean isBallIn(){
-    return isBallIn.get();
+    if(Robot.ballElevatorSubsystem.isBallIn.getVoltage() >= 4) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   public int getEncoder(){
-    return getBallElevatorMotor().getSelectedSensorPosition(0);
+    return ballElevatorMotor.getSelectedSensorPosition(0);
     //gets the encoder value
   }
   

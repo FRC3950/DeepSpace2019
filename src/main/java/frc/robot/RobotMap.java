@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 //import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DigitalOutput;
@@ -26,6 +27,8 @@ public class RobotMap {
   public static DigitalInput backRightSensor = new DigitalInput(7);
   public static DigitalInput backCenterSensor = new DigitalInput(8);
   public static DigitalInput backLeftSensor = new DigitalInput(6);
+
+  public static AnalogInput pressureReader = new AnalogInput(0);
 
   // public static AnalogInput distanceSensor = new AnalogInput(0);
 
