@@ -18,12 +18,14 @@ import frc.robot.commands.DepositBottomAutoCommandGroup;
 import frc.robot.commands.DepositCargoAutoCommandGroup;
 import frc.robot.commands.DepositRocketAutoCommandGroup;
 import frc.robot.commands.DropLiftPnuematicsCommand;
+import frc.robot.commands.ElevatorHeightCommand;
 import frc.robot.commands.ElevatorReturnToBottomCommand;
 import frc.robot.commands.ElevatorShooterOverideCommand;
 import frc.robot.commands.FrontPnuematicLiftCommand;
 import frc.robot.commands.HatchOutakeCommand;
 import frc.robot.commands.HatchReleaseCommand;
 import frc.robot.commands.LiftIntakeCommand;
+import frc.robot.commands.Limelight2019Command;
 import frc.robot.commands.FrontLineFollowingAbortCommand;
 import frc.robot.commands.FrontLineUpRobotCommandGroup;
 import frc.robot.commands.NinjaStarCommand;
@@ -126,8 +128,8 @@ public class OI {
 
     driveStick9Button.whenPressed(new ElevatorReturnToBottomCommand());
 
-    // driveStick9Button.whileHeld(new ElevatorHeightCommand(2));
-    // driveStick7Button.whileHeld(new ElevatorHeightCommand(1));
+    //driveStick2Button.whileHeld(new ElevatorHeightCommand(2));
+    //driveStick1Button.whileHeld(new ElevatorHeightCommand(1));
 
     driveStick2Button.whenPressed(new RobotLiftMotorCommand());
 
@@ -139,7 +141,9 @@ public class OI {
 
     xboxControllerBackButton.whileHeld(new ElevatorShooterOverideCommand());
 
-    
+    driveStick6Button.whenPressed(new Limelight2019Command());
+
+
   }
 
 }

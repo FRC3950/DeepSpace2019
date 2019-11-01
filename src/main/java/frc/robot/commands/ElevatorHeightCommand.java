@@ -8,6 +8,8 @@
 package frc.robot.commands;
 
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
@@ -63,7 +65,10 @@ public class ElevatorHeightCommand extends Command {
         finished = true;
         //System.out.println("ElevatorHeightCommand.execute.rocket.end");
       } else {
-        Robot.ballElevatorSubsystem.ballElevatorMotor.set(-0.35);
+        //Robot.ballElevatorSubsystem.ballElevatorMotor.set(-0.35);
+        int targetPosition = -17300;
+        Robot.ballElevatorSubsystem.ballElevatorMotor.selectProfileSlot(0, 0);
+        Robot.ballElevatorSubsystem.ballElevatorMotor.set(ControlMode.MotionMagic, targetPosition);
         //System.out.println("ElevatorHeightCommand.execute.rocket");
       }
     }
@@ -75,7 +80,10 @@ public class ElevatorHeightCommand extends Command {
        // System.out.println("ElevatorHeightCommand.execute.cargo.end");
 
       } else{
-        Robot.ballElevatorSubsystem.ballElevatorMotor.set(-0.35);
+        // Robot.ballElevatorSubsystem.ballElevatorMotor.set(-0.35);
+        int targetPosition = -17300;
+        Robot.ballElevatorSubsystem.ballElevatorMotor.selectProfileSlot(0, 0);
+        Robot.ballElevatorSubsystem.ballElevatorMotor.set(ControlMode.MotionMagic, targetPosition);
         //System.out.println("ElevatorHeightCommand.execute.cargo");
       }
     }

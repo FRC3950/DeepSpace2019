@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.BallElevatorCommand;
 import frc.robot.commands.ElevatorHeightCommand;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.HatchReleaseCommand;
@@ -39,6 +38,7 @@ import frc.robot.commands.USBCameraCommand;
  */
 public class Robot extends TimedRobot {
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
+  
   // public static LimelightSubsystem limelightSubsystem = new LimelightSubsystem();
   public static OI m_oi;
   public static HatchButton hatchButton;
@@ -82,6 +82,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    
+    //System.out.println(Robot.ballElevatorSubsystem.ballElevatorMotor.getSelectedSensorVelocity());
 
     if(Robot.ballElevatorSubsystem.ballElevatorMotor.getOutputCurrent() >= 40){
       Robot.elevatorHeightCommand.finished = true;

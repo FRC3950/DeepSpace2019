@@ -38,6 +38,7 @@ public class BallElevatorCommand extends Command {
   protected void execute() {
     getY = -controller.getY(Hand.kLeft);
     gndHeight = Robot.ballElevatorSubsystem.getElevatorHeight();
+ 
     // height of elevator from ground 
 
     // if(Robot.ballElevatorSubsystem.bottomGetter() && getY < 0) {
@@ -68,11 +69,14 @@ public class BallElevatorCommand extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.ballElevatorSubsystem.resetEncoder();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    Robot.ballElevatorSubsystem.resetEncoder();
+
   }
 }

@@ -75,10 +75,10 @@ public class DrivetrainSubsystem extends Subsystem {
     frontRight.setIdleMode(IdleMode.kBrake);
     backRight.setIdleMode(IdleMode.kBrake);
 
-    frontLeft.setSmartCurrentLimit(50);
-    backLeft.setSmartCurrentLimit(55);
-    frontRight.setSmartCurrentLimit(50);
-    backRight.setSmartCurrentLimit(55);
+    // frontLeft.setSmartCurrentLimit(50);
+    // backLeft.setSmartCurrentLimit(55);
+    // frontRight.setSmartCurrentLimit(50);
+    // backRight.setSmartCurrentLimit(55);
 
     //drivetrain.setSafetyEnabled(true);
     //  drivetrain = new DifferentialDrive(left, right);

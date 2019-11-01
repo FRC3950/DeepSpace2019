@@ -52,6 +52,7 @@ public WPI_TalonSRX getBallElevatorMotor() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
     ballElevatorMotor.setNeutralMode(NeutralMode.Brake);
+    ballElevatorMotor.configPeakCurrentLimit(50);
   }
 
   public void BallElevatorMotorSet(double speed){
@@ -87,8 +88,10 @@ public WPI_TalonSRX getBallElevatorMotor() {
     }
   }
 
-  public int getEncoder(){
-    return ballElevatorMotor.getSelectedSensorPosition(0);
+  public double getEncoder(){
+    double encoderCount = ballElevatorMotor.getSelectedSensorPosition(1);
+    //System.out.println(encoderCount);
+    return encoderCount;
     //gets the encoder value
   }
   
