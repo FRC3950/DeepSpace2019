@@ -8,12 +8,13 @@
 package frc.robot.subsystems;
 
 
-
-
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
 import com.revrobotics.CANSparkMax.IdleMode;
 
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDSource;
+import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 //import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -31,12 +32,12 @@ public class DrivetrainSubsystem extends Subsystem {
   final int backLeftChannel = 2;
   final int frontRightChannel = 1;
   final int backRightChannel = 4;
+
   
   public CANSparkMax frontLeft = new CANSparkMax(frontRightChannel, CANSparkMaxLowLevel.MotorType.kBrushless);
   public CANSparkMax backLeft = new CANSparkMax(backRightChannel, CANSparkMaxLowLevel.MotorType.kBrushless);
   public CANSparkMax frontRight = new CANSparkMax(frontLeftChannel, CANSparkMaxLowLevel.MotorType.kBrushless);
   public CANSparkMax backRight = new CANSparkMax(backLeftChannel, CANSparkMaxLowLevel.MotorType.kBrushless);
-
 
   MecanumDrive drivetrain;
 
@@ -48,7 +49,7 @@ public class DrivetrainSubsystem extends Subsystem {
 
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-
+  
   @Override
   public void initDefaultCommand() {
 
@@ -153,4 +154,13 @@ public class DrivetrainSubsystem extends Subsystem {
     backRight.getEncoder().setPosition(0.0);
     frontRight.getEncoder().setPosition(0.0);
   }
+  public void setSetpoint(int setpoint)
+{
+    double x = setpoint;
+}
+
+
+
+
+
 }

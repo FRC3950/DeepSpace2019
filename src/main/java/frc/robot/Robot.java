@@ -69,7 +69,7 @@ public class Robot extends TimedRobot {
     Robot.intakePnuematicsSubsystem.ninjaStarSolenoid.set(false);
     m_oi = new OI();
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-    
+
   }
 
   /**
@@ -82,6 +82,27 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+
+    final double Kp = 0.3;
+    // edit the p value
+    final double Ki = 0.0;
+    final double Kd = 0.0;
+    
+    double fLVelocity = Robot.drivetrainSubsystem.frontLeft.getEncoder().getVelocity();
+    double fRVelocity =Robot.drivetrainSubsystem.frontRight.getEncoder().getVelocity();
+    double bLVelocity =Robot.drivetrainSubsystem.backLeft.getEncoder().getVelocity();
+    double bRVelocity = Robot.drivetrainSubsystem.backRight.getEncoder().getVelocity();
+
+    PIDController leftFrontPID = new PIDController(Kp, Ki, Kd, fLVelocity, Robot.drivetrainSubsystem.frontLeft);
+    PIDController rightFrontPID =  new PIDController(Kp, Ki, Kd, fRVelocity, Robot.drivetrainSubsystem.frontRight);
+    PIDController leftBackPID =  new PIDController(Kp, Ki, Kd, bLVelocity, Robot.drivetrainSubsystem.backLeft);
+    PIDController rightBackPID =  new PIDController(Kp, Ki, Kd, bRVelocity, Robot.drivetrainSubsystem.backRight);
+
+    leftFrontPID.enable();
+    rightBackPID.enable();
+    rightFrontPID.enable();
+    rightBackPID.enable();
+
     
     //System.out.println(Robot.ballElevatorSubsystem.ballElevatorMotor.getSelectedSensorVelocity());
 
@@ -184,8 +205,11 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
 
-    Scheduler.getInstance().run();
     
+
+    Scheduler.getInstance().run();
+  
+
     // System.out.println("bl Position" + Robot.drivetrainSubsystem.backLeft.getEncoder().getPosition());
     // System.out.println("fl Position" + Robot.drivetrainSubsystem.frontLeft.getEncoder().getPosition());
     // System.out.println("br Position" + -Robot.drivetrainSubsystem.backRight.getEncoder().getPosition());

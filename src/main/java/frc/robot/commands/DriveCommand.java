@@ -8,6 +8,8 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
@@ -16,11 +18,22 @@ public class DriveCommand extends Command {
 
   Joystick stick = Robot.m_oi.driveStick;
 
+  private static final double Kp = 0.3;
+  private static final double Ki = 0.0;
+  private static final double Kd = 0.0;
+
+
+
   public DriveCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.drivetrainSubsystem);
     requires(Robot.gyroSubsystem);
+    
+    // PIDController leftFrontPID =  new PIDController(Kp, Ki, Kd, fLVelocity, leftFront);
+    // PIDController rightFrontPID =  new PIDController(Kp, Ki, Kd, rightFrontEncoder, rightFront);
+    // PIDController leftBackPID =  new PIDController(Kp, Ki, Kd, leftBackEncoder, leftBack);
+    // PIDController rightBackPID =  new PIDController(Kp, Ki, Kd, rightBackEncoder, rightBack);
 
   }
 
@@ -35,6 +48,16 @@ public class DriveCommand extends Command {
   @Override
   protected void execute() {
     Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getX(), stick.getTwist());
+    double fLVelocity = Robot.drivetrainSubsystem.frontLeft.getEncoder().getVelocity();
+    double fRVelocity =Robot.drivetrainSubsystem.frontRight.getEncoder().getVelocity();
+    double bLVelocity =Robot.drivetrainSubsystem.backLeft.getEncoder().getVelocity();
+    double bRVelocity = Robot.drivetrainSubsystem.backRight.getEncoder().getVelocity();
+
+    // PIDController leftFrontPID = new PIDController(Kp, Ki, Kd, fLVelocity, Robot.drivetrainSubsystem.frontLeft);
+    // PIDController rightFrontPID =  new PIDController(Kp, Ki, Kd, fRVelocity, Robot.drivetrainSubsystem.frontRight);
+    // PIDController leftBackPID =  new PIDController(Kp, Ki, Kd, bLVelocity, Robot.drivetrainSubsystem.backLeft);
+    // PIDController rightBackPID =  new PIDController(Kp, Ki, Kd, bRVelocity, Robot.drivetrainSubsystem.backRight);
+
     //Robot.drivetrainSubsystem.driveCartesian(stick.getY(), stick.getX(), stick.getTwist());
     //Robot.drivetrainSubsystem.Drive(stick.getY(), stick.getTwist());
     // System.out.println("fL" + Robot.drivetrainSubsystem.frontLeft.getBusVoltage());
